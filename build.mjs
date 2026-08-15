@@ -29,9 +29,15 @@ if (pendentes.length) {
   process.exit(1);
 }
 
+// Três idiomas: ela atende a comunidade brasileira, a americana e a hispânica em Leominster.
+const IDIOMAS = [
+  { cod: "pt", rotulo: "PT", href: "/", lang: "pt-BR" },
+  { cod: "en", rotulo: "EN", href: "/en", lang: "en" },
+  { cod: "es", rotulo: "ES", href: "/es", lang: "es" },
+];
+
 function pagina(l) {
-  const outro = l === "pt" ? "en" : "pt";
-  const linkOutro = l === "pt" ? "/en" : "/";
+  const eu = IDIOMAS.find((i) => i.cod === l);
   const zap = `https://wa.me/${CLINICA.whatsapp}?text=${encodeURIComponent(t(TEXTOS.msgZap, l))}`;
   const nav = t(TEXTOS.nav, l);
 
@@ -60,7 +66,7 @@ function pagina(l) {
         width="${f.w || 787}" height="${f.h || 1400}" style="object-position:${f.pos || "50% 50%"}" /></figure>`).join("\n");
 
   return `<!doctype html>
-<html lang="${l === "pt" ? "pt-BR" : "en"}">
+<html lang="${eu.lang}">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -71,7 +77,7 @@ function pagina(l) {
 <meta property="og:image" content="/img/andreia-retrato.jpg" />
 <meta property="og:type" content="website" />
 <meta name="theme-color" content="#f7f1e8" />
-<link rel="alternate" hreflang="${outro === "pt" ? "pt-BR" : "en"}" href="${linkOutro}" />
+${IDIOMAS.map((i) => `<link rel="alternate" hreflang="${i.lang}" href="${i.href}" />`).join("\n")}
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500;600&family=Parisienne&display=swap" rel="stylesheet" />
@@ -245,11 +251,11 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
 </style>
 </head>
 <body>
-<a class="pular" href="#conteudo">${l === "pt" ? "Ir para o conteúdo" : "Skip to content"}</a>
+<a class="pular" href="#conteudo">${({pt:"Ir para o conteúdo",en:"Skip to content",es:"Ir al contenido"})[l]}</a>
 
 <header>
   <div class="topo">
-    <a class="marca" href="${l === "pt" ? "/" : "/en"}">
+    <a class="marca" href="${eu.href}">
       <svg class="marca-a" viewBox="0 0 64 64" role="img" aria-label="${esc(CLINICA.nome)}">
         <text x="26" y="48" font-family="Cormorant Garamond,Georgia,serif" font-size="52" fill="#8a6230" text-anchor="middle">A</text>
         <path d="M44 16l2.2 5.4L52 23.6l-5.8 2.2L44 31.2l-2.2-5.4L36 23.6l5.8-2.2z" fill="#b8912f"/>
@@ -260,10 +266,11 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
       </span>
     </a>
     <span class="idioma">
-      ${l === "pt" ? '<span class="ativo">PT</span><a href="/en" hreflang="en">EN</a>'
-                   : '<a href="/" hreflang="pt-BR">PT</a><span class="ativo">EN</span>'}
+      ${IDIOMAS.map((i) => i.cod === l
+        ? `<span class="ativo">${i.rotulo}</span>`
+        : `<a href="${i.href}" hreflang="${i.lang}">${i.rotulo}</a>`).join("")}
     </span>
-    <button class="menu-btn" aria-label="${l === "pt" ? "Abrir menu" : "Open menu"}" aria-expanded="false" aria-controls="menu">☰</button>
+    <button class="menu-btn" aria-label="${({pt:"Abrir menu",en:"Open menu",es:"Abrir menú"})[l]}" aria-expanded="false" aria-controls="menu">☰</button>
     <nav id="menu">
       <a href="#servicos">${esc(nav[0])}</a>
       <a href="#beneficios">${esc(nav[1])}</a>
@@ -332,7 +339,7 @@ ${benef}
       </div>
       <figure class="benef-foto">
         <img src="/img/arte-drenagem.jpg" loading="lazy" width="1119" height="1400"
-             alt="${l === "pt" ? "Material da Andréia sobre drenagem linfática" : "Andréia's lymphatic drainage material"}" />
+             alt="${({pt:"Material da Andréia sobre drenagem linfática",en:"Andréia's lymphatic drainage material",es:"Material de Andréia sobre drenaje linfático"})[l]}" />
       </figure>
     </div>
   </section>
@@ -405,6 +412,10 @@ ${fotos}
 `;
 }
 
-writeFileSync(new URL("./index.html", import.meta.url), pagina("pt"));
-writeFileSync(new URL("./en.html", import.meta.url), pagina("en"));
-console.log(`Gerado: index.html (PT) e en.html (EN) — ${SERVICOS.length} procedimentos, ${FOTOS.length} foto(s).`);
+// index.html é o PT (raiz); os demais viram <cod>.html e o cleanUrls serve /en e /es.
+const gerados = IDIOMAS.map((i) => {
+  const arquivo = i.cod === "pt" ? "index.html" : `${i.cod}.html`;
+  writeFileSync(new URL(`./${arquivo}`, import.meta.url), pagina(i.cod));
+  return arquivo;
+});
+console.log(`Gerado: ${gerados.join(", ")} — ${SERVICOS.length} procedimentos, ${FOTOS.length} foto(s).`);
