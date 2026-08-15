@@ -10,12 +10,19 @@
 // e rodar o build.
 
 /**
- * ⚠ IDIOMA — fato confirmado por Sostenes em 14/08/2026: a Andréia NÃO fala inglês.
- * Ela atende clientes americanas com apoio de tradução. O site chegou a prometer "atendimento
- * em português e inglês", o que é promessa que ela não pode cumprir na sala — cliente que
- * agenda esperando conversar em inglês vira frustração no atendimento, não na página.
- * Redação vigente: ela ATENDE em português e RECEBE quem fala inglês e espanhol, com tradução.
- * As três páginas continuam existindo: a cliente lê no idioma dela e a conversa se resolve na sala.
+ * ⚠ IDIOMA — confirmado por Sostenes em 14/08/2026:
+ *   FALA e entende: português e espanhol.
+ *   NÃO fala: inglês. Atende americanas com apoio de tradução.
+ *
+ * O site chegou a prometer "atendimento em português e inglês". Promessa que ela não cumpre na
+ * sala: a cliente descobre no atendimento, não na página, e o custo é dela.
+ *
+ * Espanhol é DIFERENTE e é ativo comercial: em Leominster ela atende a comunidade hispânica
+ * direto, sem intermediário. A página /es diz isso com todas as letras ("sin intermediarios"),
+ * porque é o diferencial dela contra qualquer clínica americana da região.
+ *
+ * As três páginas continuam existindo. Em inglês, a cliente lê no idioma dela e a conversa se
+ * resolve na sala com tradução — e o site avisa isso antes de ela agendar.
  */
 export const CLINICA = {
   nome: "Andréia Carvalho",
@@ -42,9 +49,9 @@ export const TEXTOS = {
   h1: { pt: "Tecnologia, ciência e cuidado", en: "Technology, science and care", es: "Tecnología, ciencia y cuidado" },
   h1s: { pt: "para resultados que você vê e sente.", en: "for results you see and feel.", es: "para resultados que se ven y se sienten." },
   sub: {
-    pt: "Drenagem linfática, dreno detox, EMSzero e tecnologias corporais — com protocolo montado para o seu corpo. Atendo em português, e também recebo clientes que falam inglês e espanhol, com apoio de tradução.",
-    en: "Lymphatic drainage, detox, EMSzero and body technologies — with a protocol built for your body. I speak Portuguese, and I welcome English- and Spanish-speaking clients with translation support.",
-    es: "Drenaje linfático, drenaje detox, EMSzero y tecnologías corporales — con un protocolo hecho para tu cuerpo. Atiendo en portugués, y también recibo clientas que hablan inglés y español, con apoyo de traducción.",
+    pt: "Drenagem linfática, dreno detox, EMSzero e tecnologias corporais — com protocolo montado para o seu corpo. Atendo em português e espanhol, e recebo também quem fala inglês, com apoio de tradução.",
+    en: "Lymphatic drainage, detox, EMSzero and body technologies — with a protocol built for your body. I speak Portuguese and Spanish, and English-speaking clients are welcome with translation support.",
+    es: "Drenaje linfático, drenaje detox, EMSzero y tecnologías corporales — con un protocolo hecho para tu cuerpo. Te atiendo en español y en portugués, sin intermediarios.",
   },
   ctaAgendar: { pt: "Agendar avaliação", en: "Book an assessment", es: "Agendar evaluación" },
   ctaVer: { pt: "Ver procedimentos", en: "See treatments", es: "Ver procedimientos" },
@@ -104,9 +111,9 @@ export const TEXTOS = {
   labelOnde: { pt: "Onde", en: "Where", es: "Dónde" },
   labelIdiomas: { pt: "Idiomas", en: "Languages", es: "Idiomas" },
   valorIdiomas: {
-    pt: "Português. Inglês e espanhol com apoio de tradução",
-    en: "Portuguese. English and Spanish with translation support",
-    es: "Portugués. Inglés y español con apoyo de traducción",
+    pt: "Português e espanhol. Inglês com apoio de tradução",
+    en: "Portuguese and Spanish. English with translation support",
+    es: "Español y portugués. Inglés con apoyo de traducción",
   },
   // Escopo estético dito ONDE as frases dela aparecem, não só no rodapé (achado da auditoria:
   // o aviso ficava a 3.000px das alegações).
@@ -201,7 +208,7 @@ export const BENEFICIOS = [
  */
 export const RESULTADOS = [
   { num: "1.000+", pt: "atendimentos realizados", en: "sessions delivered", es: "atenciones realizadas" },
-  { num: "3", pt: "comunidades atendidas em Leominster", en: "communities served in Leominster", es: "comunidades atendidas en Leominster" },
+  { num: "2", pt: "idiomas que eu falo: português e espanhol", en: "languages I speak: Portuguese and Spanish", es: "idiomas que hablo: español y portugués" },
   { num: "0", pt: "tempo de parada nos protocolos", en: "downtime in the protocols", es: "tiempo de reposo en los protocolos" },
 ];
 
