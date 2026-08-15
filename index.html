@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Andréia Carvalho · Estética e Bem-estar — Leominster, MA</title>
+<meta name="description" content="Especialista em estética e bem-estar em Leominster, Massachusetts. Drenagem linfática, dreno detox, EMSzero, ultracavitação e radiofrequência. Atendimento em português e inglês." />
+<meta property="og:title" content="Andréia Carvalho · Estética e Bem-estar" />
+<meta property="og:description" content="Tecnologia, ciência e cuidado para resultados que você vê e sente. Leominster, MA." />
+<meta property="og:image" content="/img/andreia-retrato.jpg" />
+<meta property="og:type" content="website" />
+<meta name="theme-color" content="#f7f1e8" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500;600&family=Parisienne&display=swap" rel="stylesheet" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f7f1e8'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='40' fill='%239a6f3a' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E" />
+<style>
+/* ============================================================
+   Identidade da Andréia — retirada do material dela (tabela de
+   procedimentos e arte da drenagem). Creme, dourado e marrom;
+   serifada elegante; assinatura manuscrita. Nada inventado.
+   ============================================================ */
+:root{
+  --creme:#f7f1e8; --creme-2:#efe5d6; --areia:#e6d7c3; --papel:#fffdfa;
+  --marrom:#5a4028; --marrom-claro:#8a6642; --dourado:#9a6f3a; --dourado-luz:#c9a227;
+  --texto:#3d2e20; --suave:#7a6551; --linha:#e0d0b9;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Jost',-apple-system,'Segoe UI',sans-serif;
+  --script:'Parisienne',cursive;
+  --max:1160px;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;font-size:17px}
+body{background:var(--creme);color:var(--texto);font-family:var(--sans);font-weight:300;
+  line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.13;color:var(--marrom)}
+a{color:inherit}
+/* height:auto é obrigatório quando o <img> tem atributos width/height: sem ele a
+   largura escala pelo CSS, a altura fica presa no atributo e a imagem ESTICA. */
+img{max-width:100%;height:auto;display:block}
+.env{max-width:var(--max);margin:0 auto;padding:0 26px}
+.script{font-family:var(--script);color:var(--dourado);font-weight:400}
+
+header{position:fixed;inset:0 0 auto;z-index:50;background:rgba(247,241,232,.92);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--linha)}
+.topo{display:flex;align-items:center;gap:20px;padding:12px 26px;max-width:var(--max);margin:0 auto}
+.marca{display:flex;align-items:center;gap:11px;text-decoration:none}
+.marca-a{width:44px;height:44px;flex:none}
+.marca-txt{display:flex;flex-direction:column;line-height:1.1}
+.marca-txt b{font-family:var(--serif);font-weight:500;font-size:1.16rem;color:var(--marrom)}
+.marca-txt span{font-size:.56rem;letter-spacing:.24em;text-transform:uppercase;color:var(--dourado)}
+nav{margin-left:auto;display:flex;gap:26px;align-items:center}
+nav a{text-decoration:none;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--suave)}
+nav a:hover{color:var(--dourado)}
+.idioma{display:flex;border:1px solid var(--linha);border-radius:999px;padding:3px;background:var(--papel)}
+.idioma button{background:none;border:0;color:var(--suave);font-family:var(--sans);font-size:.66rem;
+  letter-spacing:.1em;padding:4px 11px;border-radius:999px;cursor:pointer}
+.idioma button[aria-pressed="true"]{background:var(--dourado);color:#fff;font-weight:500}
+.menu-btn{display:none;background:none;border:0;color:var(--dourado);font-size:1.5rem;cursor:pointer;margin-left:auto}
+
+.hero{position:relative;padding:132px 0 74px;overflow:hidden;
+  background:radial-gradient(120% 90% at 82% 12%,var(--creme-2),transparent 58%),var(--creme)}
+.hero-grade{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
+.selo{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--linha);background:var(--papel);
+  border-radius:999px;padding:7px 16px;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dourado)}
+h1{font-size:clamp(2.5rem,5.4vw,4rem);margin:22px 0 8px}
+.h1-script{font-family:var(--script);font-size:clamp(2.2rem,4.8vw,3.5rem);color:var(--dourado);
+  line-height:1.05;display:block;margin-top:6px}
+.chamada{font-size:1.06rem;color:var(--suave);max-width:33em;margin-top:18px}
+.acoes{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:15px 28px;text-decoration:none;border-radius:4px;
+  font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;transition:.25s;border:1px solid var(--dourado)}
+.btn-cheio{background:var(--dourado);color:#fff;font-weight:500}
+.btn-cheio:hover{background:var(--marrom)}
+.btn-vazio{color:var(--dourado);background:var(--papel)}
+.btn-vazio:hover{background:var(--creme-2)}
+
+.hero-foto{position:relative;margin:0}
+.hero-foto img{border-radius:280px 280px 14px 14px;box-shadow:0 34px 70px -34px rgba(90,64,40,.5);
+  aspect-ratio:4/5;object-fit:cover;object-position:50% 12%;width:100%;height:auto}
+.hero-arco{position:absolute;inset:-16px -16px 34px 34px;border:1px solid var(--areia);
+  border-radius:290px 290px 14px 14px;z-index:-1}
+
+.pilares{background:var(--papel);border-block:1px solid var(--linha)}
+.pilares-grade{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;padding:40px 0}
+.pilar b{display:block;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--marrom);
+  font-weight:600;margin-bottom:5px}
+.pilar span{font-size:.86rem;color:var(--suave)}
+
+section{padding:92px 0;position:relative}
+.rotulo{font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:var(--dourado);margin-bottom:14px}
+h2{font-size:clamp(1.9rem,4vw,2.8rem);margin-bottom:16px}
+.intro{color:var(--suave);max-width:44em;font-size:1.02rem}
+
+.tabela{margin-top:44px;border:1px solid var(--linha);border-radius:10px;overflow:hidden;background:var(--papel)}
+.tab-cab,.tab-linha{display:grid;grid-template-columns:1.15fr 2fr .7fr .7fr;gap:18px;padding:15px 22px;align-items:center}
+.tab-cab{background:linear-gradient(180deg,var(--marrom-claro),var(--marrom));color:#fff;
+  font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500}
+.tab-linha{border-top:1px solid var(--linha);transition:background .2s}
+.tab-linha:nth-child(even){background:var(--creme)}
+.tab-linha:hover{background:var(--creme-2)}
+.tab-nome{font-family:var(--serif);font-size:1.22rem;color:var(--marrom);font-weight:500}
+.tab-nome .estrela{color:var(--dourado-luz);font-size:.78rem;margin-left:5px}
+.tab-desc{font-size:.89rem;color:var(--suave)}
+.tab-dur{font-size:.82rem;color:var(--suave);white-space:nowrap}
+.tab-preco{font-family:var(--serif);font-size:1.45rem;color:var(--dourado);text-align:right;white-space:nowrap}
+.nota-moeda{margin-top:14px;font-size:.8rem;color:var(--suave);font-style:italic}
+
+.benef{background:var(--papel);border-block:1px solid var(--linha)}
+.benef-grade{display:grid;grid-template-columns:.9fr 1.1fr;gap:52px;align-items:center}
+.benef ul{list-style:none;padding:0;margin-top:26px;display:grid;gap:13px}
+.benef li{display:flex;gap:13px;align-items:flex-start;font-size:1rem}
+.benef li::before{content:"";width:24px;height:24px;border-radius:50%;flex:none;margin-top:3px;
+  background:var(--creme-2);border:1px solid var(--areia);
+  background-image:radial-gradient(circle at 50% 50%,var(--dourado) 0 3px,transparent 3px)}
+.benef-foto{margin:0}
+/* Flyer: tem texto. Cortar ou esticar torna ilegível — mostra inteiro. */
+.benef-foto img{width:100%;height:auto;object-fit:contain;border-radius:12px;
+  box-shadow:0 26px 56px -30px rgba(90,64,40,.45)}
+
+.galeria{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:16px;margin-top:44px}
+.gal-item{aspect-ratio:4/5;overflow:hidden;border-radius:10px;border:1px solid var(--linha);background:var(--papel)}
+.gal-item img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;
+  transition:transform .6s ease}
+.gal-item:hover img{transform:scale(1.05)}
+.gal-vaga{display:grid;place-items:center;text-align:center;padding:22px;color:var(--suave);font-size:.8rem;
+  background:repeating-linear-gradient(135deg,transparent,transparent 11px,rgba(154,111,58,.05) 11px,rgba(154,111,58,.05) 22px)}
+.gal-vaga b{display:block;font-family:var(--serif);color:var(--dourado);font-size:1.08rem;margin-bottom:6px;font-weight:500}
+blockquote{border-left:2px solid var(--dourado);padding-left:22px;margin:24px 0;font-family:var(--serif);
+  font-style:italic;font-size:1.28rem;line-height:1.45;color:var(--marrom)}
+
+.agendar{background:linear-gradient(180deg,var(--creme-2),var(--areia));text-align:center}
+.promessa{font-family:var(--script);font-size:clamp(1.9rem,4.4vw,2.9rem);color:var(--dourado);margin:8px 0 16px}
+.contato{display:flex;gap:30px;justify-content:center;flex-wrap:wrap;margin-top:34px;font-size:.88rem;color:var(--suave)}
+.contato b{display:block;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dourado);
+  margin-bottom:4px;font-weight:600}
+.contato a{text-decoration:none;color:var(--marrom);font-weight:500}
+
+footer{padding:44px 0;text-align:center;color:var(--suave);font-size:.78rem;background:var(--papel);border-top:1px solid var(--linha)}
+.assin{font-family:var(--script);font-size:1.7rem;color:var(--dourado);margin-bottom:6px}
+.aviso{margin-top:16px;font-size:.7rem;opacity:.85;max-width:44em;margin-inline:auto}
+
+.revela{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}
+.revela.vis{opacity:1;transform:none}
+.sem-js .revela{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.revela{transition:none}}
+
+@media (max-width:900px){
+  html{font-size:16px}
+  .hero-grade,.benef-grade{grid-template-columns:1fr;gap:38px}
+  .hero-foto{order:-1;max-width:330px;margin:0 auto}
+  .pilares-grade{grid-template-columns:repeat(2,1fr);gap:22px}
+  nav{display:none}
+  nav.aberto{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;
+    background:var(--papel);border-bottom:1px solid var(--linha);padding:6px 0}
+  nav.aberto a{padding:13px 26px}
+  .menu-btn{display:block}
+  .idioma{margin:10px 26px}
+  section{padding:64px 0}
+  /* Tabela de 4 colunas não se lê no celular: cada linha vira cartão. */
+  .tab-cab{display:none}
+  .tab-linha{grid-template-columns:1fr auto;gap:5px 14px;padding:18px 20px}
+  .tab-nome{grid-column:1}
+  .tab-preco{grid-column:2;grid-row:1;font-size:1.3rem}
+  .tab-dur{grid-column:1/-1;order:2}
+  .tab-desc{grid-column:1/-1;order:3}
+}
+</style>
+</head>
+<body class="sem-js">
+
+<header>
+  <div class="topo">
+    <a class="marca" href="#topo">
+      <svg class="marca-a" viewBox="0 0 64 64" role="img" aria-label="Andréia Carvalho">
+        <text x="26" y="48" font-family="Cormorant Garamond,Georgia,serif" font-size="52" fill="#9a6f3a" text-anchor="middle">A</text>
+        <path d="M44 16l2.2 5.4L52 23.6l-5.8 2.2L44 31.2l-2.2-5.4L36 23.6l5.8-2.2z" fill="#c9a227"/>
+      </svg>
+      <span class="marca-txt">
+        <b>Andréia Carvalho</b>
+        <span>Estética e Bem-estar</span>
+      </span>
+    </a>
+    <button class="menu-btn" aria-label="Menu" onclick="document.querySelector('nav').classList.toggle('aberto')">☰</button>
+    <nav>
+      <a href="#servicos" data-t="nav1">Procedimentos</a>
+      <a href="#beneficios" data-t="nav2">Benefícios</a>
+      <a href="#historia" data-t="nav3">Minha história</a>
+      <a href="#agendar" data-t="nav4">Agendar</a>
+      <span class="idioma">
+        <button onclick="idioma('pt')" aria-pressed="true" id="b-pt">PT</button>
+        <button onclick="idioma('en')" aria-pressed="false" id="b-en">EN</button>
+      </span>
+    </nav>
+  </div>
+</header>
+
+<main id="topo">
+
+<section class="hero">
+  <div class="env hero-grade">
+    <div class="revela">
+      <span class="selo" data-t="selo">Esteticista licenciada · Leominster, MA</span>
+      <h1 data-t="h1">Tecnologia, ciência e cuidado</h1>
+      <span class="h1-script" data-t="h1s">para resultados que você vê e sente.</span>
+      <p class="chamada" data-t="sub">Drenagem linfática, dreno detox, EMSzero e tecnologias corporais — com protocolo montado para o seu corpo. Atendimento em português e inglês.</p>
+      <div class="acoes">
+        <a class="btn btn-cheio" href="#agendar" data-t="cta1">Agendar avaliação</a>
+        <a class="btn btn-vazio" href="#servicos" data-t="cta2">Ver procedimentos</a>
+      </div>
+    </div>
+    <figure class="hero-foto revela">
+      <span class="hero-arco"></span>
+      <img src="/img/andreia-retrato.jpg" width="900" height="900" fetchpriority="high"
+           alt="Andréia Carvalho, especialista em estética e bem-estar" />
+    </figure>
+  </div>
+</section>
+
+<div class="pilares">
+  <div class="env pilares-grade" id="pilares"></div>
+</div>
+
+<section id="servicos">
+  <div class="env">
+    <div class="revela">
+      <div class="rotulo" data-t="r1">Procedimentos</div>
+      <h2 data-t="h2a">Cada corpo pede <span class="script">o seu protocolo.</span></h2>
+      <p class="intro" data-t="i1">Toda primeira vez começa por uma avaliação — é nela que a gente decide junto o que faz sentido para você.</p>
+    </div>
+    <div class="tabela revela">
+      <div class="tab-cab">
+        <div data-t="th1">Procedimento</div><div data-t="th2">O que é</div>
+        <div data-t="th3">Duração</div><div style="text-align:right" data-t="th4">Valor</div>
+      </div>
+      <div id="tab-corpo"></div>
+    </div>
+    <p class="nota-moeda revela" data-t="moeda">Valores em dólar (US$). Atendimento em Leominster, Massachusetts.</p>
+  </div>
+</section>
+
+<div class="benef" id="beneficios">
+  <section>
+    <div class="env benef-grade">
+      <div class="revela">
+        <div class="rotulo" data-t="r2">Drenagem linfática</div>
+        <h2 data-t="h2b">Cuidado que dá leveza. <span class="script">Resultados que se veem.</span></h2>
+        <ul id="lista-benef"></ul>
+      </div>
+      <figure class="benef-foto revela">
+        <img src="/img/arte-drenagem.jpg" loading="lazy" width="1055" height="1320"
+             alt="Material da Andréia sobre drenagem linfática" />
+      </figure>
+    </div>
+  </section>
+</div>
+
+<section id="historia">
+  <div class="env">
+    <div class="revela">
+      <div class="rotulo" data-t="r3">Minha história</div>
+      <h2 data-t="h2c">A transformação começa <span class="script">por dentro.</span></h2>
+      <p class="intro" data-t="i3">Eu mostro a minha própria evolução porque foi ela que me ensinou o que faço hoje. Vim do Brasil e construí aqui, do zero, um trabalho que já passou de mil atendimentos.</p>
+      <blockquote data-t="cit">"Nem sempre a maior batalha acontece diante dos olhos das pessoas. Entre medos, lágrimas, saudades e recomeços, descobri que a verdadeira força está em não desistir."</blockquote>
+    </div>
+    <div class="galeria" id="galeria"></div>
+  </div>
+</section>
+
+<section id="agendar" class="agendar">
+  <div class="env revela">
+    <div class="rotulo" data-t="r4">Agendar</div>
+    <h2 data-t="h2d">Agende sua avaliação e descubra<br>o melhor protocolo para você.</h2>
+    <p class="promessa" data-t="prom">Seu corpo merece o melhor.</p>
+    <div class="acoes" style="justify-content:center">
+      <a class="btn btn-cheio" id="zap" href="#" data-t="cta3">Chamar no WhatsApp</a>
+      <a class="btn btn-vazio" id="insta" href="#" target="_blank" rel="noopener" data-t="cta4">Ver o Instagram</a>
+    </div>
+    <div class="contato" id="contato"></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="env">
+    <div class="assin">Andréia Carvalho</div>
+    <div data-t="rod1">Especialista em Estética e Bem-estar · Leominster, Massachusetts</div>
+    <div class="aviso" data-t="rod2">Esteticista licenciada. Este site é informativo e não substitui avaliação profissional. Os procedimentos são estéticos e não têm finalidade médica. Resultados variam de pessoa para pessoa.</div>
+  </div>
+</footer>
+
+<script type="module">
+import { CLINICA, PILARES, SERVICOS, BENEFICIOS, FOTOS } from "/dados.js";
+
+document.body.classList.remove("sem-js");
+
+const zap = `https://wa.me/${CLINICA.whatsapp}?text=${encodeURIComponent("Oi, Andréia! Vim pelo site e queria agendar uma avaliação.")}`;
+document.getElementById("zap").href = zap;
+document.getElementById("insta").href = CLINICA.instagram;
+document.getElementById("contato").innerHTML =
+  `<div><b>WhatsApp</b><a href="${zap}">${CLINICA.telefone}</a></div>` +
+  `<div><b data-t="c2">Onde</b>${CLINICA.cidade}</div>` +
+  `<div><b data-t="c3">Idiomas</b><span data-t="c3v">Português e inglês</span></div>`;
+
+document.getElementById("pilares").innerHTML = PILARES
+  .map((p) => `<div class="pilar revela"><b>${p.t}</b><span>${p.d}</span></div>`).join("");
+
+document.getElementById("tab-corpo").innerHTML = SERVICOS.map((s) => `
+  <div class="tab-linha">
+    <div class="tab-nome">${s.n}${s.destaque ? '<span class="estrela">✦</span>' : ""}</div>
+    <div class="tab-desc">${s.d}</div>
+    <div class="tab-dur">${s.dur}</div>
+    <div class="tab-preco">US$ ${s.p}</div>
+  </div>`).join("");
+
+document.getElementById("lista-benef").innerHTML = BENEFICIOS.map((b) => `<li>${b}</li>`).join("");
+
+const gal = document.getElementById("galeria");
+gal.innerHTML =
+  FOTOS.map((f) => `<div class="gal-item revela"><img src="${f.src}" alt="${f.alt}" loading="lazy"></div>`).join("") +
+  Array.from({ length: Math.max(0, 4 - FOTOS.length) },
+    () => `<div class="gal-item gal-vaga revela"><div><b>Foto</b>Espaço para mais fotos da Andréia</div></div>`).join("");
+
+const io = new IntersectionObserver(
+  (es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("vis"); io.unobserve(e.target); } }),
+  { threshold: .02, rootMargin: "0px 0px -6% 0px" });
+document.querySelectorAll(".revela").forEach((el) => io.observe(el));
+
+const EN = {
+  nav1:"Treatments",nav2:"Benefits",nav3:"My story",nav4:"Book",
+  selo:"Licensed esthetician · Leominster, MA",
+  h1:"Technology, science and care",h1s:"for results you see and feel.",
+  sub:"Lymphatic drainage, detox, EMSzero and body technologies — with a protocol built for your body. Served in Portuguese and English.",
+  cta1:"Book an assessment",cta2:"See treatments",
+  r1:"Treatments",h2a:'Every body asks for <span class="script">its own protocol.</span>',
+  i1:"Every first visit starts with an assessment — that's where we decide together what makes sense for you.",
+  th1:"Treatment",th2:"What it is",th3:"Duration",th4:"Price",
+  moeda:"Prices in US dollars. Served in Leominster, Massachusetts.",
+  r2:"Lymphatic drainage",h2b:'Care that brings lightness. <span class="script">Results you can see.</span>',
+  r3:"My story",h2c:'Transformation starts <span class="script">on the inside.</span>',
+  i3:"I show my own journey because it taught me what I do today. I came from Brazil and built this practice from nothing — more than a thousand sessions.",
+  cit:'"The hardest battles are not always the ones people see. Between fear, tears, longing and starting over, I learned that real strength is not giving up."',
+  r4:"Book",h2d:"Book your assessment and find<br>the right protocol for you.",
+  prom:"Your body deserves the best.",
+  cta3:"Message on WhatsApp",cta4:"See Instagram",
+  c2:"Where",c3:"Languages",c3v:"Portuguese and English",
+  rod1:"Esthetics & Wellness Specialist · Leominster, Massachusetts",
+  rod2:"Licensed esthetician. This site is informational and does not replace a professional assessment. These are aesthetic procedures with no medical purpose. Results vary from person to person.",
+};
+const PT = {};
+document.querySelectorAll("[data-t]").forEach((el) => (PT[el.dataset.t] = el.innerHTML));
+window.idioma = (l) => {
+  const d = l === "en" ? EN : PT;
+  document.querySelectorAll("[data-t]").forEach((el) => { if (d[el.dataset.t] !== undefined) el.innerHTML = d[el.dataset.t]; });
+  document.documentElement.lang = l === "en" ? "en" : "pt-BR";
+  document.getElementById("b-pt").setAttribute("aria-pressed", String(l !== "en"));
+  document.getElementById("b-en").setAttribute("aria-pressed", String(l === "en"));
+  document.querySelector("nav").classList.remove("aberto");
+};
+</script>
+</body>
+</html>
