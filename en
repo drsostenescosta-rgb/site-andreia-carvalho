@@ -1,16 +1,16 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Andréia Carvalho · Estética e Bem-estar — Leominster, MA</title>
-<meta name="description" content="Drenagem linfática, dreno detox, EMSzero e tecnologias corporais — com protocolo montado para o seu corpo. Atendimento em português e inglês." />
-<meta property="og:title" content="Andréia Carvalho · Especialista em Estética e Bem-estar" />
-<meta property="og:description" content="Drenagem linfática, dreno detox, EMSzero e tecnologias corporais — com protocolo montado para o seu corpo. Atendimento em português e inglês." />
+<title>Andréia Carvalho · Esthetics &amp; Wellness — Leominster, MA</title>
+<meta name="description" content="Lymphatic drainage, detox, EMSzero and body technologies — with a protocol built for your body. Served in Portuguese and English." />
+<meta property="og:title" content="Andréia Carvalho · Esthetics &amp; Wellness Specialist" />
+<meta property="og:description" content="Lymphatic drainage, detox, EMSzero and body technologies — with a protocol built for your body. Served in Portuguese and English." />
 <meta property="og:image" content="/img/andreia-retrato.jpg" />
 <meta property="og:type" content="website" />
 <meta name="theme-color" content="#f7f1e8" />
-<link rel="alternate" hreflang="en" href="/en" />
+<link rel="alternate" hreflang="pt-BR" href="/" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500;600&family=Parisienne&display=swap" rel="stylesheet" />
@@ -182,30 +182,30 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
 </style>
 </head>
 <body>
-<a class="pular" href="#conteudo">Ir para o conteúdo</a>
+<a class="pular" href="#conteudo">Skip to content</a>
 
 <header>
   <div class="topo">
-    <a class="marca" href="/">
+    <a class="marca" href="/en">
       <svg class="marca-a" viewBox="0 0 64 64" role="img" aria-label="Andréia Carvalho">
         <text x="26" y="48" font-family="Cormorant Garamond,Georgia,serif" font-size="52" fill="#8a6230" text-anchor="middle">A</text>
         <path d="M44 16l2.2 5.4L52 23.6l-5.8 2.2L44 31.2l-2.2-5.4L36 23.6l5.8-2.2z" fill="#b8912f"/>
       </svg>
       <span class="marca-txt">
         <b>Andréia Carvalho</b>
-        <span>Especialista em Estética e Bem-estar</span>
+        <span>Esthetics &amp; Wellness Specialist</span>
       </span>
     </a>
     <span class="idioma">
-      <span class="ativo">PT</span><a href="/en" hreflang="en">EN</a>
+      <a href="/" hreflang="pt-BR">PT</a><span class="ativo">EN</span>
     </span>
-    <button class="menu-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">☰</button>
+    <button class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="menu">☰</button>
     <nav id="menu">
-      <a href="#servicos">Procedimentos</a>
-      <a href="#beneficios">Benefícios</a>
-      <a href="#resultados">Resultados</a>
-      <a href="#historia">Minha história</a>
-      <a href="#agendar">Agendar</a>
+      <a href="#servicos">Treatments</a>
+      <a href="#beneficios">Benefits</a>
+      <a href="#resultados">Results</a>
+      <a href="#historia">My story</a>
+      <a href="#agendar">Book</a>
     </nav>
   </div>
 </header>
@@ -215,111 +215,111 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
 <section class="hero">
   <div class="env hero-grade">
     <div>
-      <span class="selo">Esteticista licenciada · Leominster, MA</span>
-      <h1>Tecnologia, ciência e cuidado</h1>
-      <span class="h1-script">para resultados que você vê e sente.</span>
-      <p class="chamada">Drenagem linfática, dreno detox, EMSzero e tecnologias corporais — com protocolo montado para o seu corpo. Atendimento em português e inglês.</p>
+      <span class="selo">Licensed esthetician · Leominster, MA</span>
+      <h1>Technology, science and care</h1>
+      <span class="h1-script">for results you see and feel.</span>
+      <p class="chamada">Lymphatic drainage, detox, EMSzero and body technologies — with a protocol built for your body. Served in Portuguese and English.</p>
       <div class="acoes">
-        <a class="btn btn-cheio" href="https://wa.me/19786003658?text=Oi%2C%20Andr%C3%A9ia!%20Vim%20pelo%20site%20e%20queria%20agendar%20uma%20avalia%C3%A7%C3%A3o.">Agendar avaliação</a>
-        <a class="btn btn-vazio" href="#servicos">Ver procedimentos</a>
+        <a class="btn btn-cheio" href="https://wa.me/19786003658?text=Hi%20Andr%C3%A9ia!%20I%20came%20from%20your%20website%20and%20I'd%20like%20to%20book%20an%20assessment.">Book an assessment</a>
+        <a class="btn btn-vazio" href="#servicos">See treatments</a>
       </div>
     </div>
     <figure class="hero-foto">
       <span class="disco a" aria-hidden="true"></span><span class="disco b" aria-hidden="true"></span>
       <img src="/img/andreia-retrato.jpg" width="900" height="900" fetchpriority="high"
-           alt="Andréia Carvalho, Especialista em Estética e Bem-estar" />
+           alt="Andréia Carvalho, Esthetics &amp; Wellness Specialist" />
     </figure>
   </div>
 </section>
 
 <div class="pilares">
   <div class="env pilares-grade">
-      <div class="pilar"><b>Tecnologias avançadas</b><span>Equipamentos modernos e seguros.</span></div>
-      <div class="pilar"><b>Atendimento personalizado</b><span>Protocolos exclusivos para cada cliente.</span></div>
-      <div class="pilar"><b>Resultados visíveis</b><span>Mais autoestima, bem-estar e qualidade de vida.</span></div>
-      <div class="pilar"><b>Segurança e conforto</b><span>Procedimentos seguros e sem tempo de parada.</span></div>
+      <div class="pilar"><b>Advanced technology</b><span>Modern, safe equipment.</span></div>
+      <div class="pilar"><b>Personalized care</b><span>A protocol built for each client.</span></div>
+      <div class="pilar"><b>Visible results</b><span>More self-esteem, wellness and quality of life.</span></div>
+      <div class="pilar"><b>Safety and comfort</b><span>Safe procedures with no downtime.</span></div>
   </div>
 </div>
 
 <section id="servicos">
   <div class="env">
-    <div class="rotulo">Procedimentos</div>
-    <h2>Cada corpo pede <span class="script">o seu protocolo.</span></h2>
-    <p class="intro">Toda primeira vez começa por uma avaliação — é nela que a gente decide junto o que faz sentido para você.</p>
+    <div class="rotulo">Treatments</div>
+    <h2>Every body asks for <span class="script">its own protocol.</span></h2>
+    <p class="intro">Every first visit starts with an assessment — that's where we decide together what makes sense for you.</p>
     <div class="tabela">
       <div class="tab-cab">
-        <div>Procedimento</div><div>O que é</div>
-        <div>Duração</div><div style="text-align:right">Valor</div>
+        <div>Treatment</div><div>What it is</div>
+        <div>Duration</div><div style="text-align:right">Price</div>
       </div>
         <div class="tab-linha">
-          <div class="tab-nome">Dreno Detox<span class="estrela" aria-hidden="true">✦</span></div>
-          <div class="tab-desc">Estimula o sistema linfático, elimina toxinas, reduz inchaço e melhora a circulação.</div>
+          <div class="tab-nome">Detox Drainage<span class="estrela" aria-hidden="true">✦</span></div>
+          <div class="tab-desc">Stimulates the lymphatic system, helps eliminate toxins, reduces swelling and improves circulation.</div>
           <div class="tab-dur">60 min</div>
           <div class="tab-preco">US$ 60</div>
         </div>
         <div class="tab-linha">
-          <div class="tab-nome">Dreno Detox Turbo</div>
-          <div class="tab-desc">Potencializa a eliminação de toxinas, reduz medidas e promove leveza e bem-estar.</div>
+          <div class="tab-nome">Detox Drainage Turbo</div>
+          <div class="tab-desc">Boosts toxin elimination, reduces measurements and brings lightness and wellness.</div>
           <div class="tab-dur">100 min</div>
           <div class="tab-preco">US$ 100</div>
         </div>
         <div class="tab-linha">
-          <div class="tab-nome">Drenagem linfática<span class="estrela" aria-hidden="true">✦</span></div>
-          <div class="tab-desc">Massagem que estimula o sistema linfático, reduz inchaços e melhora a circulação.</div>
+          <div class="tab-nome">Lymphatic drainage<span class="estrela" aria-hidden="true">✦</span></div>
+          <div class="tab-desc">Massage that stimulates the lymphatic system, reduces swelling and improves circulation.</div>
           <div class="tab-dur">60 min</div>
           <div class="tab-preco">US$ 60</div>
         </div>
         <div class="tab-linha">
-          <div class="tab-nome">Pós-operatório<span class="estrela" aria-hidden="true">✦</span></div>
-          <div class="tab-desc">Acompanhamento no período mais delicado da recuperação, com técnica específica em cada fase.</div>
+          <div class="tab-nome">Post-operative care<span class="estrela" aria-hidden="true">✦</span></div>
+          <div class="tab-desc">Support through the most delicate part of recovery, with specific technique at each stage.</div>
           <div class="tab-dur">80 min</div>
           <div class="tab-preco">US$ 100</div>
         </div>
         <div class="tab-linha">
-          <div class="tab-nome">Relaxante</div>
-          <div class="tab-desc">Massagem que alivia tensões, reduz o estresse e promove relaxamento profundo.</div>
+          <div class="tab-nome">Relaxing massage</div>
+          <div class="tab-desc">Massage that relieves tension, reduces stress and brings deep relaxation.</div>
           <div class="tab-dur">70 min</div>
           <div class="tab-preco">US$ 70</div>
         </div>
         <div class="tab-linha">
-          <div class="tab-nome">Masculina</div>
-          <div class="tab-desc">Massagem específica para o corpo masculino, ativa a circulação e reduz tensões.</div>
+          <div class="tab-nome">Men's massage</div>
+          <div class="tab-desc">Massage designed for the male body, activates circulation and relieves tension.</div>
           <div class="tab-dur">70 min</div>
           <div class="tab-preco">US$ 70</div>
         </div>
         <div class="tab-linha">
-          <div class="tab-nome">Masculina com fortalecimento</div>
-          <div class="tab-desc">Técnicas avançadas que tonificam, fortalecem e modelam o corpo masculino.</div>
+          <div class="tab-nome">Men's strengthening massage</div>
+          <div class="tab-desc">Advanced techniques that tone, strengthen and shape the male body.</div>
           <div class="tab-dur">60 min</div>
           <div class="tab-preco">US$ 100</div>
         </div>
         <div class="tab-linha">
-          <div class="tab-nome">Drenagem + EMSzero<span class="estrela" aria-hidden="true">✦</span></div>
-          <div class="tab-desc">Drenagem linfática combinada com a tecnologia EMSzero para eliminar líquidos e tonificar.</div>
+          <div class="tab-nome">Drainage + EMSzero<span class="estrela" aria-hidden="true">✦</span></div>
+          <div class="tab-desc">Lymphatic drainage combined with EMSzero technology to reduce fluid and tone.</div>
           <div class="tab-dur">60 min</div>
           <div class="tab-preco">US$ 100</div>
         </div>
         <div class="tab-linha">
-          <div class="tab-nome">Tecnologias</div>
-          <div class="tab-desc">Sessão personalizada com tecnologias avançadas para tratar, modelar e potencializar resultados.</div>
+          <div class="tab-nome">Technologies</div>
+          <div class="tab-desc">Personalized session with advanced technology to treat, shape and enhance results.</div>
           <div class="tab-dur">60 min</div>
           <div class="tab-preco">US$ 100</div>
         </div>
         <div class="tab-linha">
-          <div class="tab-nome">Ultracavitação</div>
-          <div class="tab-desc">Tecnologia que quebra células de gordura localizada e reduz medidas.</div>
-          <div class="tab-dur">por área</div>
+          <div class="tab-nome">Ultracavitation</div>
+          <div class="tab-desc">Technology that breaks down localized fat cells and reduces measurements.</div>
+          <div class="tab-dur">per area</div>
           <div class="tab-preco">US$ 50</div>
         </div>
         <div class="tab-linha">
-          <div class="tab-nome">Radiofrequência</div>
-          <div class="tab-desc">Estimula o colágeno, melhora a firmeza da pele e reduz flacidez.</div>
-          <div class="tab-dur">por área</div>
+          <div class="tab-nome">Radiofrequency</div>
+          <div class="tab-desc">Stimulates collagen, improves skin firmness and reduces sagging.</div>
+          <div class="tab-dur">per area</div>
           <div class="tab-preco">US$ 50</div>
         </div>
     </div>
-    <p class="nota-moeda">Valores em dólar (US$). Atendimento em Leominster, Massachusetts.</p>
-    <p class="escopo">Procedimentos estéticos de bem-estar. Não substituem tratamento médico e os resultados variam de pessoa para pessoa.</p>
+    <p class="nota-moeda">Prices in US dollars. Served in Leominster, Massachusetts.</p>
+    <p class="escopo">Aesthetic wellness procedures. They do not replace medical treatment and results vary from person to person.</p>
   </div>
 </section>
 
@@ -327,20 +327,20 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
   <section>
     <div class="env benef-grade">
       <div>
-        <div class="rotulo">Drenagem linfática</div>
-        <h2>Cuidado que dá leveza. <span class="script">Resultados que se veem.</span></h2>
+        <div class="rotulo">Lymphatic drainage</div>
+        <h2>Care that brings lightness. <span class="script">Results you can see.</span></h2>
         <ul>
-          <li>Reduz inchaços e retenção de líquidos</li>
-          <li>Elimina toxinas e impurezas do corpo</li>
-          <li>Melhora a circulação e o fluxo linfático</li>
-          <li>Fortalece o sistema imunológico</li>
-          <li>Proporciona leveza, bem-estar e conforto</li>
+          <li>Reduces swelling and fluid retention</li>
+          <li>Helps the body clear toxins and impurities</li>
+          <li>Improves circulation and lymphatic flow</li>
+          <li>Supports the immune system</li>
+          <li>Brings lightness, wellness and comfort</li>
         </ul>
-        <p class="escopo">Procedimentos estéticos de bem-estar. Não substituem tratamento médico e os resultados variam de pessoa para pessoa.</p>
+        <p class="escopo">Aesthetic wellness procedures. They do not replace medical treatment and results vary from person to person.</p>
       </div>
       <figure class="benef-foto">
         <img src="/img/arte-drenagem.jpg" loading="lazy" width="1119" height="1400"
-             alt="Material da Andréia sobre drenagem linfática" />
+             alt="Andréia's lymphatic drainage material" />
       </figure>
     </div>
   </section>
@@ -348,44 +348,44 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
 
 <section id="resultados">
   <div class="env">
-    <div class="rotulo">Resultados</div>
-    <h2>O que muda <span class="script">de verdade.</span></h2>
-    <p class="intro">Cada corpo responde de um jeito. O que se repete é a leveza, a medida que cede e a autoestima que volta — e é disso que as clientes mais falam.</p>
+    <div class="rotulo">Results</div>
+    <h2>What changes <span class="script">for real.</span></h2>
+    <p class="intro">Every body responds differently. What repeats is the lightness, the measurements coming down and the self-esteem coming back.</p>
     <div class="res-grade">
-      <div class="res-num"><b>1.000+</b><span>atendimentos realizados</span></div>
-      <div class="res-num"><b>2</b><span>idiomas: português e inglês</span></div>
-      <div class="res-num"><b>0</b><span>tempo de parada nos protocolos</span></div>
+      <div class="res-num"><b>1.000+</b><span>sessions delivered</span></div>
+      <div class="res-num"><b>2</b><span>languages: Portuguese and English</span></div>
+      <div class="res-num"><b>0</b><span>downtime in the protocols</span></div>
     </div>
-    <p class="fala">“Renovar a autoestima também está nos pequenos cuidados que temos com nós mesmas.”</p>
+    <p class="fala">“Renewing your self-esteem also lives in the small ways you care for yourself.”</p>
   </div>
 </section>
 
 <section id="historia">
   <div class="env historia-grade">
     <div>
-      <div class="rotulo">Minha história</div>
-      <h2>A transformação começa <span class="script">por dentro.</span></h2>
-      <p class="intro">Eu mostro a minha própria evolução porque foi ela que me ensinou o que faço hoje. Vim do Brasil e construí aqui, do zero, um trabalho que já passou de mil atendimentos.</p>
-      <blockquote>“Nem sempre a maior batalha acontece diante dos olhos das pessoas. Entre medos, lágrimas, saudades e recomeços, descobri que a verdadeira força está em não desistir.”</blockquote>
+      <div class="rotulo">My story</div>
+      <h2>Transformation starts <span class="script">on the inside.</span></h2>
+      <p class="intro">I show my own journey because it taught me what I do today. I came from Brazil and built this practice from nothing — more than a thousand sessions.</p>
+      <blockquote>“The hardest battles are not always the ones people see. Between fear, tears, longing and starting over, I learned that real strength is not giving up.”</blockquote>
     </div>
-      <figure class="gal-item"><img src="/img/andreia-dumbo.jpg" alt="Andréia Carvalho em Nova York" loading="lazy"
+      <figure class="gal-item"><img src="/img/andreia-dumbo.jpg" alt="Andréia Carvalho in New York" loading="lazy"
         style="object-position:50% 50%" /></figure>
   </div>
 </section>
 
 <section id="agendar" class="agendar">
   <div class="env">
-    <div class="rotulo">Agendar</div>
-    <h2>Agende sua avaliação e descubra<br>o melhor protocolo para você.</h2>
-    <p class="promessa">Seu corpo merece o melhor.</p>
+    <div class="rotulo">Book</div>
+    <h2>Book your assessment and find<br>the right protocol for you.</h2>
+    <p class="promessa">Your body deserves the best.</p>
     <div class="acoes" style="justify-content:center">
-      <a class="btn btn-cheio" href="https://wa.me/19786003658?text=Oi%2C%20Andr%C3%A9ia!%20Vim%20pelo%20site%20e%20queria%20agendar%20uma%20avalia%C3%A7%C3%A3o.">Chamar no WhatsApp</a>
-      <a class="btn btn-vazio" href="https://www.instagram.com/andreiacarvalhoestetica/" target="_blank" rel="noopener">Ver o Instagram</a>
+      <a class="btn btn-cheio" href="https://wa.me/19786003658?text=Hi%20Andr%C3%A9ia!%20I%20came%20from%20your%20website%20and%20I'd%20like%20to%20book%20an%20assessment.">Message on WhatsApp</a>
+      <a class="btn btn-vazio" href="https://www.instagram.com/andreiacarvalhoestetica/" target="_blank" rel="noopener">See Instagram</a>
     </div>
     <div class="contato">
-      <div><b>WhatsApp</b><a href="https://wa.me/19786003658?text=Oi%2C%20Andr%C3%A9ia!%20Vim%20pelo%20site%20e%20queria%20agendar%20uma%20avalia%C3%A7%C3%A3o.">(978) 600-3658</a></div>
-      <div><b>Onde</b>Leominster, Massachusetts</div>
-      <div><b>Idiomas</b>Português e inglês</div>
+      <div><b>WhatsApp</b><a href="https://wa.me/19786003658?text=Hi%20Andr%C3%A9ia!%20I%20came%20from%20your%20website%20and%20I'd%20like%20to%20book%20an%20assessment.">(978) 600-3658</a></div>
+      <div><b>Where</b>Leominster, Massachusetts</div>
+      <div><b>Languages</b>Portuguese and English</div>
     </div>
   </div>
 </section>
@@ -395,8 +395,8 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
 <footer>
   <div class="env">
     <div class="assin">Andréia Carvalho</div>
-    <div>Especialista em Estética e Bem-estar · Leominster, Massachusetts</div>
-    <div class="aviso">Esteticista licenciada. Este site é informativo e não substitui avaliação profissional. Os procedimentos são estéticos, de bem-estar, e não têm finalidade médica. Resultados variam de pessoa para pessoa.</div>
+    <div>Esthetics &amp; Wellness Specialist · Leominster, Massachusetts</div>
+    <div class="aviso">Licensed esthetician. This site is informational and does not replace a professional assessment. These are aesthetic wellness procedures with no medical purpose. Results vary from person to person.</div>
   </div>
 </footer>
 

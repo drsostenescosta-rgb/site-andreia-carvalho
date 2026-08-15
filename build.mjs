@@ -1,16 +1,67 @@
-<!doctype html>
-<html lang="pt-BR">
+#!/usr/bin/env node
+// build.mjs — gera index.html (PT) e en.html (EN) a partir de dados.js.
+//
+// Por que gerar em vez de montar no navegador (achado nº1 da auditoria, 57/100):
+//   a versão anterior injetava preços, serviços, telefone e botões por módulo ES. O HTML servido
+//   tinha ZERO ocorrências de "US$" e de "978", e os dois CTAs iam ao ar com href="#".
+//   Num navegador embutido de WhatsApp — que é por onde a cliente dela vai abrir — um erro de
+//   módulo entrega tabela vazia e botão morto.
+//   Agora o conteúdo nasce no HTML. O JavaScript da página só abre e fecha o menu.
+//
+// Duas páginas estáticas em vez de tradução por JS: PT e EN funcionam sem script nenhum,
+// cada uma indexa no Google, e o seletor de idioma é um link comum.
+//
+// Uso: node build.mjs
+
+import { writeFileSync } from "node:fs";
+import { CLINICA, TEXTOS, PILARES, SERVICOS, BENEFICIOS, RESULTADOS, FALAS, FOTOS } from "./dados.js";
+
+const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+const t = (o, l) => (o && typeof o === "object" && !Array.isArray(o) && o[l] !== undefined ? o[l] : o);
+
+function pagina(l) {
+  const outro = l === "pt" ? "en" : "pt";
+  const linkOutro = l === "pt" ? "/en" : "/";
+  const zap = `https://wa.me/${CLINICA.whatsapp}?text=${encodeURIComponent(t(TEXTOS.msgZap, l))}`;
+  const nav = t(TEXTOS.nav, l);
+
+  const linhas = SERVICOS.map((s) => {
+    const [nome, desc] = t(s, l);
+    return `        <div class="tab-linha">
+          <div class="tab-nome">${esc(nome)}${s.destaque ? '<span class="estrela" aria-hidden="true">✦</span>' : ""}</div>
+          <div class="tab-desc">${esc(desc)}</div>
+          <div class="tab-dur">${esc(t(s.dur, l))}</div>
+          <div class="tab-preco">US$ ${s.p}</div>
+        </div>`;
+  }).join("\n");
+
+  const pilares = PILARES.map((p) => {
+    const [tit, des] = t(p, l);
+    return `      <div class="pilar"><b>${esc(tit)}</b><span>${esc(des)}</span></div>`;
+  }).join("\n");
+
+  const benef = BENEFICIOS.map((b) => `          <li>${esc(t(b, l))}</li>`).join("\n");
+
+  const resultados = RESULTADOS.map((r) =>
+    `      <div class="res-num"><b>${esc(r.num)}</b><span>${esc(t(r, l))}</span></div>`).join("\n");
+
+  const fotos = FOTOS.map((f) =>
+    `      <figure class="gal-item"><img src="${f.src}" alt="${esc(t(f, l))}" loading="lazy"
+        style="object-position:${f.pos || "50% 50%"}" /></figure>`).join("\n");
+
+  return `<!doctype html>
+<html lang="${l === "pt" ? "pt-BR" : "en"}">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Andréia Carvalho · Estética e Bem-estar — Leominster, MA</title>
-<meta name="description" content="Drenagem linfática, dreno detox, EMSzero e tecnologias corporais — com protocolo montado para o seu corpo. Atendimento em português e inglês." />
-<meta property="og:title" content="Andréia Carvalho · Especialista em Estética e Bem-estar" />
-<meta property="og:description" content="Drenagem linfática, dreno detox, EMSzero e tecnologias corporais — com protocolo montado para o seu corpo. Atendimento em português e inglês." />
+<title>${esc(t(TEXTOS.titulo, l))}</title>
+<meta name="description" content="${esc(t(TEXTOS.sub, l))}" />
+<meta property="og:title" content="${esc(CLINICA.nome)} · ${esc(t(CLINICA.papel, l))}" />
+<meta property="og:description" content="${esc(t(TEXTOS.sub, l))}" />
 <meta property="og:image" content="/img/andreia-retrato.jpg" />
 <meta property="og:type" content="website" />
 <meta name="theme-color" content="#f7f1e8" />
-<link rel="alternate" hreflang="en" href="/en" />
+<link rel="alternate" hreflang="${outro === "pt" ? "pt-BR" : "en"}" href="${linkOutro}" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500;600&family=Parisienne&display=swap" rel="stylesheet" />
@@ -182,30 +233,31 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
 </style>
 </head>
 <body>
-<a class="pular" href="#conteudo">Ir para o conteúdo</a>
+<a class="pular" href="#conteudo">${l === "pt" ? "Ir para o conteúdo" : "Skip to content"}</a>
 
 <header>
   <div class="topo">
-    <a class="marca" href="/">
-      <svg class="marca-a" viewBox="0 0 64 64" role="img" aria-label="Andréia Carvalho">
+    <a class="marca" href="${l === "pt" ? "/" : "/en"}">
+      <svg class="marca-a" viewBox="0 0 64 64" role="img" aria-label="${esc(CLINICA.nome)}">
         <text x="26" y="48" font-family="Cormorant Garamond,Georgia,serif" font-size="52" fill="#8a6230" text-anchor="middle">A</text>
         <path d="M44 16l2.2 5.4L52 23.6l-5.8 2.2L44 31.2l-2.2-5.4L36 23.6l5.8-2.2z" fill="#b8912f"/>
       </svg>
       <span class="marca-txt">
-        <b>Andréia Carvalho</b>
-        <span>Especialista em Estética e Bem-estar</span>
+        <b>${esc(CLINICA.nome)}</b>
+        <span>${esc(t(CLINICA.papel, l))}</span>
       </span>
     </a>
     <span class="idioma">
-      <span class="ativo">PT</span><a href="/en" hreflang="en">EN</a>
+      ${l === "pt" ? '<span class="ativo">PT</span><a href="/en" hreflang="en">EN</a>'
+                   : '<a href="/" hreflang="pt-BR">PT</a><span class="ativo">EN</span>'}
     </span>
-    <button class="menu-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">☰</button>
+    <button class="menu-btn" aria-label="${l === "pt" ? "Abrir menu" : "Open menu"}" aria-expanded="false" aria-controls="menu">☰</button>
     <nav id="menu">
-      <a href="#servicos">Procedimentos</a>
-      <a href="#beneficios">Benefícios</a>
-      <a href="#resultados">Resultados</a>
-      <a href="#historia">Minha história</a>
-      <a href="#agendar">Agendar</a>
+      <a href="#servicos">${esc(nav[0])}</a>
+      <a href="#beneficios">${esc(nav[1])}</a>
+      <a href="#resultados">${esc(nav[2])}</a>
+      <a href="#historia">${esc(nav[3])}</a>
+      <a href="#agendar">${esc(nav[4])}</a>
     </nav>
   </div>
 </header>
@@ -215,111 +267,43 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
 <section class="hero">
   <div class="env hero-grade">
     <div>
-      <span class="selo">Esteticista licenciada · Leominster, MA</span>
-      <h1>Tecnologia, ciência e cuidado</h1>
-      <span class="h1-script">para resultados que você vê e sente.</span>
-      <p class="chamada">Drenagem linfática, dreno detox, EMSzero e tecnologias corporais — com protocolo montado para o seu corpo. Atendimento em português e inglês.</p>
+      <span class="selo">${esc(t(TEXTOS.selo, l))}</span>
+      <h1>${esc(t(TEXTOS.h1, l))}</h1>
+      <span class="h1-script">${esc(t(TEXTOS.h1s, l))}</span>
+      <p class="chamada">${esc(t(TEXTOS.sub, l))}</p>
       <div class="acoes">
-        <a class="btn btn-cheio" href="https://wa.me/19786003658?text=Oi%2C%20Andr%C3%A9ia!%20Vim%20pelo%20site%20e%20queria%20agendar%20uma%20avalia%C3%A7%C3%A3o.">Agendar avaliação</a>
-        <a class="btn btn-vazio" href="#servicos">Ver procedimentos</a>
+        <a class="btn btn-cheio" href="${zap}">${esc(t(TEXTOS.ctaAgendar, l))}</a>
+        <a class="btn btn-vazio" href="#servicos">${esc(t(TEXTOS.ctaVer, l))}</a>
       </div>
     </div>
     <figure class="hero-foto">
       <span class="disco a" aria-hidden="true"></span><span class="disco b" aria-hidden="true"></span>
       <img src="/img/andreia-retrato.jpg" width="900" height="900" fetchpriority="high"
-           alt="Andréia Carvalho, Especialista em Estética e Bem-estar" />
+           alt="${esc(CLINICA.nome)}, ${esc(t(CLINICA.papel, l))}" />
     </figure>
   </div>
 </section>
 
 <div class="pilares">
   <div class="env pilares-grade">
-      <div class="pilar"><b>Tecnologias avançadas</b><span>Equipamentos modernos e seguros.</span></div>
-      <div class="pilar"><b>Atendimento personalizado</b><span>Protocolos exclusivos para cada cliente.</span></div>
-      <div class="pilar"><b>Resultados visíveis</b><span>Mais autoestima, bem-estar e qualidade de vida.</span></div>
-      <div class="pilar"><b>Segurança e conforto</b><span>Procedimentos seguros e sem tempo de parada.</span></div>
+${pilares}
   </div>
 </div>
 
 <section id="servicos">
   <div class="env">
-    <div class="rotulo">Procedimentos</div>
-    <h2>Cada corpo pede <span class="script">o seu protocolo.</span></h2>
-    <p class="intro">Toda primeira vez começa por uma avaliação — é nela que a gente decide junto o que faz sentido para você.</p>
+    <div class="rotulo">${esc(t(TEXTOS.rotServicos, l))}</div>
+    <h2>${esc(t(TEXTOS.h2Servicos, l))} <span class="script">${esc(t(TEXTOS.h2ServicosScript, l))}</span></h2>
+    <p class="intro">${esc(t(TEXTOS.introServicos, l))}</p>
     <div class="tabela">
       <div class="tab-cab">
-        <div>Procedimento</div><div>O que é</div>
-        <div>Duração</div><div style="text-align:right">Valor</div>
+        <div>${esc(t(TEXTOS.th, l)[0])}</div><div>${esc(t(TEXTOS.th, l)[1])}</div>
+        <div>${esc(t(TEXTOS.th, l)[2])}</div><div style="text-align:right">${esc(t(TEXTOS.th, l)[3])}</div>
       </div>
-        <div class="tab-linha">
-          <div class="tab-nome">Dreno Detox<span class="estrela" aria-hidden="true">✦</span></div>
-          <div class="tab-desc">Estimula o sistema linfático, elimina toxinas, reduz inchaço e melhora a circulação.</div>
-          <div class="tab-dur">60 min</div>
-          <div class="tab-preco">US$ 60</div>
-        </div>
-        <div class="tab-linha">
-          <div class="tab-nome">Dreno Detox Turbo</div>
-          <div class="tab-desc">Potencializa a eliminação de toxinas, reduz medidas e promove leveza e bem-estar.</div>
-          <div class="tab-dur">100 min</div>
-          <div class="tab-preco">US$ 100</div>
-        </div>
-        <div class="tab-linha">
-          <div class="tab-nome">Drenagem linfática<span class="estrela" aria-hidden="true">✦</span></div>
-          <div class="tab-desc">Massagem que estimula o sistema linfático, reduz inchaços e melhora a circulação.</div>
-          <div class="tab-dur">60 min</div>
-          <div class="tab-preco">US$ 60</div>
-        </div>
-        <div class="tab-linha">
-          <div class="tab-nome">Pós-operatório<span class="estrela" aria-hidden="true">✦</span></div>
-          <div class="tab-desc">Acompanhamento no período mais delicado da recuperação, com técnica específica em cada fase.</div>
-          <div class="tab-dur">80 min</div>
-          <div class="tab-preco">US$ 100</div>
-        </div>
-        <div class="tab-linha">
-          <div class="tab-nome">Relaxante</div>
-          <div class="tab-desc">Massagem que alivia tensões, reduz o estresse e promove relaxamento profundo.</div>
-          <div class="tab-dur">70 min</div>
-          <div class="tab-preco">US$ 70</div>
-        </div>
-        <div class="tab-linha">
-          <div class="tab-nome">Masculina</div>
-          <div class="tab-desc">Massagem específica para o corpo masculino, ativa a circulação e reduz tensões.</div>
-          <div class="tab-dur">70 min</div>
-          <div class="tab-preco">US$ 70</div>
-        </div>
-        <div class="tab-linha">
-          <div class="tab-nome">Masculina com fortalecimento</div>
-          <div class="tab-desc">Técnicas avançadas que tonificam, fortalecem e modelam o corpo masculino.</div>
-          <div class="tab-dur">60 min</div>
-          <div class="tab-preco">US$ 100</div>
-        </div>
-        <div class="tab-linha">
-          <div class="tab-nome">Drenagem + EMSzero<span class="estrela" aria-hidden="true">✦</span></div>
-          <div class="tab-desc">Drenagem linfática combinada com a tecnologia EMSzero para eliminar líquidos e tonificar.</div>
-          <div class="tab-dur">60 min</div>
-          <div class="tab-preco">US$ 100</div>
-        </div>
-        <div class="tab-linha">
-          <div class="tab-nome">Tecnologias</div>
-          <div class="tab-desc">Sessão personalizada com tecnologias avançadas para tratar, modelar e potencializar resultados.</div>
-          <div class="tab-dur">60 min</div>
-          <div class="tab-preco">US$ 100</div>
-        </div>
-        <div class="tab-linha">
-          <div class="tab-nome">Ultracavitação</div>
-          <div class="tab-desc">Tecnologia que quebra células de gordura localizada e reduz medidas.</div>
-          <div class="tab-dur">por área</div>
-          <div class="tab-preco">US$ 50</div>
-        </div>
-        <div class="tab-linha">
-          <div class="tab-nome">Radiofrequência</div>
-          <div class="tab-desc">Estimula o colágeno, melhora a firmeza da pele e reduz flacidez.</div>
-          <div class="tab-dur">por área</div>
-          <div class="tab-preco">US$ 50</div>
-        </div>
+${linhas}
     </div>
-    <p class="nota-moeda">Valores em dólar (US$). Atendimento em Leominster, Massachusetts.</p>
-    <p class="escopo">Procedimentos estéticos de bem-estar. Não substituem tratamento médico e os resultados variam de pessoa para pessoa.</p>
+    <p class="nota-moeda">${esc(t(TEXTOS.moeda, l))}</p>
+    <p class="escopo">${esc(t(TEXTOS.escopo, l))}</p>
   </div>
 </section>
 
@@ -327,20 +311,16 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
   <section>
     <div class="env benef-grade">
       <div>
-        <div class="rotulo">Drenagem linfática</div>
-        <h2>Cuidado que dá leveza. <span class="script">Resultados que se veem.</span></h2>
+        <div class="rotulo">${esc(t(TEXTOS.rotBenef, l))}</div>
+        <h2>${esc(t(TEXTOS.h2Benef, l))} <span class="script">${esc(t(TEXTOS.h2BenefScript, l))}</span></h2>
         <ul>
-          <li>Reduz inchaços e retenção de líquidos</li>
-          <li>Elimina toxinas e impurezas do corpo</li>
-          <li>Melhora a circulação e o fluxo linfático</li>
-          <li>Fortalece o sistema imunológico</li>
-          <li>Proporciona leveza, bem-estar e conforto</li>
+${benef}
         </ul>
-        <p class="escopo">Procedimentos estéticos de bem-estar. Não substituem tratamento médico e os resultados variam de pessoa para pessoa.</p>
+        <p class="escopo">${esc(t(TEXTOS.escopo, l))}</p>
       </div>
       <figure class="benef-foto">
         <img src="/img/arte-drenagem.jpg" loading="lazy" width="1119" height="1400"
-             alt="Material da Andréia sobre drenagem linfática" />
+             alt="${l === "pt" ? "Material da Andréia sobre drenagem linfática" : "Andréia's lymphatic drainage material"}" />
       </figure>
     </div>
   </section>
@@ -348,44 +328,41 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
 
 <section id="resultados">
   <div class="env">
-    <div class="rotulo">Resultados</div>
-    <h2>O que muda <span class="script">de verdade.</span></h2>
-    <p class="intro">Cada corpo responde de um jeito. O que se repete é a leveza, a medida que cede e a autoestima que volta — e é disso que as clientes mais falam.</p>
+    <div class="rotulo">${esc(t(TEXTOS.rotResultados, l))}</div>
+    <h2>${esc(t(TEXTOS.h2Resultados, l))} <span class="script">${esc(t(TEXTOS.h2ResultadosScript, l))}</span></h2>
+    <p class="intro">${esc(t(TEXTOS.introResultados, l))}</p>
     <div class="res-grade">
-      <div class="res-num"><b>1.000+</b><span>atendimentos realizados</span></div>
-      <div class="res-num"><b>2</b><span>idiomas: português e inglês</span></div>
-      <div class="res-num"><b>0</b><span>tempo de parada nos protocolos</span></div>
+${resultados}
     </div>
-    <p class="fala">“Renovar a autoestima também está nos pequenos cuidados que temos com nós mesmas.”</p>
+    <p class="fala">“${esc(t(FALAS[0], l))}”</p>
   </div>
 </section>
 
 <section id="historia">
   <div class="env historia-grade">
     <div>
-      <div class="rotulo">Minha história</div>
-      <h2>A transformação começa <span class="script">por dentro.</span></h2>
-      <p class="intro">Eu mostro a minha própria evolução porque foi ela que me ensinou o que faço hoje. Vim do Brasil e construí aqui, do zero, um trabalho que já passou de mil atendimentos.</p>
-      <blockquote>“Nem sempre a maior batalha acontece diante dos olhos das pessoas. Entre medos, lágrimas, saudades e recomeços, descobri que a verdadeira força está em não desistir.”</blockquote>
+      <div class="rotulo">${esc(t(TEXTOS.rotHistoria, l))}</div>
+      <h2>${esc(t(TEXTOS.h2Historia, l))} <span class="script">${esc(t(TEXTOS.h2HistoriaScript, l))}</span></h2>
+      <p class="intro">${esc(t(TEXTOS.introHistoria, l))}</p>
+      <blockquote>“${esc(t(TEXTOS.citacao, l))}”</blockquote>
     </div>
-      <figure class="gal-item"><img src="/img/andreia-dumbo.jpg" alt="Andréia Carvalho em Nova York" loading="lazy"
-        style="object-position:50% 50%" /></figure>
+${fotos}
   </div>
 </section>
 
 <section id="agendar" class="agendar">
   <div class="env">
-    <div class="rotulo">Agendar</div>
-    <h2>Agende sua avaliação e descubra<br>o melhor protocolo para você.</h2>
-    <p class="promessa">Seu corpo merece o melhor.</p>
+    <div class="rotulo">${esc(t(TEXTOS.rotAgendar, l))}</div>
+    <h2>${t(TEXTOS.h2Agendar, l)}</h2>
+    <p class="promessa">${esc(t(TEXTOS.promessa, l))}</p>
     <div class="acoes" style="justify-content:center">
-      <a class="btn btn-cheio" href="https://wa.me/19786003658?text=Oi%2C%20Andr%C3%A9ia!%20Vim%20pelo%20site%20e%20queria%20agendar%20uma%20avalia%C3%A7%C3%A3o.">Chamar no WhatsApp</a>
-      <a class="btn btn-vazio" href="https://www.instagram.com/andreiacarvalhoestetica/" target="_blank" rel="noopener">Ver o Instagram</a>
+      <a class="btn btn-cheio" href="${zap}">${esc(t(TEXTOS.ctaZap, l))}</a>
+      <a class="btn btn-vazio" href="${CLINICA.instagram}" target="_blank" rel="noopener">${esc(t(TEXTOS.ctaInsta, l))}</a>
     </div>
     <div class="contato">
-      <div><b>WhatsApp</b><a href="https://wa.me/19786003658?text=Oi%2C%20Andr%C3%A9ia!%20Vim%20pelo%20site%20e%20queria%20agendar%20uma%20avalia%C3%A7%C3%A3o.">(978) 600-3658</a></div>
-      <div><b>Onde</b>Leominster, Massachusetts</div>
-      <div><b>Idiomas</b>Português e inglês</div>
+      <div><b>${esc(t(TEXTOS.labelZap, l))}</b><a href="${zap}">${esc(CLINICA.telefone)}</a></div>
+      <div><b>${esc(t(TEXTOS.labelOnde, l))}</b>${esc(CLINICA.cidade)}</div>
+      <div><b>${esc(t(TEXTOS.labelIdiomas, l))}</b>${esc(t(TEXTOS.valorIdiomas, l))}</div>
     </div>
   </div>
 </section>
@@ -394,9 +371,9 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
 
 <footer>
   <div class="env">
-    <div class="assin">Andréia Carvalho</div>
-    <div>Especialista em Estética e Bem-estar · Leominster, Massachusetts</div>
-    <div class="aviso">Esteticista licenciada. Este site é informativo e não substitui avaliação profissional. Os procedimentos são estéticos, de bem-estar, e não têm finalidade médica. Resultados variam de pessoa para pessoa.</div>
+    <div class="assin">${esc(CLINICA.nome)}</div>
+    <div>${esc(t(CLINICA.papel, l))} · ${esc(CLINICA.cidade)}</div>
+    <div class="aviso">${esc(t(TEXTOS.rodape, l))}</div>
   </div>
 </footer>
 
@@ -413,3 +390,9 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
 </script>
 </body>
 </html>
+`;
+}
+
+writeFileSync(new URL("./index.html", import.meta.url), pagina("pt"));
+writeFileSync(new URL("./en", import.meta.url), pagina("en"));
+console.log(`Gerado: index.html (PT) e en.html (EN) — ${SERVICOS.length} procedimentos, ${FOTOS.length} foto(s).`);
