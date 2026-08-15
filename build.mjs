@@ -19,6 +19,16 @@ import { CLINICA, TEXTOS, PILARES, SERVICOS, BENEFICIOS, RESULTADOS, FALAS, FOTO
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const t = (o, l) => (o && typeof o === "object" && !Array.isArray(o) && o[l] !== undefined ? o[l] : o);
 
+// Campo não confirmado pela Andréia não sobe calado. Isto é a mesma regra do preflight do
+// ClinicNow: item duvidoso derruba o build de propósito, em vez de virar palpite publicado.
+const pendentes = SERVICOS.filter((s) => s.confirmar);
+if (pendentes.length) {
+  console.error(`BUILD RECUSADO: ${pendentes.length} serviço(s) marcados 'confirmar' ainda no cardápio público:`);
+  for (const s of pendentes) console.error(`  - ${s.pt[0]} — só entra depois que a Andréia confirmar.`);
+  console.error("Confirme com ela e remova a flag, ou tire o serviço de dados.js.");
+  process.exit(1);
+}
+
 function pagina(l) {
   const outro = l === "pt" ? "en" : "pt";
   const linkOutro = l === "pt" ? "/en" : "/";
@@ -47,7 +57,7 @@ function pagina(l) {
 
   const fotos = FOTOS.map((f) =>
     `      <figure class="gal-item"><img src="${f.src}" alt="${esc(t(f, l))}" loading="lazy"
-        style="object-position:${f.pos || "50% 50%"}" /></figure>`).join("\n");
+        width="${f.w || 787}" height="${f.h || 1400}" style="object-position:${f.pos || "50% 50%"}" /></figure>`).join("\n");
 
   return `<!doctype html>
 <html lang="${l === "pt" ? "pt-BR" : "en"}">
@@ -138,11 +148,13 @@ h1{font-size:clamp(2.3rem,5vw,3.7rem);margin:20px 0 4px}
 /* Volume em CSS: dois discos em perspectiva atrás do retrato. Sem imagem, sem peso. */
 .hero-foto{position:relative;margin:0}
 .hero-foto img{border-radius:270px 270px 14px 14px;box-shadow:0 34px 70px -34px rgba(82,58,36,.5);
-  aspect-ratio:4/5;object-fit:cover;object-position:50% 8%;width:100%}
-.disco{position:absolute;border-radius:50%;border:1px solid var(--areia);pointer-events:none;z-index:-1;
+  /* Sem object-position aqui: a foto é 1:1 numa caixa 4:5 — não há transbordo
+   vertical para ancorar, e âncora que não faz nada é ruído. */
+  aspect-ratio:4/5;object-fit:cover;width:100%}
+.disco{position:absolute;border-radius:50%;border:1px solid #cbb18a;pointer-events:none;z-index:-1;
   transform:rotateX(72deg);animation:girar 34s linear infinite}
 .disco.a{inset:auto -8% -6% -8%;aspect-ratio:1;}
-.disco.b{inset:auto 6% -2% 6%;aspect-ratio:1;border-color:var(--dourado);opacity:.35;animation-duration:26s;animation-direction:reverse}
+.disco.b{inset:auto 6% -2% 6%;aspect-ratio:1;border-color:var(--dourado);opacity:.6;animation-duration:26s;animation-direction:reverse}
 @keyframes girar{from{transform:rotateX(72deg) rotate(0)}to{transform:rotateX(72deg) rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){.disco{animation:none}}
 
@@ -394,5 +406,5 @@ ${fotos}
 }
 
 writeFileSync(new URL("./index.html", import.meta.url), pagina("pt"));
-writeFileSync(new URL("./en", import.meta.url), pagina("en"));
+writeFileSync(new URL("./en.html", import.meta.url), pagina("en"));
 console.log(`Gerado: index.html (PT) e en.html (EN) — ${SERVICOS.length} procedimentos, ${FOTOS.length} foto(s).`);

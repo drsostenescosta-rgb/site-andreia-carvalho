@@ -87,11 +87,13 @@ h1{font-size:clamp(2.3rem,5vw,3.7rem);margin:20px 0 4px}
 /* Volume em CSS: dois discos em perspectiva atrás do retrato. Sem imagem, sem peso. */
 .hero-foto{position:relative;margin:0}
 .hero-foto img{border-radius:270px 270px 14px 14px;box-shadow:0 34px 70px -34px rgba(82,58,36,.5);
-  aspect-ratio:4/5;object-fit:cover;object-position:50% 8%;width:100%}
-.disco{position:absolute;border-radius:50%;border:1px solid var(--areia);pointer-events:none;z-index:-1;
+  /* Sem object-position aqui: a foto é 1:1 numa caixa 4:5 — não há transbordo
+   vertical para ancorar, e âncora que não faz nada é ruído. */
+  aspect-ratio:4/5;object-fit:cover;width:100%}
+.disco{position:absolute;border-radius:50%;border:1px solid #cbb18a;pointer-events:none;z-index:-1;
   transform:rotateX(72deg);animation:girar 34s linear infinite}
 .disco.a{inset:auto -8% -6% -8%;aspect-ratio:1;}
-.disco.b{inset:auto 6% -2% 6%;aspect-ratio:1;border-color:var(--dourado);opacity:.35;animation-duration:26s;animation-direction:reverse}
+.disco.b{inset:auto 6% -2% 6%;aspect-ratio:1;border-color:var(--dourado);opacity:.6;animation-duration:26s;animation-direction:reverse}
 @keyframes girar{from{transform:rotateX(72deg) rotate(0)}to{transform:rotateX(72deg) rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){.disco{animation:none}}
 
@@ -186,7 +188,7 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
 
 <header>
   <div class="topo">
-    <a class="marca" href="/en.html">
+    <a class="marca" href="/en">
       <svg class="marca-a" viewBox="0 0 64 64" role="img" aria-label="Andréia Carvalho">
         <text x="26" y="48" font-family="Cormorant Garamond,Georgia,serif" font-size="52" fill="#8a6230" text-anchor="middle">A</text>
         <path d="M44 16l2.2 5.4L52 23.6l-5.8 2.2L44 31.2l-2.2-5.4L36 23.6l5.8-2.2z" fill="#b8912f"/>
@@ -268,12 +270,6 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
           <div class="tab-desc">Massage that stimulates the lymphatic system, reduces swelling and improves circulation.</div>
           <div class="tab-dur">60 min</div>
           <div class="tab-preco">US$ 60</div>
-        </div>
-        <div class="tab-linha">
-          <div class="tab-nome">Post-operative care<span class="estrela" aria-hidden="true">✦</span></div>
-          <div class="tab-desc">Support through the most delicate part of recovery, with specific technique at each stage.</div>
-          <div class="tab-dur">80 min</div>
-          <div class="tab-preco">US$ 100</div>
         </div>
         <div class="tab-linha">
           <div class="tab-nome">Relaxing massage</div>
@@ -369,7 +365,7 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
       <blockquote>“The hardest battles are not always the ones people see. Between fear, tears, longing and starting over, I learned that real strength is not giving up.”</blockquote>
     </div>
       <figure class="gal-item"><img src="/img/andreia-dumbo.jpg" alt="Andréia Carvalho in New York" loading="lazy"
-        style="object-position:50% 50%" /></figure>
+        width="787" height="1400" style="object-position:50% 50%" /></figure>
   </div>
 </section>
 

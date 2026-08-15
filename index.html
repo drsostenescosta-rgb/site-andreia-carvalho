@@ -87,11 +87,13 @@ h1{font-size:clamp(2.3rem,5vw,3.7rem);margin:20px 0 4px}
 /* Volume em CSS: dois discos em perspectiva atrás do retrato. Sem imagem, sem peso. */
 .hero-foto{position:relative;margin:0}
 .hero-foto img{border-radius:270px 270px 14px 14px;box-shadow:0 34px 70px -34px rgba(82,58,36,.5);
-  aspect-ratio:4/5;object-fit:cover;object-position:50% 8%;width:100%}
-.disco{position:absolute;border-radius:50%;border:1px solid var(--areia);pointer-events:none;z-index:-1;
+  /* Sem object-position aqui: a foto é 1:1 numa caixa 4:5 — não há transbordo
+   vertical para ancorar, e âncora que não faz nada é ruído. */
+  aspect-ratio:4/5;object-fit:cover;width:100%}
+.disco{position:absolute;border-radius:50%;border:1px solid #cbb18a;pointer-events:none;z-index:-1;
   transform:rotateX(72deg);animation:girar 34s linear infinite}
 .disco.a{inset:auto -8% -6% -8%;aspect-ratio:1;}
-.disco.b{inset:auto 6% -2% 6%;aspect-ratio:1;border-color:var(--dourado);opacity:.35;animation-duration:26s;animation-direction:reverse}
+.disco.b{inset:auto 6% -2% 6%;aspect-ratio:1;border-color:var(--dourado);opacity:.6;animation-duration:26s;animation-direction:reverse}
 @keyframes girar{from{transform:rotateX(72deg) rotate(0)}to{transform:rotateX(72deg) rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){.disco{animation:none}}
 
@@ -253,7 +255,7 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
       </div>
         <div class="tab-linha">
           <div class="tab-nome">Dreno Detox<span class="estrela" aria-hidden="true">✦</span></div>
-          <div class="tab-desc">Estimula o sistema linfático, elimina toxinas, reduz inchaço e melhora a circulação.</div>
+          <div class="tab-desc">Estimula o sistema linfático, ajuda a eliminar toxinas, reduz inchaço e melhora a circulação.</div>
           <div class="tab-dur">60 min</div>
           <div class="tab-preco">US$ 60</div>
         </div>
@@ -268,12 +270,6 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
           <div class="tab-desc">Massagem que estimula o sistema linfático, reduz inchaços e melhora a circulação.</div>
           <div class="tab-dur">60 min</div>
           <div class="tab-preco">US$ 60</div>
-        </div>
-        <div class="tab-linha">
-          <div class="tab-nome">Pós-operatório<span class="estrela" aria-hidden="true">✦</span></div>
-          <div class="tab-desc">Acompanhamento no período mais delicado da recuperação, com técnica específica em cada fase.</div>
-          <div class="tab-dur">80 min</div>
-          <div class="tab-preco">US$ 100</div>
         </div>
         <div class="tab-linha">
           <div class="tab-nome">Relaxante</div>
@@ -331,9 +327,9 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
         <h2>Cuidado que dá leveza. <span class="script">Resultados que se veem.</span></h2>
         <ul>
           <li>Reduz inchaços e retenção de líquidos</li>
-          <li>Elimina toxinas e impurezas do corpo</li>
+          <li>Ajuda o corpo a eliminar toxinas e impurezas</li>
           <li>Melhora a circulação e o fluxo linfático</li>
-          <li>Fortalece o sistema imunológico</li>
+          <li>Contribui para o sistema imunológico</li>
           <li>Proporciona leveza, bem-estar e conforto</li>
         </ul>
         <p class="escopo">Procedimentos estéticos de bem-estar. Não substituem tratamento médico e os resultados variam de pessoa para pessoa.</p>
@@ -369,7 +365,7 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
       <blockquote>“Nem sempre a maior batalha acontece diante dos olhos das pessoas. Entre medos, lágrimas, saudades e recomeços, descobri que a verdadeira força está em não desistir.”</blockquote>
     </div>
       <figure class="gal-item"><img src="/img/andreia-dumbo.jpg" alt="Andréia Carvalho em Nova York" loading="lazy"
-        style="object-position:50% 50%" /></figure>
+        width="787" height="1400" style="object-position:50% 50%" /></figure>
   </div>
 </section>
 

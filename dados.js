@@ -112,14 +112,16 @@ export const PILARES = [
  *  1. A tabela dela imprime "R$"; a arte da drenagem imprime "$60,00" e ela atende em
  *     Massachusetts. Publicado em US$.
  *  2. "Pós-operatório" (US$100 / 80 min) consta no questionário dela de 11/08 e NÃO consta
- *     nesta tabela. Incluído aqui porque é serviço dela e é o de maior valor — marcado
- *     `confirmar:true` para ela validar.
+ *     nesta tabela. FORA do site até ela confirmar — ver AGUARDANDO_CONFIRMACAO abaixo.
+ *
+ * A regra: publica-se o que ELA publicou. O flyer é a lista de preços que ela mesma divulga;
+ * o questionário é documento operacional interno. São coisas diferentes, e a descrição de um
+ * serviço de cuidado pós-cirúrgico não pode ser escrita por nós.
  */
 export const SERVICOS = [
-  { pt: ["Dreno Detox", "Estimula o sistema linfático, elimina toxinas, reduz inchaço e melhora a circulação."], en: ["Detox Drainage", "Stimulates the lymphatic system, helps eliminate toxins, reduces swelling and improves circulation."], dur: { pt: "60 min", en: "60 min" }, p: 60, destaque: true },
+  { pt: ["Dreno Detox", "Estimula o sistema linfático, ajuda a eliminar toxinas, reduz inchaço e melhora a circulação."], en: ["Detox Drainage", "Stimulates the lymphatic system, helps eliminate toxins, reduces swelling and improves circulation."], dur: { pt: "60 min", en: "60 min" }, p: 60, destaque: true },
   { pt: ["Dreno Detox Turbo", "Potencializa a eliminação de toxinas, reduz medidas e promove leveza e bem-estar."], en: ["Detox Drainage Turbo", "Boosts toxin elimination, reduces measurements and brings lightness and wellness."], dur: { pt: "100 min", en: "100 min" }, p: 100 },
   { pt: ["Drenagem linfática", "Massagem que estimula o sistema linfático, reduz inchaços e melhora a circulação."], en: ["Lymphatic drainage", "Massage that stimulates the lymphatic system, reduces swelling and improves circulation."], dur: { pt: "60 min", en: "60 min" }, p: 60, destaque: true },
-  { pt: ["Pós-operatório", "Acompanhamento no período mais delicado da recuperação, com técnica específica em cada fase."], en: ["Post-operative care", "Support through the most delicate part of recovery, with specific technique at each stage."], dur: { pt: "80 min", en: "80 min" }, p: 100, destaque: true, confirmar: true },
   { pt: ["Relaxante", "Massagem que alivia tensões, reduz o estresse e promove relaxamento profundo."], en: ["Relaxing massage", "Massage that relieves tension, reduces stress and brings deep relaxation."], dur: { pt: "70 min", en: "70 min" }, p: 70 },
   { pt: ["Masculina", "Massagem específica para o corpo masculino, ativa a circulação e reduz tensões."], en: ["Men's massage", "Massage designed for the male body, activates circulation and relieves tension."], dur: { pt: "70 min", en: "70 min" }, p: 70 },
   { pt: ["Masculina com fortalecimento", "Técnicas avançadas que tonificam, fortalecem e modelam o corpo masculino."], en: ["Men's strengthening massage", "Advanced techniques that tone, strengthen and shape the male body."], dur: { pt: "60 min", en: "60 min" }, p: 100 },
@@ -129,16 +131,38 @@ export const SERVICOS = [
   { pt: ["Radiofrequência", "Estimula o colágeno, melhora a firmeza da pele e reduz flacidez."], en: ["Radiofrequency", "Stimulates collagen, improves skin firmness and reduces sagging."], dur: { pt: "por área", en: "per area" }, p: 50 },
 ];
 
+/**
+ * Serviços que existem no questionário dela mas NÃO no material que ela divulga.
+ * Não entram no site. Para publicar: confirmar com ela, pegar a descrição NAS PALAVRAS DELA,
+ * mover para SERVICOS e tirar o `confirmar`.
+ */
+export const AGUARDANDO_CONFIRMACAO = [
+  { nome: "Pós-operatório", preco: 100, duracao: "80 min", fonte: "questionário de 11/08/2026, item 3.2", confirmar: true },
+];
+
 /** Benefícios da drenagem, copiados da arte dela. */
+/**
+ * ⚠ SUAVIZAÇÃO DELIBERADA, para Andréia vetar se quiser: o material dela diz "Elimina toxinas"
+ * e "Fortalece o sistema imunológico". Sem qualificação, isso lê como alegação terapêutica e
+ * fica fora do escopo de esteticista licenciada em Massachusetts. Trocamos por "ajuda a" e
+ * "contribui para", com a mesma força nos dois idiomas. É edição na copy dela — decisão dela.
+ */
 export const BENEFICIOS = [
   { pt: "Reduz inchaços e retenção de líquidos", en: "Reduces swelling and fluid retention" },
-  { pt: "Elimina toxinas e impurezas do corpo", en: "Helps the body clear toxins and impurities" },
+  { pt: "Ajuda o corpo a eliminar toxinas e impurezas", en: "Helps the body clear toxins and impurities" },
   { pt: "Melhora a circulação e o fluxo linfático", en: "Improves circulation and lymphatic flow" },
-  { pt: "Fortalece o sistema imunológico", en: "Supports the immune system" },
+  { pt: "Contribui para o sistema imunológico", en: "Supports the immune system" },
   { pt: "Proporciona leveza, bem-estar e conforto", en: "Brings lightness, wellness and comfort" },
 ];
 
-/** Seção Resultados — o que Sostenes pediu. Números e falas dela, sem foto de cliente. */
+/**
+ * Seção Resultados. Sem foto de cliente.
+ * PROCEDÊNCIA de cada número:
+ *  - "1.000+": bio pública do @andreiacarvalhoestetica — "+ 1.000 atendimentos".
+ *  - "2 idiomas": bio (🇧🇷🇺🇸) e resposta 1.4 do questionário.
+ *  - "0 tempo de parada": pilar "Segurança e conforto" da tabela dela ("sem tempo de parada").
+ * Número sem procedência não entra aqui.
+ */
 export const RESULTADOS = [
   { num: "1.000+", pt: "atendimentos realizados", en: "sessions delivered" },
   { num: "2", pt: "idiomas: português e inglês", en: "languages: Portuguese and English" },
@@ -151,5 +175,5 @@ export const FALAS = [
 
 /** Fotos dela. Acrescentar foto = acrescentar linha aqui e rodar o build. */
 export const FOTOS = [
-  { src: "/img/andreia-dumbo.jpg", pt: "Andréia Carvalho em Nova York", en: "Andréia Carvalho in New York", pos: "50% 50%" },
+  { src: "/img/andreia-dumbo.jpg", pt: "Andréia Carvalho em Nova York", en: "Andréia Carvalho in New York", pos: "50% 50%", w: 787, h: 1400 },
 ];
