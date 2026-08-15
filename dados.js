@@ -119,7 +119,7 @@ export const PILARES = [
  * serviço de cuidado pós-cirúrgico não pode ser escrita por nós.
  */
 export const SERVICOS = [
-  { pt: ["Dreno Detox", "Estimula o sistema linfático, ajuda a eliminar toxinas, reduz inchaço e melhora a circulação."], en: ["Detox Drainage", "Stimulates the lymphatic system, helps eliminate toxins, reduces swelling and improves circulation."], dur: { pt: "60 min", en: "60 min" }, p: 60, destaque: true },
+  { pt: ["Dreno Detox", "Estimula o sistema linfático, elimina toxinas, reduz inchaço e melhora a circulação."], en: ["Detox Drainage", "Stimulates the lymphatic system, eliminates toxins, reduces swelling and improves circulation."], dur: { pt: "60 min", en: "60 min" }, p: 60, destaque: true },
   { pt: ["Dreno Detox Turbo", "Potencializa a eliminação de toxinas, reduz medidas e promove leveza e bem-estar."], en: ["Detox Drainage Turbo", "Boosts toxin elimination, reduces measurements and brings lightness and wellness."], dur: { pt: "100 min", en: "100 min" }, p: 100 },
   { pt: ["Drenagem linfática", "Massagem que estimula o sistema linfático, reduz inchaços e melhora a circulação."], en: ["Lymphatic drainage", "Massage that stimulates the lymphatic system, reduces swelling and improves circulation."], dur: { pt: "60 min", en: "60 min" }, p: 60, destaque: true },
   { pt: ["Relaxante", "Massagem que alivia tensões, reduz o estresse e promove relaxamento profundo."], en: ["Relaxing massage", "Massage that relieves tension, reduces stress and brings deep relaxation."], dur: { pt: "70 min", en: "70 min" }, p: 70 },
@@ -142,16 +142,28 @@ export const AGUARDANDO_CONFIRMACAO = [
 
 /** Benefícios da drenagem, copiados da arte dela. */
 /**
- * ⚠ SUAVIZAÇÃO DELIBERADA, para Andréia vetar se quiser: o material dela diz "Elimina toxinas"
- * e "Fortalece o sistema imunológico". Sem qualificação, isso lê como alegação terapêutica e
- * fica fora do escopo de esteticista licenciada em Massachusetts. Trocamos por "ajuda a" e
- * "contribui para", com a mesma força nos dois idiomas. É edição na copy dela — decisão dela.
+ * PALAVRAS DELA, verbatim. Uma versão anterior suavizou "elimina toxinas" e "fortalece o sistema
+ * imunológico" — e revertemos, por dois motivos:
+ *   1. a copy de uma profissional licenciada sobre a própria prática regulada é DELA. Vale para
+ *      incluir serviço, para preço e para suavizar alegação. Editar sem ela é o mesmo erro que
+ *      cometemos ao escrever a descrição do pós-operatório;
+ *   2. a suavização era SELETIVA e por isso inútil: "potencializa a eliminação de toxinas" e
+ *      "quebra células de gordura localizada" ficaram intactas na mesma página. Três alegações
+ *      da mesma família com três forças diferentes não protegem ninguém.
+ *
+ * A mitigação que vale é o aviso de escopo (TEXTOS.escopo), que aparece a ~200px das frases,
+ * nas seções de procedimentos e de benefícios.
+ *
+ * ⚠ DECISÃO PENDENTE DA ANDRÉIA, as três juntas: "elimina toxinas", "potencializa a eliminação
+ * de toxinas" e "quebra células de gordura localizada". Sem qualificação, leem como alegação
+ * terapêutica e ficam fora do escopo de esteticista licenciada em Massachusetts. Mantém como
+ * ela escreveu, ou suaviza? Quem decide é ela.
  */
 export const BENEFICIOS = [
   { pt: "Reduz inchaços e retenção de líquidos", en: "Reduces swelling and fluid retention" },
-  { pt: "Ajuda o corpo a eliminar toxinas e impurezas", en: "Helps the body clear toxins and impurities" },
+  { pt: "Elimina toxinas e impurezas do corpo", en: "Eliminates toxins and impurities from the body" },
   { pt: "Melhora a circulação e o fluxo linfático", en: "Improves circulation and lymphatic flow" },
-  { pt: "Contribui para o sistema imunológico", en: "Supports the immune system" },
+  { pt: "Fortalece o sistema imunológico", en: "Strengthens the immune system" },
   { pt: "Proporciona leveza, bem-estar e conforto", en: "Brings lightness, wellness and comfort" },
 ];
 
