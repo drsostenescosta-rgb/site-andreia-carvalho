@@ -216,7 +216,15 @@ export const FALAS = [
   { pt: "Renovar a autoestima também está nos pequenos cuidados que temos com nós mesmas.", en: "Renewing your self-esteem also lives in the small ways you care for yourself.", es: "Renovar la autoestima también está en los pequeños cuidados que tenemos con nosotras mismas." },
 ];
 
-/** Fotos dela. Acrescentar foto = acrescentar linha aqui e rodar o build. */
-export const FOTOS = [
-  { src: "/img/andreia-dumbo.jpg", pt: "Andréia Carvalho em Nova York", en: "Andréia Carvalho in New York", es: "Andréia Carvalho en Nueva York", pos: "50% 50%", w: 787, h: 1400 },
-];
+/**
+ * Fotos dela na seção "história". Acrescentar foto = acrescentar linha aqui e rodar o build.
+ *
+ * 14/08/2026 — Sostenes pediu para retirar a foto de Nova York (calça verde, ponte de Manhattan).
+ * O arquivo saiu de /img junto, senão continuaria acessível pela URL direta mesmo sem link na
+ * página. Recuperável pelo git se ela quiser de volta.
+ *
+ * Com o array vazio a seção "história" vira uma coluna só (ver `temFotos` no build.mjs), então
+ * não fica buraco no layout. Ao repor uma foto, informar `w` e `h` reais — sem eles a imagem
+ * estica e distorce o rosto.
+ */
+export const FOTOS = [];

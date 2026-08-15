@@ -61,6 +61,8 @@ function pagina(l) {
   const resultados = RESULTADOS.map((r) =>
     `      <div class="res-num"><b>${esc(r.num)}</b><span>${esc(t(r, l))}</span></div>`).join("\n");
 
+  // Sem foto, a grade de duas colunas deixaria metade da seção vazia. Vira coluna única.
+  const temFotos = FOTOS.length > 0;
   const fotos = FOTOS.map((f) =>
     `      <figure class="gal-item"><img src="${f.src}" alt="${esc(t(f, l))}" loading="lazy"
         width="${f.w || 787}" height="${f.h || 1400}" style="object-position:${f.pos || "50% 50%"}" /></figure>`).join("\n");
@@ -358,7 +360,7 @@ ${resultados}
 </section>
 
 <section id="historia">
-  <div class="env historia-grade">
+  <div class="env${temFotos ? " historia-grade" : ""}">
     <div>
       <div class="rotulo">${esc(t(TEXTOS.rotHistoria, l))}</div>
       <h2>${esc(t(TEXTOS.h2Historia, l))} <span class="script">${esc(t(TEXTOS.h2HistoriaScript, l))}</span></h2>
