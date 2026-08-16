@@ -376,6 +376,7 @@ export const FOTOS = [
 export const TECNOLOGIAS = [
   {
     id: "hifem",
+    destaque: true,
     // Imagem oficial do fabricante (emshape.shop). Único aparelho nomeado no site — as outras
     // duas tecnologias entram sem marca, sem modelo e sem foto, por decisão de Sostenes.
     foto: "/img/emshape-neo.jpg",

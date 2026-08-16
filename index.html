@@ -149,7 +149,11 @@ h2{font-size:clamp(1.85rem,3.8vw,2.7rem);margin-bottom:15px}
 .tab-preco{font-family:var(--serif);font-size:1.42rem;color:var(--dourado);text-align:right;white-space:nowrap}
 .nota-moeda{margin-top:13px;font-size:.8rem;color:var(--suave);font-style:italic}
 #equipamentos{padding:74px 0}
-.eq-grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:34px}
+.eq-grade{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:34px}
+.eq-destaque{grid-column:1/-1;display:grid;grid-template-columns:.86fr 1.14fr;gap:30px;align-items:center;
+  background:linear-gradient(150deg,var(--creme-2) 0%,var(--papel) 62%)}
+.eq-destaque .eq-topo h3{font-size:1.72rem}
+.eq-compacto dd{font-size:.93rem}
 .eq{background:var(--papel);border:1px solid var(--linha);border-radius:16px;padding:26px}
 .eq-topo{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:16px}
 .eq-topo h3{font-size:1.42rem}
@@ -165,7 +169,7 @@ h2{font-size:clamp(1.85rem,3.8vw,2.7rem);margin-bottom:15px}
 .eq-estudo p{margin:7px 0 0;font-size:.93rem;line-height:1.55}
 .eq-estudo cite{display:block;margin-top:9px;font-size:.78rem;font-style:normal;color:var(--suave)}
 .eq-aviso{margin-top:14px;font-size:.84rem;color:var(--suave);font-style:italic}
-.eq-foto{margin:0 0 18px;background:var(--creme);border-radius:12px;overflow:hidden;aspect-ratio:1/1;
+.eq-foto{margin:0;background:var(--creme);border-radius:12px;overflow:hidden;aspect-ratio:1/1;
   display:grid;place-items:center}
 .eq-foto img{width:100%;height:100%;object-fit:contain;padding:10px}
 .fio{margin-top:18px;font-family:var(--serif);font-size:1.32rem;line-height:1.35;color:var(--marrom)}
@@ -276,6 +280,8 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
   html{font-size:16px}
   .hero{padding:104px 0 52px}
   .hero-grade,.benef-grade,.historia-grade{grid-template-columns:1fr;gap:34px}
+  .eq-grade{grid-template-columns:1fr}
+  .eq-destaque{grid-template-columns:1fr;gap:20px}
   .hero{padding:96px 0 44px}
   .hero-fotos{aspect-ratio:1/.82;max-width:100%;margin:0;order:-1}
   .hf-1{inset:0 46% 12% 0}
@@ -466,26 +472,26 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
     <h2>O que cada aparelho faz <span class="script">e o que você sente.</span></h2>
     <p class="intro">A pergunta que mais chega aqui é “dói?”. Em vez de responder que não, prefiro te contar exatamente o que acontece — e lembrar que, em qualquer momento, é só você falar que eu ajusto.</p>
     <div class="eq-grade">
-      <article class="eq rev">
+      <article class="eq eq-destaque rev">
         <figure class="eq-foto"><img src="/img/emshape-neo.jpg" alt="EMShape Neo" loading="lazy" width="900" height="900" /></figure>
-        <div class="eq-topo"><h3>EMShape Neo</h3><span class="eq-tipo">Tecnologia HIFEM · contração muscular</span></div>
-        <dl>
-          <dt>O que é</dt><dd>Máquina de tonificação muscular que trabalha três áreas em uma sessão: abdômen, posterior e glúteos.</dd>
-          <dt>Como funciona</dt><dd>Um campo eletromagnético de alta intensidade provoca contrações musculares involuntárias — mais profundas do que as que você consegue sozinha, porque não dependem da sua vontade.</dd>
-          <dt>Para que é usada</dt><dd>Tonificação e definição de abdômen e glúteos. Muito procurada por quem já treina e quer marcar o que construiu.</dd>
-          <dt>O que você sente</dt><dd>A contração é forte e estranha na primeira vez, mas não é dor. Você fica deitada e a intensidade sobe aos poucos — se incomodar em algum momento, você fala e eu baixo na hora.</dd>
-        </dl>
-        <div class="eq-estudo">
-          <b>O que os estudos mostram</b>
-          <p>Num estudo com 22 pessoas acompanhado por ressonância magnética, quatro sessões de HIFEM no abdômen mostraram aumento médio de 15% na espessura do músculo reto abdominal e redução média de 18% na gordura da região.</p>
-          <cite>Kinney &amp; Lozanova, Lasers in Surgery and Medicine, 2019 — estudo feito com equipamento Emsculpt (BTL).</cite>
+        <div class="eq-corpo">
+          <div class="eq-topo"><h3>EMShape Neo</h3><span class="eq-tipo">Tecnologia HIFEM · contração muscular</span></div>
+          <dl>
+            <dt>O que é</dt><dd>Máquina de tonificação muscular que trabalha três áreas em uma sessão: abdômen, posterior e glúteos.</dd>
+            <dt>Como funciona</dt><dd>Um campo eletromagnético de alta intensidade provoca contrações musculares involuntárias — mais profundas do que as que você consegue sozinha, porque não dependem da sua vontade.</dd>
+            <dt>Para que é usada</dt><dd>Tonificação e definição de abdômen e glúteos. Muito procurada por quem já treina e quer marcar o que construiu.</dd>
+            <dt>O que você sente</dt><dd>A contração é forte e estranha na primeira vez, mas não é dor. Você fica deitada e a intensidade sobe aos poucos — se incomodar em algum momento, você fala e eu baixo na hora.</dd>
+          </dl>
+          <div class="eq-estudo">
+            <b>O que os estudos mostram</b>
+            <p>Num estudo com 22 pessoas acompanhado por ressonância magnética, quatro sessões de HIFEM no abdômen mostraram aumento médio de 15% na espessura do músculo reto abdominal e redução média de 18% na gordura da região.</p>
+            <cite>Kinney &amp; Lozanova, Lasers in Surgery and Medicine, 2019 — estudo feito com equipamento Emsculpt (BTL).</cite>
+          </div>
         </div>
       </article>
-      <article class="eq rev">
-
+      <article class="eq eq-compacto rev">
         <div class="eq-topo"><h3>Ultracavitação</h3><span class="eq-tipo">Tecnologia de ultrassom</span></div>
         <dl>
-          <dt>O que é</dt><dd>Aplicada por área, com o aparelho em contato com a pele e um gel condutor.</dd>
           <dt>Como funciona</dt><dd>Ondas ultrassônicas de baixa frequência aplicadas na região tratada.</dd>
           <dt>Para que é usada</dt><dd>Gordura localizada e medidas em pontos específicos — barriga, flancos, culote.</dd>
           <dt>O que você sente</dt><dd>Você vai ouvir um apito agudo durante a aplicação. É normal e não é defeito do aparelho: é a própria frequência do ultrassom chegando ao ouvido pelo osso. Na pele, a sensação é de um aparelho morno deslizando.</dd>
@@ -493,14 +499,11 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
         <div class="eq-estudo">
           <b>O que os estudos mostram</b>
           <p>Revisões da literatura descrevem a ultracavitação como procedimento seguro para redução de medidas localizadas, com reduções relatadas na circunferência abdominal na faixa de 2 a 4,6 cm ao longo de uma série de sessões.</p>
-          <cite>Revisões sistemáticas de contorno corporal não invasivo. Os números variam bastante entre estudos e entre pessoas.</cite>
         </div>
       </article>
-      <article class="eq rev">
-
+      <article class="eq eq-compacto rev">
         <div class="eq-topo"><h3>Radiofrequência</h3><span class="eq-tipo">Tecnologia de aquecimento controlado</span></div>
         <dl>
-          <dt>O que é</dt><dd>Aplicada por área, com o aparelho deslizando sobre a pele.</dd>
           <dt>Como funciona</dt><dd>Ondas de radiofrequência aquecem as camadas mais profundas da pele de forma controlada, sem cortar nem furar nada.</dd>
           <dt>Para que é usada</dt><dd>Firmeza e textura da pele. É a tecnologia mais usada em combinação com as outras, e não sozinha.</dd>
           <dt>O que você sente</dt><dd>Um calor morno que vai subindo, parecido com uma pedra quente que anda. Eu acompanho a temperatura o tempo todo — se esquentar demais para você, é só falar.</dd>
@@ -508,7 +511,6 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
         <div class="eq-estudo">
           <b>O que os estudos mostram</b>
           <p>A literatura de contorno corporal estuda a radiofrequência principalmente em combinação com outras tecnologias, e não isolada — é assim que ela costuma ser usada na prática.</p>
-          <cite>Estudos de combinação de radiofrequência com estimulação muscular e ultrassom.</cite>
         </div>
       </article>
     </div>

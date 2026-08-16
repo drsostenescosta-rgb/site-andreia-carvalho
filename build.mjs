@@ -68,11 +68,31 @@ function pagina(l) {
     en: ["What it is", "How it works", "What it's used for", "What you feel", "What studies show"],
     es: ["Qué es", "Cómo funciona", "Para qué se usa", "Qué se siente", "Qué muestran los estudios"],
   }[l];
-  const equipamentos = TECNOLOGIAS.map((e) => `      <article class="eq rev">
-${e.foto ? `        <figure class="eq-foto"><img src="${e.foto}" alt="${esc(t(e.nome, l))}" loading="lazy" width="900" height="900" /></figure>` : ""}
+  // Card em DESTAQUE (o aparelho, com foto e texto completo) + dois compactos ao lado.
+  // Pedido do Sostenes: "a maquina na primeira, as outras com descricao mais breve" e "o texto
+  // maior no meio, os menores do lado". Tres cards iguais liam como catalogo; um grande e dois
+  // pequenos leem como hierarquia — e hierarquia e o que faz um site parecer caro.
+  const equipamentos = TECNOLOGIAS.map((e) => e.destaque
+    ? `      <article class="eq eq-destaque rev">
+        ${e.foto ? `<figure class="eq-foto"><img src="${e.foto}" alt="${esc(t(e.nome, l))}" loading="lazy" width="900" height="900" /></figure>` : ""}
+        <div class="eq-corpo">
+          <div class="eq-topo"><h3>${esc(t(e.nome, l))}</h3><span class="eq-tipo">${esc(t(e.tec, l))}</span></div>
+          <dl>
+            <dt>${esc(rotEq[0])}</dt><dd>${esc(t(e.oque, l))}</dd>
+            <dt>${esc(rotEq[1])}</dt><dd>${esc(t(e.como, l))}</dd>
+            <dt>${esc(rotEq[2])}</dt><dd>${esc(t(e.paraque, l))}</dd>
+            <dt>${esc(rotEq[3])}</dt><dd>${esc(t(e.sensacao, l))}</dd>
+          </dl>
+          <div class="eq-estudo">
+            <b>${esc(rotEq[4])}</b>
+            <p>${esc(t(e.estudo, l))}</p>
+            <cite>${t(e.fonte, l)}</cite>
+          </div>
+        </div>
+      </article>`
+    : `      <article class="eq eq-compacto rev">
         <div class="eq-topo"><h3>${esc(t(e.nome, l))}</h3><span class="eq-tipo">${esc(t(e.tec, l))}</span></div>
         <dl>
-          <dt>${esc(rotEq[0])}</dt><dd>${esc(t(e.oque, l))}</dd>
           <dt>${esc(rotEq[1])}</dt><dd>${esc(t(e.como, l))}</dd>
           <dt>${esc(rotEq[2])}</dt><dd>${esc(t(e.paraque, l))}</dd>
           <dt>${esc(rotEq[3])}</dt><dd>${esc(t(e.sensacao, l))}</dd>
@@ -80,7 +100,6 @@ ${e.foto ? `        <figure class="eq-foto"><img src="${e.foto}" alt="${esc(t(e.
         <div class="eq-estudo">
           <b>${esc(rotEq[4])}</b>
           <p>${esc(t(e.estudo, l))}</p>
-          <cite>${t(e.fonte, l)}</cite>
         </div>
       </article>`).join("\n");
 
@@ -239,7 +258,11 @@ h2{font-size:clamp(1.85rem,3.8vw,2.7rem);margin-bottom:15px}
 .tab-preco{font-family:var(--serif);font-size:1.42rem;color:var(--dourado);text-align:right;white-space:nowrap}
 .nota-moeda{margin-top:13px;font-size:.8rem;color:var(--suave);font-style:italic}
 #equipamentos{padding:74px 0}
-.eq-grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:34px}
+.eq-grade{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:34px}
+.eq-destaque{grid-column:1/-1;display:grid;grid-template-columns:.86fr 1.14fr;gap:30px;align-items:center;
+  background:linear-gradient(150deg,var(--creme-2) 0%,var(--papel) 62%)}
+.eq-destaque .eq-topo h3{font-size:1.72rem}
+.eq-compacto dd{font-size:.93rem}
 .eq{background:var(--papel);border:1px solid var(--linha);border-radius:16px;padding:26px}
 .eq-topo{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:16px}
 .eq-topo h3{font-size:1.42rem}
@@ -255,7 +278,7 @@ h2{font-size:clamp(1.85rem,3.8vw,2.7rem);margin-bottom:15px}
 .eq-estudo p{margin:7px 0 0;font-size:.93rem;line-height:1.55}
 .eq-estudo cite{display:block;margin-top:9px;font-size:.78rem;font-style:normal;color:var(--suave)}
 .eq-aviso{margin-top:14px;font-size:.84rem;color:var(--suave);font-style:italic}
-.eq-foto{margin:0 0 18px;background:var(--creme);border-radius:12px;overflow:hidden;aspect-ratio:1/1;
+.eq-foto{margin:0;background:var(--creme);border-radius:12px;overflow:hidden;aspect-ratio:1/1;
   display:grid;place-items:center}
 .eq-foto img{width:100%;height:100%;object-fit:contain;padding:10px}
 .fio{margin-top:18px;font-family:var(--serif);font-size:1.32rem;line-height:1.35;color:var(--marrom)}
@@ -366,6 +389,8 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
   html{font-size:16px}
   .hero{padding:104px 0 52px}
   .hero-grade,.benef-grade,.historia-grade{grid-template-columns:1fr;gap:34px}
+  .eq-grade{grid-template-columns:1fr}
+  .eq-destaque{grid-template-columns:1fr;gap:20px}
   .hero{padding:96px 0 44px}
   .hero-fotos{aspect-ratio:1/.82;max-width:100%;margin:0;order:-1}
   .hf-1{inset:0 46% 12% 0}

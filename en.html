@@ -149,7 +149,11 @@ h2{font-size:clamp(1.85rem,3.8vw,2.7rem);margin-bottom:15px}
 .tab-preco{font-family:var(--serif);font-size:1.42rem;color:var(--dourado);text-align:right;white-space:nowrap}
 .nota-moeda{margin-top:13px;font-size:.8rem;color:var(--suave);font-style:italic}
 #equipamentos{padding:74px 0}
-.eq-grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:34px}
+.eq-grade{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:34px}
+.eq-destaque{grid-column:1/-1;display:grid;grid-template-columns:.86fr 1.14fr;gap:30px;align-items:center;
+  background:linear-gradient(150deg,var(--creme-2) 0%,var(--papel) 62%)}
+.eq-destaque .eq-topo h3{font-size:1.72rem}
+.eq-compacto dd{font-size:.93rem}
 .eq{background:var(--papel);border:1px solid var(--linha);border-radius:16px;padding:26px}
 .eq-topo{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:16px}
 .eq-topo h3{font-size:1.42rem}
@@ -165,7 +169,7 @@ h2{font-size:clamp(1.85rem,3.8vw,2.7rem);margin-bottom:15px}
 .eq-estudo p{margin:7px 0 0;font-size:.93rem;line-height:1.55}
 .eq-estudo cite{display:block;margin-top:9px;font-size:.78rem;font-style:normal;color:var(--suave)}
 .eq-aviso{margin-top:14px;font-size:.84rem;color:var(--suave);font-style:italic}
-.eq-foto{margin:0 0 18px;background:var(--creme);border-radius:12px;overflow:hidden;aspect-ratio:1/1;
+.eq-foto{margin:0;background:var(--creme);border-radius:12px;overflow:hidden;aspect-ratio:1/1;
   display:grid;place-items:center}
 .eq-foto img{width:100%;height:100%;object-fit:contain;padding:10px}
 .fio{margin-top:18px;font-family:var(--serif);font-size:1.32rem;line-height:1.35;color:var(--marrom)}
@@ -276,6 +280,8 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
   html{font-size:16px}
   .hero{padding:104px 0 52px}
   .hero-grade,.benef-grade,.historia-grade{grid-template-columns:1fr;gap:34px}
+  .eq-grade{grid-template-columns:1fr}
+  .eq-destaque{grid-template-columns:1fr;gap:20px}
   .hero{padding:96px 0 44px}
   .hero-fotos{aspect-ratio:1/.82;max-width:100%;margin:0;order:-1}
   .hf-1{inset:0 46% 12% 0}
@@ -466,26 +472,26 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
     <h2>What each device does <span class="script">and what you feel.</span></h2>
     <p class="intro">The question I get the most is “does it hurt?”. Instead of just saying no, I'd rather tell you exactly what happens — and remind you that at any moment you can say so and I'll adjust.</p>
     <div class="eq-grade">
-      <article class="eq rev">
+      <article class="eq eq-destaque rev">
         <figure class="eq-foto"><img src="/img/emshape-neo.jpg" alt="EMShape Neo" loading="lazy" width="900" height="900" /></figure>
-        <div class="eq-topo"><h3>EMShape Neo</h3><span class="eq-tipo">HIFEM technology · muscle contraction</span></div>
-        <dl>
-          <dt>What it is</dt><dd>A muscle toning machine that works three areas in one session: abdomen, back and glutes.</dd>
-          <dt>How it works</dt><dd>A high-intensity electromagnetic field triggers involuntary muscle contractions — deeper than the ones you can produce on your own, because they don't depend on your effort.</dd>
-          <dt>What it's used for</dt><dd>Toning and definition of abdomen and glutes. Popular with people who already train and want to show what they've built.</dd>
-          <dt>What you feel</dt><dd>The contraction feels strong and strange the first time, but it isn't pain. You lie down and the intensity rises gradually — if it bothers you, say so and I turn it down right away.</dd>
-        </dl>
-        <div class="eq-estudo">
-          <b>What studies show</b>
-          <p>In a 22-patient study followed by MRI, four HIFEM abdominal sessions showed an average 15% increase in rectus abdominis thickness and an average 18% reduction in fat in the area.</p>
-          <cite>Kinney &amp; Lozanova, Lasers in Surgery and Medicine, 2019 — study conducted with Emsculpt (BTL) equipment.</cite>
+        <div class="eq-corpo">
+          <div class="eq-topo"><h3>EMShape Neo</h3><span class="eq-tipo">HIFEM technology · muscle contraction</span></div>
+          <dl>
+            <dt>What it is</dt><dd>A muscle toning machine that works three areas in one session: abdomen, back and glutes.</dd>
+            <dt>How it works</dt><dd>A high-intensity electromagnetic field triggers involuntary muscle contractions — deeper than the ones you can produce on your own, because they don't depend on your effort.</dd>
+            <dt>What it's used for</dt><dd>Toning and definition of abdomen and glutes. Popular with people who already train and want to show what they've built.</dd>
+            <dt>What you feel</dt><dd>The contraction feels strong and strange the first time, but it isn't pain. You lie down and the intensity rises gradually — if it bothers you, say so and I turn it down right away.</dd>
+          </dl>
+          <div class="eq-estudo">
+            <b>What studies show</b>
+            <p>In a 22-patient study followed by MRI, four HIFEM abdominal sessions showed an average 15% increase in rectus abdominis thickness and an average 18% reduction in fat in the area.</p>
+            <cite>Kinney &amp; Lozanova, Lasers in Surgery and Medicine, 2019 — study conducted with Emsculpt (BTL) equipment.</cite>
+          </div>
         </div>
       </article>
-      <article class="eq rev">
-
+      <article class="eq eq-compacto rev">
         <div class="eq-topo"><h3>Ultrasound cavitation</h3><span class="eq-tipo">Ultrasound technology</span></div>
         <dl>
-          <dt>What it is</dt><dd>Applied by area, with the device in contact with the skin and a conductive gel.</dd>
           <dt>How it works</dt><dd>Low-frequency ultrasound waves applied to the treated area.</dd>
           <dt>What it's used for</dt><dd>Localized fat and measurements in specific spots — belly, flanks, outer thighs.</dd>
           <dt>What you feel</dt><dd>You'll hear a high-pitched tone during the session. That's normal and not a fault: it's the ultrasound frequency reaching your ear through bone. On the skin it feels like a warm device gliding.</dd>
@@ -493,14 +499,11 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
         <div class="eq-estudo">
           <b>What studies show</b>
           <p>Literature reviews describe ultrasound cavitation as a safe procedure for reducing localized measurements, with reported abdominal circumference reductions in the 2 to 4.6 cm range over a series of sessions.</p>
-          <cite>Systematic reviews of non-invasive body contouring. Figures vary widely between studies and between people.</cite>
         </div>
       </article>
-      <article class="eq rev">
-
+      <article class="eq eq-compacto rev">
         <div class="eq-topo"><h3>Radiofrequency</h3><span class="eq-tipo">Controlled heating technology</span></div>
         <dl>
-          <dt>What it is</dt><dd>Applied by area, with the device gliding over the skin.</dd>
           <dt>How it works</dt><dd>Radiofrequency waves heat the deeper layers of the skin in a controlled way, with no cutting and no needles.</dd>
           <dt>What it's used for</dt><dd>Skin firmness and texture. It's the technology most often used in combination with the others, rather than alone.</dd>
           <dt>What you feel</dt><dd>A gentle warmth that builds up, like a warm stone moving over you. I track the temperature the whole time — if it gets too warm, just say so.</dd>
@@ -508,7 +511,6 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
         <div class="eq-estudo">
           <b>What studies show</b>
           <p>Body-contouring literature studies radiofrequency mainly in combination with other technologies rather than in isolation — which is how it is normally used in practice.</p>
-          <cite>Studies combining radiofrequency with muscle stimulation and ultrasound.</cite>
         </div>
       </article>
     </div>
