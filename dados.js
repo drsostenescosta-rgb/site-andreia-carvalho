@@ -28,6 +28,12 @@ export const CLINICA = {
   nome: "Andréia Carvalho",
   papel: { pt: "Especialista em Estética e Bem-estar", en: "Esthetics & Wellness Specialist", es: "Especialista en Estética y Bienestar" },
   cidade: "Leominster, Massachusetts",
+  // Endereco completo informado por Sostenes em 15/08/2026. Ate entao so existia "54 Main Street,
+  // 1o piso, sala 001A" — sem cidade e sem ZIP, o que aponta para dezenas de lugares em
+  // Massachusetts. Aparece no site porque o Google usa a consistencia entre site, perfil e
+  // Instagram (o mesmo endereco escrito igual nos tres) para decidir quem mostrar na busca local.
+  endereco: "54 Main Street, 1º piso, sala 001A",
+  cidadeEstadoZip: "Leominster, MA 01453",
   telefone: "(978) 600-3658",
   whatsapp: "19786003658",
   instagram: "https://www.instagram.com/andreiacarvalhoestetica/",

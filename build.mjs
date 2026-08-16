@@ -382,7 +382,7 @@ ${fotos}
     </div>
     <div class="contato">
       <div><b>${esc(t(TEXTOS.labelZap, l))}</b><a href="${zap}">${esc(CLINICA.telefone)}</a></div>
-      <div><b>${esc(t(TEXTOS.labelOnde, l))}</b>${esc(CLINICA.cidade)}</div>
+      <div><b>${esc(t(TEXTOS.labelOnde, l))}</b>${esc(CLINICA.endereco)}<br />${esc(CLINICA.cidadeEstadoZip)}</div>
       <div><b>${esc(t(TEXTOS.labelIdiomas, l))}</b>${esc(t(TEXTOS.valorIdiomas, l))}</div>
     </div>
   </div>
