@@ -50,7 +50,10 @@ export const TEXTOS = {
     en: ["Treatments", "Equipment", "Benefits", "Results", "My story", "Book"],
     es: ["Procedimientos", "Equipos", "Beneficios", "Resultados", "Mi historia", "Agendar"],
   },
-  selo: { pt: "Esteticista licenciada · Leominster, MA", en: "Licensed esthetician · Leominster, MA", es: "Esteticista licenciada · Leominster, MA" },
+  // Formacao + licenca local, nesta ordem, nas tres linguas. "Enfermeira" sozinha faria a leitora
+  // americana presumir licenca de Massachusetts; com "formada no Brasil" ao lado de "esteticista
+  // licenciada em Leominster", nao sobra ambiguidade — e o conjunto diz mais do que cada metade.
+  selo: { pt: "Enfermeira formada no Brasil · Esteticista licenciada em Leominster, MA", en: "Nursing degree from Brazil · Licensed esthetician in Leominster, MA", es: "Enfermera titulada en Brasil · Esteticista licenciada en Leominster, MA" },
   // Tagline dela, do material dela.
   h1: { pt: "Tecnologia, ciência e cuidado", en: "Technology, science and care", es: "Tecnología, ciencia y cuidado" },
   h1s: { pt: "para resultados que você vê e sente.", en: "for results you see and feel.", es: "para resultados que se ven y se sienten." },
@@ -158,23 +161,27 @@ export const TEXTOS = {
    * A trajetória real, informada por Sostenes em 16/08. Não é reposicionamento de marketing:
    * enfermagem → aconselhamento de mulheres e famílias → estética há mais de 10 anos.
    *
-   * O verbo de "enfermeira" fica no PASSADO, em todos os idiomas, e a palavra não aparece em
-   * lugar nenhum perto dos serviços ou do selo. Nos EUA, título de enfermagem sem licença
-   * estadual ativa é ofensa profissional — como biografia é seguro, como credencial não é.
+   * SOBRE "ENFERMEIRA" — a primeira versão escondeu isso no passado e foi cautela no lugar errado.
+   * Ela É enfermeira formada no Brasil, e isso não a desqualifica: qualifica. O que cria risco não
+   * é o fato, é a palavra SOZINHA — num site em Leominster, "enfermeira" faz a leitora presumir
+   * licença de Massachusetts. A regra, então, não é esconder: é nunca separar do país.
+   * "Enfermeira formada no Brasil" + "esteticista licenciada em Leominster" dizem a verdade
+   * inteira, e o conjunto vale mais do que cada metade. O que continua proibido é o inverso:
+   * "enfermeira" sem país, ou perto de preço e serviço como se fosse a credencial do atendimento.
    */
   trajetoria: {
     pt: [
-      ["Fui enfermeira", "O primeiro lugar onde aprendi a cuidar de gente."],
+      ["Enfermeira formada no Brasil", "O primeiro lugar onde aprendi a cuidar de gente — e onde aprendi a olhar um corpo inteiro, não só a queixa."],
       ["Aconselhei mulheres e famílias", "Ali entendi que quase todo corpo carrega uma história antes de chegar na maca."],
       ["Estética, há mais de 10 anos", "A mesma coisa de sempre, em outra forma: agora o cuidado passa pelas minhas mãos."],
     ],
     en: [
-      ["I was a nurse", "The first place where I learned to care for people."],
+      ["Nursing degree from Brazil", "The first place where I learned to care for people — and to look at a whole body, not just the complaint."],
       ["I counseled women and families", "That's where I understood that almost every body carries a story before it reaches the table."],
       ["Esthetics, for over 10 years", "The same work as always, in another form: now the care goes through my hands."],
     ],
     es: [
-      ["Fui enfermera", "El primer lugar donde aprendí a cuidar de la gente."],
+      ["Enfermera titulada en Brasil", "El primer lugar donde aprendí a cuidar de la gente — y donde aprendí a mirar un cuerpo entero, no solo la queja."],
       ["Aconsejé a mujeres y familias", "Ahí entendí que casi todo cuerpo carga una historia antes de llegar a la camilla."],
       ["Estética, hace más de 10 años", "Lo mismo de siempre, en otra forma: ahora el cuidado pasa por mis manos."],
     ],
