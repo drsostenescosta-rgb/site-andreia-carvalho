@@ -138,6 +138,16 @@ h2{font-size:clamp(1.85rem,3.8vw,2.7rem);margin-bottom:15px}
 .eq-estudo p{margin:7px 0 0;font-size:.93rem;line-height:1.55}
 .eq-estudo cite{display:block;margin-top:9px;font-size:.78rem;font-style:normal;color:var(--suave)}
 .eq-aviso{margin-top:14px;font-size:.84rem;color:var(--suave);font-style:italic}
+.fio{margin-top:18px;font-family:var(--serif);font-size:1.32rem;line-height:1.35;color:var(--marrom)}
+.trajeto{list-style:none;padding:0;margin:24px 0 0;counter-reset:tj}
+.trajeto li{counter-increment:tj;position:relative;padding:0 0 22px 34px;border-left:1px solid var(--linha)}
+.trajeto li:last-child{border-left-color:transparent;padding-bottom:6px}
+.trajeto li::before{content:"";position:absolute;left:-5px;top:7px;width:9px;height:9px;border-radius:50%;
+  background:var(--dourado);box-shadow:0 0 0 4px var(--creme)}
+.trajeto b{display:block;font-family:var(--serif);font-size:1.16rem;color:var(--marrom);font-weight:500}
+.trajeto span{display:block;margin-top:3px;font-size:.95rem;color:var(--suave);line-height:1.55}
+.missao{margin-top:22px;padding:18px 22px;background:var(--papel);border-left:3px solid var(--dourado);
+  border-radius:0 12px 12px 0;font-size:.99rem}
 #detox{padding:0 0 74px}
 .detox-caixa{background:linear-gradient(160deg,var(--creme-2) 0%,var(--papel) 68%);
   border:1px solid var(--linha);border-radius:22px;padding:48px 44px;max-width:var(--max)}
@@ -514,7 +524,14 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
       <div class="rotulo">Mi historia</div>
       <h2>La transformación empieza <span class="script">por dentro.</span></h2>
       <p class="intro">Muestro mi propia evolución porque fue ella la que me enseñó lo que hago hoy. Vine de Brasil y construí aquí, desde cero, un trabajo que ya pasó de mil atenciones.</p>
+      <p class="fio">Desde fuera parecen tres carreras. Desde dentro es una sola — siempre fue cuidar de la mujer.</p>
+      <ol class="trajeto">
+        <li class="rev d1"><b>Fui enfermera</b><span>El primer lugar donde aprendí a cuidar de la gente.</span></li>
+        <li class="rev d2"><b>Aconsejé a mujeres y familias</b><span>Ahí entendí que casi todo cuerpo carga una historia antes de llegar a la camilla.</span></li>
+        <li class="rev d3"><b>Estética, hace más de 10 años</b><span>Lo mismo de siempre, en otra forma: ahora el cuidado pasa por mis manos.</span></li>
+      </ol>
       <blockquote>“No siempre la batalla más grande sucede delante de los ojos de la gente. Entre miedos, lágrimas, nostalgia y volver a empezar, descubrí que la verdadera fuerza está en no rendirse.”</blockquote>
+      <p class="missao">Mi meta es ayudar a las mujeres a entrar en su mejor versión. Por eso entreno todos los días y por eso hablo de mi propio proceso — lo que te pido, me lo pido a mí primero.</p>
     </div>
     <div class="gal">
       <figure class="gal-item"><img src="/img/andreia-arco.jpg" alt="Andréia Carvalho" loading="lazy"

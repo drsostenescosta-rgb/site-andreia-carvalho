@@ -227,6 +227,16 @@ h2{font-size:clamp(1.85rem,3.8vw,2.7rem);margin-bottom:15px}
 .eq-estudo p{margin:7px 0 0;font-size:.93rem;line-height:1.55}
 .eq-estudo cite{display:block;margin-top:9px;font-size:.78rem;font-style:normal;color:var(--suave)}
 .eq-aviso{margin-top:14px;font-size:.84rem;color:var(--suave);font-style:italic}
+.fio{margin-top:18px;font-family:var(--serif);font-size:1.32rem;line-height:1.35;color:var(--marrom)}
+.trajeto{list-style:none;padding:0;margin:24px 0 0;counter-reset:tj}
+.trajeto li{counter-increment:tj;position:relative;padding:0 0 22px 34px;border-left:1px solid var(--linha)}
+.trajeto li:last-child{border-left-color:transparent;padding-bottom:6px}
+.trajeto li::before{content:"";position:absolute;left:-5px;top:7px;width:9px;height:9px;border-radius:50%;
+  background:var(--dourado);box-shadow:0 0 0 4px var(--creme)}
+.trajeto b{display:block;font-family:var(--serif);font-size:1.16rem;color:var(--marrom);font-weight:500}
+.trajeto span{display:block;margin-top:3px;font-size:.95rem;color:var(--suave);line-height:1.55}
+.missao{margin-top:22px;padding:18px 22px;background:var(--papel);border-left:3px solid var(--dourado);
+  border-radius:0 12px 12px 0;font-size:.99rem}
 #detox{padding:0 0 74px}
 .detox-caixa{background:linear-gradient(160deg,var(--creme-2) 0%,var(--papel) 68%);
   border:1px solid var(--linha);border-radius:22px;padding:48px 44px;max-width:var(--max)}
@@ -492,7 +502,12 @@ ${resultados}
       <div class="rotulo">${esc(t(TEXTOS.rotHistoria, l))}</div>
       <h2>${esc(t(TEXTOS.h2Historia, l))} <span class="script">${esc(t(TEXTOS.h2HistoriaScript, l))}</span></h2>
       <p class="intro">${esc(t(TEXTOS.introHistoria, l))}</p>
+      <p class="fio">${esc(t(TEXTOS.fioCondutor, l))}</p>
+      <ol class="trajeto">
+${t(TEXTOS.trajetoria, l).map(([tit, des], i) => `        <li class="rev d${i + 1}"><b>${esc(tit)}</b><span>${esc(des)}</span></li>`).join("\n")}
+      </ol>
       <blockquote>“${esc(t(TEXTOS.citacao, l))}”</blockquote>
+      <p class="missao">${esc(t(TEXTOS.missao, l))}</p>
     </div>
 ${temFotos ? `    <div class="gal">\n${fotos}\n    </div>` : ""}
   </div>

@@ -154,6 +154,41 @@ export const TEXTOS = {
     en: "I show my own journey because it taught me what I do today. I came from Brazil and built this practice from nothing — more than a thousand sessions.",
     es: "Muestro mi propia evolución porque fue ella la que me enseñó lo que hago hoy. Vine de Brasil y construí aquí, desde cero, un trabajo que ya pasó de mil atenciones.",
   },
+  /**
+   * A trajetória real, informada por Sostenes em 16/08. Não é reposicionamento de marketing:
+   * enfermagem → aconselhamento de mulheres e famílias → estética há mais de 10 anos.
+   *
+   * O verbo de "enfermeira" fica no PASSADO, em todos os idiomas, e a palavra não aparece em
+   * lugar nenhum perto dos serviços ou do selo. Nos EUA, título de enfermagem sem licença
+   * estadual ativa é ofensa profissional — como biografia é seguro, como credencial não é.
+   */
+  trajetoria: {
+    pt: [
+      ["Fui enfermeira", "O primeiro lugar onde aprendi a cuidar de gente."],
+      ["Aconselhei mulheres e famílias", "Ali entendi que quase todo corpo carrega uma história antes de chegar na maca."],
+      ["Estética, há mais de 10 anos", "A mesma coisa de sempre, em outra forma: agora o cuidado passa pelas minhas mãos."],
+    ],
+    en: [
+      ["I was a nurse", "The first place where I learned to care for people."],
+      ["I counseled women and families", "That's where I understood that almost every body carries a story before it reaches the table."],
+      ["Esthetics, for over 10 years", "The same work as always, in another form: now the care goes through my hands."],
+    ],
+    es: [
+      ["Fui enfermera", "El primer lugar donde aprendí a cuidar de la gente."],
+      ["Aconsejé a mujeres y familias", "Ahí entendí que casi todo cuerpo carga una historia antes de llegar a la camilla."],
+      ["Estética, hace más de 10 años", "Lo mismo de siempre, en otra forma: ahora el cuidado pasa por mis manos."],
+    ],
+  },
+  fioCondutor: {
+    pt: "De fora parecem três carreiras. De dentro é uma só — sempre foi cuidar de mulher.",
+    en: "From the outside it looks like three careers. From the inside it's one — it was always caring for women.",
+    es: "Desde fuera parecen tres carreras. Desde dentro es una sola — siempre fue cuidar de la mujer.",
+  },
+  missao: {
+    pt: "A minha meta é ajudar mulheres a entrarem na melhor versão delas. É por isso que eu treino todo dia e é por isso que eu falo do meu próprio processo — o que eu peço de você, eu peço de mim primeiro.",
+    en: "My goal is to help women step into their best version. That's why I train every day and why I talk about my own process — what I ask of you, I ask of myself first.",
+    es: "Mi meta es ayudar a las mujeres a entrar en su mejor versión. Por eso entreno todos los días y por eso hablo de mi propio proceso — lo que te pido, me lo pido a mí primero.",
+  },
   citacao: {
     pt: "Nem sempre a maior batalha acontece diante dos olhos das pessoas. Entre medos, lágrimas, saudades e recomeços, descobri que a verdadeira força está em não desistir.",
     en: "The hardest battles are not always the ones people see. Between fear, tears, longing and starting over, I learned that real strength is not giving up.",
