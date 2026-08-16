@@ -233,4 +233,11 @@ export const FALAS = [
  * não fica buraco no layout. Ao repor uma foto, informar `w` e `h` reais — sem eles a imagem
  * estica e distorce o rosto.
  */
-export const FOTOS = [];
+export const FOTOS = [
+  // Ensaio de branding por Thais Araujo Photo, da galeria da propria Andreia (15/08/2026).
+  // Escolhidas do conjunto BRANDING, nao do de dezembro: aquele tem arvore de Natal em todo
+  // quadro e envelheceria o site em janeiro. Estas duas sao atemporais — e a do arco conversa
+  // com o bege e as curvas que o site ja usa, o que nao e coincidencia: e a mesma direcao de marca.
+  { src: "/img/andreia-arco.jpg", pt: "Andréia Carvalho", en: "Andréia Carvalho", es: "Andréia Carvalho", pos: "50% 32%", w: 800, h: 1200 },
+  { src: "/img/andreia-terno.jpg", pt: "Andréia Carvalho", en: "Andréia Carvalho", es: "Andréia Carvalho", pos: "50% 22%", w: 800, h: 1200 },
+];

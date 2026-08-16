@@ -144,6 +144,7 @@ h2{font-size:clamp(1.85rem,3.8vw,2.7rem);margin-bottom:15px}
   text-align:center;max-width:32em;margin-inline:auto}
 
 .historia-grade{display:grid;grid-template-columns:1.1fr .9fr;gap:52px;align-items:center}
+.gal{display:grid;gap:16px}
 .gal-item{margin:0;aspect-ratio:4/5;overflow:hidden;border-radius:10px;border:1px solid var(--linha);background:var(--papel)}
 .gal-item img{width:100%;height:100%;object-fit:cover}
 blockquote{border-left:2px solid var(--dourado);padding-left:22px;margin:22px 0;font-family:var(--serif);
@@ -359,14 +360,19 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
 </section>
 
 <section id="historia">
-  <div class="env">
+  <div class="env historia-grade">
     <div>
       <div class="rotulo">My story</div>
       <h2>Transformation starts <span class="script">on the inside.</span></h2>
       <p class="intro">I show my own journey because it taught me what I do today. I came from Brazil and built this practice from nothing — more than a thousand sessions.</p>
       <blockquote>“The hardest battles are not always the ones people see. Between fear, tears, longing and starting over, I learned that real strength is not giving up.”</blockquote>
     </div>
-
+    <div class="gal">
+      <figure class="gal-item"><img src="/img/andreia-arco.jpg" alt="Andréia Carvalho" loading="lazy"
+        width="800" height="1200" style="object-position:50% 32%" /></figure>
+      <figure class="gal-item"><img src="/img/andreia-terno.jpg" alt="Andréia Carvalho" loading="lazy"
+        width="800" height="1200" style="object-position:50% 22%" /></figure>
+    </div>
   </div>
 </section>
 

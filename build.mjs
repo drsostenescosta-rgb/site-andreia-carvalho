@@ -211,6 +211,7 @@ h2{font-size:clamp(1.85rem,3.8vw,2.7rem);margin-bottom:15px}
   text-align:center;max-width:32em;margin-inline:auto}
 
 .historia-grade{display:grid;grid-template-columns:1.1fr .9fr;gap:52px;align-items:center}
+.gal{display:grid;gap:16px}
 .gal-item{margin:0;aspect-ratio:4/5;overflow:hidden;border-radius:10px;border:1px solid var(--linha);background:var(--papel)}
 .gal-item img{width:100%;height:100%;object-fit:cover}
 blockquote{border-left:2px solid var(--dourado);padding-left:22px;margin:22px 0;font-family:var(--serif);
@@ -367,7 +368,7 @@ ${resultados}
       <p class="intro">${esc(t(TEXTOS.introHistoria, l))}</p>
       <blockquote>“${esc(t(TEXTOS.citacao, l))}”</blockquote>
     </div>
-${fotos}
+${temFotos ? `    <div class="gal">\n${fotos}\n    </div>` : ""}
   </div>
 </section>
 
