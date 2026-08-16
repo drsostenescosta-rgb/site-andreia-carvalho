@@ -14,7 +14,7 @@
 // Uso: node build.mjs
 
 import { writeFileSync } from "node:fs";
-import { CLINICA, TEXTOS, PILARES, SERVICOS, BENEFICIOS, RESULTADOS, FALAS, FOTOS, TECNOLOGIAS, AGENDA, FORM, HANDOFF } from "./dados.js";
+import { CLINICA, TEXTOS, PILARES, SERVICOS, BENEFICIOS, RESULTADOS, FALAS, FOTOS, TECNOLOGIAS, AGENDA, FORM, HANDOFF, AVALIACOES, SITE_URL, ABERTURAS } from "./dados.js";
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const t = (o, l) => (o && typeof o === "object" && !Array.isArray(o) && o[l] !== undefined ? o[l] : o);
@@ -31,14 +31,18 @@ if (pendentes.length) {
 
 // Três idiomas: ela atende a comunidade brasileira, a americana e a hispânica em Leominster.
 const IDIOMAS = [
-  { cod: "pt", rotulo: "PT", href: "/", lang: "pt-BR" },
-  { cod: "en", rotulo: "EN", href: "/en", lang: "en" },
-  { cod: "es", rotulo: "ES", href: "/es", lang: "es" },
+  { cod: "pt", rotulo: "PT", href: "/", lang: "pt-BR", og: "pt_BR" },
+  { cod: "en", rotulo: "EN", href: "/en", lang: "en", og: "en_US" },
+  { cod: "es", rotulo: "ES", href: "/es", lang: "es", og: "es_ES" },
 ];
 
 function pagina(l) {
   const eu = IDIOMAS.find((i) => i.cod === l);
   const zap = `https://wa.me/${CLINICA.whatsapp}?text=${encodeURIComponent(t(TEXTOS.msgZap, l))}`;
+  const googleAvaliar = AGENDA && AVALIACOES.googlePlaceId
+    ? `https://search.google.com/local/writereview?placeid=${AVALIACOES.googlePlaceId}`
+    : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+        `${CLINICA.nome} ${CLINICA.endereco} ${CLINICA.cidadeEstadoZip}`)}`;
   const zapDetox = `https://wa.me/${CLINICA.whatsapp}?text=${encodeURIComponent(t(TEXTOS.msgDetox, l))}`;
   const zapDuvida = `https://wa.me/${CLINICA.whatsapp}?text=${encodeURIComponent(t(TEXTOS.msgDuvida, l))}`;
   const nav = t(TEXTOS.nav, l);
@@ -65,7 +69,7 @@ function pagina(l) {
 
   const rotEq = {
     pt: ["O que é", "Como funciona", "Para que é usada", "O que você sente", "O que os estudos mostram"],
-    en: ["What it is", "How it works", "What it's used for", "What you feel", "What studies show"],
+    en: ["What it is", "How it works", "What it’s used for", "What you feel", "What studies show"],
     es: ["Qué es", "Cómo funciona", "Para qué se usa", "Qué se siente", "Qué muestran los estudios"],
   }[l];
   // Card em DESTAQUE (o aparelho, com foto e texto completo) + dois compactos ao lado.
@@ -118,10 +122,19 @@ function pagina(l) {
 <meta name="description" content="${esc(t(TEXTOS.sub, l))}" />
 <meta property="og:title" content="${esc(CLINICA.nome)} · ${esc(t(CLINICA.papel, l))}" />
 <meta property="og:description" content="${esc(t(TEXTOS.sub, l))}" />
-<meta property="og:image" content="/img/andreia-hero.jpg" />
+<meta property="og:image" content="${SITE_URL}/img/andreia-hero.jpg" />
+<meta property="og:image:width" content="733" />
+<meta property="og:image:height" content="1100" />
 <meta property="og:type" content="website" />
 <meta name="theme-color" content="#f7f1e8" />
-${IDIOMAS.map((i) => `<link rel="alternate" hreflang="${i.lang}" href="${i.href}" />`).join("\n")}
+<link rel="canonical" href="${SITE_URL}${eu.href}" />
+${IDIOMAS.map((i) => `<link rel="alternate" hreflang="${i.lang}" href="${SITE_URL}${i.href}" />`).join("\n")}
+<link rel="alternate" hreflang="x-default" href="${SITE_URL}/" />
+<meta property="og:url" content="${SITE_URL}${eu.href}" />
+<meta property="og:locale" content="${eu.og}" />
+<meta property="og:site_name" content="${esc(CLINICA.nome)}" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="robots" content="index,follow,max-image-preview:large" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500;600&family=Parisienne&display=swap" rel="stylesheet" />
@@ -290,6 +303,15 @@ h2{font-size:clamp(1.85rem,3.8vw,2.7rem);margin-bottom:15px}
 .handoff .acoes{gap:8px}
 .handoff .btn{padding:10px 16px;font-size:.9rem}
 @media (max-width:760px){ .handoff{bottom:88px} .handoff-cx{max-width:100%} }
+
+.aval{background:var(--creme-2)}
+.dep-grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:24px}
+.dep{margin:0;background:var(--papel);border:1px solid var(--linha);border-radius:var(--r-m);padding:20px}
+.dep-nota{color:var(--dourado);letter-spacing:2px;font-size:.95rem}
+.dep-txt{margin:8px 0 12px;font-size:1rem;line-height:1.55;color:var(--marrom)}
+.dep-quem{font-size:.85rem;color:var(--suave);letter-spacing:.04em;text-transform:uppercase}
+.dep-vazio{grid-column:1/-1;text-align:center;margin:18px 0 0}
+.dep-form{margin-top:22px}
 
 .pedido{max-width:660px;margin:26px auto 0;text-align:left;background:var(--papel);
   border:1px solid var(--linha);border-radius:var(--r-g);padding:26px}
@@ -469,6 +491,30 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
   .tab-desc{grid-column:1/-1;order:3}
 }
 </style>
+<script type="application/ld+json">${JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "HealthAndBeautyBusiness",
+  name: CLINICA.nome,
+  description: t(TEXTOS.sub, l),
+  url: SITE_URL + eu.href,
+  image: SITE_URL + "/img/andreia-hero.jpg",
+  telephone: "+1" + CLINICA.whatsapp,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "54 Main Street, Suite 001A",
+    addressLocality: "Leominster",
+    addressRegion: "MA",
+    postalCode: "01453",
+    addressCountry: "US",
+  },
+  areaServed: "Leominster, MA",
+  availableLanguage: ["pt-BR", "en", "es"],
+  sameAs: [CLINICA.instagram],
+  makesOffer: SERVICOS.map((sv) => ({
+    "@type": "Offer",
+    itemOffered: { "@type": "Service", name: t(sv, l)[0], description: t(sv, l)[1] },
+  })),
+})}</script>
 </head>
 <body>
 <a class="pular" href="#conteudo">${({pt:"Ir para o conteúdo",en:"Skip to content",es:"Ir al contenido"})[l]}</a>
@@ -495,7 +541,7 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
       <a href="#servicos">${esc(nav[0])}</a>
       <a href="#tecnologias">${esc(nav[1])}</a>
       <a href="#beneficios">${esc(nav[2])}</a>
-      <a href="#resultados">${esc(nav[3])}</a>
+      <a href="#avaliacoes">${esc(nav[3])}</a>
       <a href="#historia">${esc(nav[4])}</a>
       <a href="#agendar">${esc(nav[5])}</a>
     </nav>
@@ -631,6 +677,56 @@ ${resultados}
   </div>
 </section>
 
+<section id="avaliacoes" class="aval">
+  <div class="env">
+    <div class="rotulo">${esc(t(AVALIACOES.rot, l))}</div>
+    <h2>${esc(t(AVALIACOES.h2, l))} <span class="script">${esc(t(AVALIACOES.h2Script, l))}</span></h2>
+    <p class="intro">${esc(t(AVALIACOES.intro, l))}</p>
+
+    <!-- Preenchido pelo JS a partir do Supabase: só linhas já publicadas pela Andréia.
+         O banco não deixa nem ler as outras — a política filtra linhas e o grant filtra
+         colunas, então o contato de quem escreveu nunca sai daqui. -->
+    <div class="dep-grade" id="depoimentos"><p class="suave dep-vazio">${esc(t(AVALIACOES.vazio, l))}</p></div>
+
+    <div class="acoes" style="justify-content:center;margin-top:26px">
+      <a class="btn btn-cheio" href="${googleAvaliar}" target="_blank" rel="noopener">${esc(t(AVALIACOES.ctaGoogle, l))}</a>
+      <button class="btn btn-vazio" type="button" id="abrir-dep">${esc(t(AVALIACOES.ctaAqui, l))}</button>
+    </div>
+
+    <form class="pedido dep-form" id="dep-form" hidden novalidate>
+      <div class="campos">
+        <label>${esc(t(AVALIACOES.fNome, l))}
+          <input name="primeiro_nome" required minlength="2" maxlength="40" autocomplete="given-name" />
+        </label>
+        <label>${esc(t(AVALIACOES.fNota, l))}
+          <select name="nota">
+            <option value="5">★★★★★</option><option value="4">★★★★</option>
+            <option value="3">★★★</option><option value="2">★★</option><option value="1">★</option>
+          </select>
+        </label>
+        <label class="largo">${esc(t(AVALIACOES.fServico, l))}
+          <select name="servico">
+            <option value=""></option>
+${SERVICOS.map((sv) => `            <option>${esc(t(sv, l)[0])}</option>`).join("\n")}
+          </select>
+        </label>
+        <label class="largo">${esc(t(AVALIACOES.fTexto, l))}
+          <textarea name="texto" required minlength="15" maxlength="600" rows="3"></textarea>
+        </label>
+        <label class="largo">${esc(t(AVALIACOES.fContato, l))}
+          <input name="contato" maxlength="40" inputmode="tel" />
+        </label>
+      </div>
+      <p class="pedido-aviso">${esc(t(AVALIACOES.aviso, l))}</p>
+      <div class="isca" aria-hidden="true"><label>Site<input name="site" tabindex="-1" autocomplete="off" /></label></div>
+      <div class="acoes" style="justify-content:center">
+        <button class="btn btn-cheio" type="submit">${esc(t(AVALIACOES.enviar, l))}</button>
+      </div>
+      <p class="pedido-msg" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
 <section id="historia">
   <div class="env${temFotos ? " historia-grade" : ""}">
     <div>
@@ -733,17 +829,22 @@ ${["manha", "tarde", "noite", "qualquer"].map((v, i) => `            <option val
 <!-- use-rtc="true" foi tentado em 16/08 e REVERTIDO no mesmo dia: quebrou a voz.
      O widget nao aceita esse atributo. Nao repetir sem antes verificar no ar. -->
 <elevenlabs-convai agent-id="${AGENDA.agenteEmily}"></elevenlabs-convai>
-<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+<!-- Versao FIXA. Sem ela, o unpkg serve o que a ElevenLabs publicar amanha — codigo novo
+     rodando na pagina dela sem ninguem revisar. Atualizar tem que ser decisao, nao acidente. -->
+<script src="https://unpkg.com/@elevenlabs/convai-widget-embed@0.16.0" async type="text/javascript"></script>
 
 <script>
 // Menu, e o envio do pedido de horário. Todo o conteúdo já está no HTML.
 (function(){
   var SB={url:${JSON.stringify(AGENDA.supabaseUrl)},chave:${JSON.stringify(AGENDA.supabaseChave)},
-          tabela:${JSON.stringify(AGENDA.tabela)},idioma:${JSON.stringify(l)}};
+          tabela:${JSON.stringify(AGENDA.tabela)},tabelaDep:"andreia_depoimentos",
+          idioma:${JSON.stringify(l)}};
+  var D={ok:${JSON.stringify(t(AVALIACOES.ok, l))},erro:${JSON.stringify(t(AVALIACOES.erro, l))}};
   var T={enviando:${JSON.stringify(t(FORM.enviando, l))},ok:${JSON.stringify(t(FORM.ok, l))},
          erro:${JSON.stringify(t(FORM.erro, l))},copiar:${JSON.stringify(t(HANDOFF.copiar, l))},
          copiado:${JSON.stringify(t(HANDOFF.copiado, l))}};
   var ZAP=${JSON.stringify(CLINICA.whatsapp)};
+  var ABERTURAS=${JSON.stringify(ABERTURAS)};
   var b=document.querySelector('.menu-btn'), n=document.getElementById('menu');
   b.addEventListener('click',function(){
     var a=n.classList.toggle('aberto');
@@ -753,6 +854,19 @@ ${["manha", "tarde", "noite", "qualquer"].map((v, i) => `            <option val
   // Pedido de horário: vai direto para o Supabase com a chave publicável. Ela só permite
   // INSERT nesta tabela — ler os pedidos exige login de operador. Se o envio falhar por
   // qualquer motivo, o caminho do WhatsApp continua ali do lado, então ninguém fica sem saída.
+
+
+  // A abertura varia. Sempre a mesma frase soa gravada — gente cumprimenta diferente a
+  // cada vez. As frases sao FIXAS (definidas por nos), so a escolha e sorteada: a Emily
+  // nao inventa o proprio cumprimento.
+  var wConv=document.querySelector('elevenlabs-convai');
+  if(wConv){
+    wConv.addEventListener('elevenlabs-convai:call',function(e){
+      var f=ABERTURAS[Math.floor(Math.random()*ABERTURAS.length)];
+      e.detail.config.overrides=Object.assign({},e.detail.config.overrides,
+        {agent:Object.assign({},(e.detail.config.overrides||{}).agent,{firstMessage:f})});
+    });
+  }
 
   // A Emily chama a ferramenta encaminhar_whatsapp quando a pessoa quer agendar. O navegador bloqueia
   // abrir aba nova fora de um clique, e mais importante: ninguém deve mandar mensagem que não
@@ -802,6 +916,60 @@ ${["manha", "tarde", "noite", "qualquer"].map((v, i) => `            <option val
     tentar(12);
   }
 
+
+  // Depoimentos publicados. A leitura pede COLUNAS EXPLICITAS de proposito: o banco nega
+  // "select=*" porque a coluna de contato nao esta no grant do anonimo. Pedir tudo aqui
+  // derrubaria a secao inteira — e essa negativa e a trava funcionando, nao um bug.
+  var CAIXA=document.getElementById('depoimentos');
+  if(CAIXA){
+    fetch(SB.url+'/rest/v1/'+SB.tabelaDep
+        +'?select=primeiro_nome,texto,nota,servico&status=eq.publicado'
+        +'&idioma=eq.'+SB.idioma+'&order=publicado_em.desc&limit=9',
+      {headers:{apikey:SB.chave,authorization:'Bearer '+SB.chave}})
+     .then(function(r){return r.ok?r.json():[];})
+     .then(function(ds){
+       if(!ds.length) return;
+       CAIXA.innerHTML='';
+       ds.forEach(function(d){
+         var f=document.createElement('figure'); f.className='dep';
+         if(d.nota){ var n=document.createElement('div'); n.className='dep-nota';
+           n.textContent='★★★★★'.slice(0,d.nota); f.appendChild(n); }
+         var q=document.createElement('blockquote'); q.className='dep-txt';
+         q.textContent='\u201C'+d.texto+'\u201D'; f.appendChild(q);
+         var c=document.createElement('figcaption'); c.className='dep-quem';
+         c.textContent=d.primeiro_nome+(d.servico?' · '+d.servico:''); f.appendChild(c);
+         CAIXA.appendChild(f);
+       });
+     }).catch(function(){ /* sem depoimento a secao so mostra os botoes */ });
+  }
+
+  var dep=document.getElementById('dep-form'), abrirDep=document.getElementById('abrir-dep');
+  if(dep&&abrirDep){
+    abrirDep.onclick=function(){ dep.hidden=!dep.hidden;
+      if(!dep.hidden){ dep.scrollIntoView({block:'nearest'}); dep.primeiro_nome.focus(); } };
+    var dMsg=dep.querySelector('.pedido-msg');
+    dep.addEventListener('submit',function(ev){
+      ev.preventDefault();
+      if(dep.dataset.enviado==='1') return;
+      if(dep.site.value){ dep.dataset.enviado='1'; dMsg.textContent=D.ok; dMsg.className='pedido-msg ok'; return; }
+      if(!dep.checkValidity()){ dep.reportValidity(); return; }
+      var b=dep.querySelector('button[type=submit]'); b.disabled=true;
+      dMsg.className='pedido-msg'; dMsg.textContent=T.enviando;
+      fetch(SB.url+'/rest/v1/'+SB.tabelaDep,{method:'POST',headers:{
+          apikey:SB.chave,authorization:'Bearer '+SB.chave,
+          'content-type':'application/json','prefer':'return=minimal'},
+        body:JSON.stringify({primeiro_nome:dep.primeiro_nome.value.trim(),
+          texto:dep.texto.value.trim(),nota:Number(dep.nota.value)||null,
+          servico:dep.servico.value||null,contato:dep.contato.value.trim()||null,
+          idioma:SB.idioma})
+      }).then(function(r){ if(!r.ok) throw new Error(r.status);
+        dep.dataset.enviado='1'; dMsg.textContent=D.ok; dMsg.className='pedido-msg ok';
+        dep.querySelector('.campos').style.display='none';
+        dep.querySelector('.pedido-aviso').style.display='none'; b.style.display='none';
+      }).catch(function(){ b.disabled=false; dMsg.textContent=D.erro; dMsg.className='pedido-msg ruim'; });
+    });
+  }
+
   var f=document.getElementById('pedido');
   if(f){
     var dia=f.querySelector('[name=dia_preferido]');
@@ -845,4 +1013,15 @@ const gerados = IDIOMAS.map((i) => {
   writeFileSync(new URL(`./${arquivo}`, import.meta.url), pagina(i.cod));
   return arquivo;
 });
-console.log(`Gerado: ${gerados.join(", ")} — ${SERVICOS.length} procedimentos, ${FOTOS.length} foto(s).`);
+// Sem sitemap o Google descobre as tres linguas por sorte. Com ele, descobre no primeiro dia.
+const hoje = new Date().toISOString().slice(0, 10);
+writeFileSync("sitemap.xml",
+  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n`
+  + IDIOMAS.map((i) => `  <url>\n    <loc>${SITE_URL}${i.href}</loc>\n    <lastmod>${hoje}</lastmod>\n`
+      + IDIOMAS.map((j) => `    <xhtml:link rel="alternate" hreflang="${j.lang}" href="${SITE_URL}${j.href}" />`).join("\n")
+      + `\n  </url>`).join("\n")
+  + `\n</urlset>\n`);
+
+writeFileSync("robots.txt", `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`);
+
+console.log(`Gerado: ${gerados.join(", ")}, sitemap.xml, robots.txt — ${SERVICOS.length} procedimentos, ${FOTOS.length} foto(s).`);

@@ -24,6 +24,8 @@
  * As três páginas continuam existindo. Em inglês, a cliente lê no idioma dela e a conversa se
  * resolve na sala com tradução — e o site avisa isso antes de ela agendar.
  */
+export const SITE_URL = "https://site-andreia-carvalho.vercel.app";
+
 export const CLINICA = {
   nome: "Andréia Carvalho",
   papel: { pt: "Especialista em Estética e Bem-estar", en: "Esthetics & Wellness Specialist", es: "Especialista en Estética y Bienestar" },
@@ -46,9 +48,9 @@ export const TEXTOS = {
     es: "Andréia Carvalho · Estética y Bienestar — Leominster, MA",
   },
   nav: {
-    pt: ["Procedimentos", "Tecnologias", "Benefícios", "Resultados", "Minha história", "Agendar"],
-    en: ["Treatments", "Technology", "Benefits", "Results", "My story", "Book"],
-    es: ["Procedimientos", "Tecnología", "Beneficios", "Resultados", "Mi historia", "Agendar"],
+    pt: ["Procedimentos", "Tecnologias", "Benefícios", "Avaliações", "Minha história", "Agendar"],
+    en: ["Treatments", "Technology", "Benefits", "Reviews", "My story", "Book"],
+    es: ["Procedimientos", "Tecnología", "Beneficios", "Reseñas", "Mi historia", "Agendar"],
   },
   // Formacao + licenca local, nesta ordem, nas tres linguas. "Enfermeira" sozinha faria a leitora
   // americana presumir licenca de Massachusetts; com "formada no Brasil" ao lado de "esteticista
@@ -85,7 +87,7 @@ export const TEXTOS = {
   },
   duvidaAjuda: {
     pt: "Não sabe por onde começar? Me conta o que você quer melhorar que eu te digo o que faz sentido.",
-    en: "Not sure where to start? Tell me what you'd like to improve and I'll tell you what makes sense.",
+    en: "Not sure where to start? Tell me what you’d like to improve and I’ll tell you what makes sense.",
     es: "¿No sabes por dónde empezar? Cuéntame qué quieres mejorar y te digo qué tiene sentido.",
   },
   ctaVer: { pt: "Ver procedimentos", en: "See treatments", es: "Ver procedimientos" },
@@ -94,7 +96,7 @@ export const TEXTOS = {
   h2ServicosScript: { pt: "o seu protocolo.", en: "its own protocol.", es: "su propio protocolo." },
   introServicos: {
     pt: "Toda primeira vez começa por uma avaliação — é nela que a gente decide junto o que faz sentido para você.",
-    en: "Every first visit starts with an assessment — that's where we decide together what makes sense for you.",
+    en: "Every first visit starts with an assessment — that’s where we decide together what makes sense for you.",
     es: "Toda primera vez empieza con una evaluación — ahí decidimos juntas qué tiene sentido para ti.",
   },
   th: { pt: ["Procedimento", "O que é", "Duração", "Valor"], en: ["Treatment", "What it is", "Duration", "Price"], es: ["Procedimiento", "Qué es", "Duración", "Precio"] },
@@ -108,17 +110,17 @@ export const TEXTOS = {
   h2EquipScript: { pt: "e o que você sente.", en: "and what you feel.", es: "y qué se siente." },
   introEquip: {
     pt: "A pergunta que mais chega aqui é \u201Cdói?\u201D. Em vez de responder que não, prefiro te contar exatamente o que acontece — e lembrar que, em qualquer momento, é só você falar que eu ajusto.",
-    en: "The question I get the most is \u201Cdoes it hurt?\u201D. Instead of just saying no, I'd rather tell you exactly what happens — and remind you that at any moment you can say so and I'll adjust.",
+    en: "The question I get the most is \u201Cdoes it hurt?\u201D. Instead of just saying no, I’d rather tell you exactly what happens — and remind you that at any moment you can say so and I’ll adjust.",
     es: "La pregunta que más me hacen es \u201C¿duele?\u201D. En vez de responder que no, prefiero contarte exactamente qué pasa — y recordarte que en cualquier momento me dices y lo ajusto.",
   },
   notaEquip: {
     pt: "Qual aparelho faz sentido para você, e se algum não faz, é o que a gente decide junto na avaliação. Isso depende do seu corpo e do seu histórico — não dá para responder por mensagem.",
-    en: "Which device makes sense for you — and which doesn't — is what we decide together at the assessment. It depends on your body and your history, and that can't be answered over a message.",
+    en: "Which device makes sense for you — and which doesn’t — is what we decide together at the assessment. It depends on your body and your history, and that can’t be answered over a message.",
     es: "Qué aparato tiene sentido para ti, y cuál no, es lo que decidimos juntas en la evaluación. Depende de tu cuerpo y de tu historial, y eso no se responde por mensaje.",
   },
   avisoEstudos: {
     pt: "Os estudos acima foram feitos com equipamentos específicos e em grupos de pessoas. Servem para você entender o que a tecnologia faz — não para prever o seu resultado, que depende do seu corpo, do seu histórico e da constância.",
-    en: "The studies above were run with specific devices and on groups of people. They help you understand what the technology does — they don't predict your result, which depends on your body, your history and consistency.",
+    en: "The studies above were run with specific devices and on groups of people. They help you understand what the technology does — they don’t predict your result, which depends on your body, your history and consistency.",
     es: "Los estudios anteriores se hicieron con equipos específicos y en grupos de personas. Sirven para entender qué hace la tecnología — no para predecir tu resultado, que depende de tu cuerpo, tu historial y la constancia.",
   },
   // DETOX — posicionado por OCASIÃO, não por mecanismo.
@@ -126,27 +128,27 @@ export const TEXTOS = {
   // fisiológica que ninguém pode sustentar. Ocasião não é alegação: é quem procura e quando.
   // E converte mais, porque dá motivo para marcar HOJE em vez de "um dia desses".
   rotDetox: { pt: "Método Detox", en: "Detox Method", es: "Método Detox" },
-  h2Detox: { pt: "Quando existe", en: "When there's", es: "Cuando hay" },
+  h2Detox: { pt: "Quando existe", en: "When there’s", es: "Cuando hay" },
   h2DetoxScript: { pt: "uma data marcada.", en: "a date on the calendar.", es: "una fecha marcada." },
   introDetox: {
     pt: "É o que mais me procuram quando o calendário aperta. A gente monta a série contando de trás para frente, a partir do seu dia.",
-    en: "It's what people come to me for when the calendar gets tight. We build the series backwards, starting from your day.",
+    en: "It’s what people come to me for when the calendar gets tight. We build the series backwards, starting from your day.",
     es: "Es lo que más me buscan cuando el calendario aprieta. Armamos la serie de atrás hacia adelante, desde tu día.",
   },
   ocasioes: {
     pt: ["Casamento — o seu ou o de alguém", "Um evento no fim de semana", "Ensaio fotográfico", "Você treina e quer mostrar o que construiu", "Viagem, praia, verão chegando"],
-    en: ["A wedding — yours or someone else's", "An event this weekend", "A photo shoot", "You train and want to show what you built", "A trip, the beach, summer coming"],
+    en: ["A wedding — yours or someone else’s", "An event this weekend", "A photo shoot", "You train and want to show what you built", "A trip, the beach, summer coming"],
     es: ["Una boda — la tuya o la de alguien", "Un evento el fin de semana", "Una sesión de fotos", "Entrenas y quieres mostrar lo que construiste", "Un viaje, la playa, el verano"],
   },
   ctaDetox: { pt: "Tenho uma data", en: "I have a date", es: "Tengo una fecha" },
   msgDetox: {
     pt: "Oi, Andréia! Vim pelo site. Tenho uma data chegando e queria saber como funciona o Detox.",
-    en: "Hi Andréia! I came from your website. I have a date coming up and I'd like to know how the Detox works.",
+    en: "Hi Andréia! I came from your website. I have a date coming up and I’d like to know how the Detox works.",
     es: "¡Hola, Andréia! Vengo desde tu sitio. Tengo una fecha próxima y quisiera saber cómo funciona el Detox.",
   },
   notaDetox: {
     pt: "Quanto antes você me chamar, mais a gente consegue montar. Em cima da hora também dá — só muda o que é possível fazer.",
-    en: "The earlier you reach out, the more we can build. Last minute works too — it just changes what's possible.",
+    en: "The earlier you reach out, the more we can build. Last minute works too — it just changes what’s possible.",
     es: "Cuanto antes me escribas, más podemos armar. A última hora también se puede — solo cambia lo que es posible hacer.",
   },
   rotAtendimento: { pt: "Quem faz", en: "Who does it", es: "Quién lo hace" },
@@ -199,7 +201,7 @@ export const TEXTOS = {
     ],
     en: [
       ["Nursing degree from Brazil", "The first place where I learned to care for people — and to look at a whole body, not just the complaint."],
-      ["I counseled women and families", "That's where I understood that almost every body carries a story before it reaches the table."],
+      ["I counseled women and families", "That’s where I understood that almost every body carries a story before it reaches the table."],
       ["Esthetics, for over 10 years", "The same work as always, in another form: now the care goes through my hands."],
     ],
     es: [
@@ -210,12 +212,12 @@ export const TEXTOS = {
   },
   fioCondutor: {
     pt: "De fora parecem três carreiras. De dentro é uma só — sempre foi cuidar de mulher.",
-    en: "From the outside it looks like three careers. From the inside it's one — it was always caring for women.",
+    en: "From the outside it looks like three careers. From the inside it’s one — it was always caring for women.",
     es: "Desde fuera parecen tres carreras. Desde dentro es una sola — siempre fue cuidar de la mujer.",
   },
   missao: {
     pt: "A minha meta é ajudar mulheres a entrarem na melhor versão delas. É por isso que eu treino todo dia e é por isso que eu falo do meu próprio processo — o que eu peço de você, eu peço de mim primeiro.",
-    en: "My goal is to help women step into their best version. That's why I train every day and why I talk about my own process — what I ask of you, I ask of myself first.",
+    en: "My goal is to help women step into their best version. That’s why I train every day and why I talk about my own process — what I ask of you, I ask of myself first.",
     es: "Mi meta es ayudar a las mujeres a entrar en su mejor versión. Por eso entreno todos los días y por eso hablo de mi propio proceso — lo que te pido, me lo pido a mí primero.",
   },
   citacao: {
@@ -234,7 +236,7 @@ export const TEXTOS = {
   ctaInsta: { pt: "Ver o Instagram", en: "See Instagram", es: "Ver el Instagram" },
   msgZap: {
     pt: "Oi, Andréia! Vim pelo site e queria agendar uma avaliação.",
-    en: "Hi Andréia! I came from your website and I'd like to book an assessment.",
+    en: "Hi Andréia! I came from your website and I’d like to book an assessment.",
     es: "¡Hola, Andréia! Vengo desde tu sitio web y quisiera agendar una evaluación.",
   },
   labelZap: { pt: "WhatsApp", en: "WhatsApp", es: "WhatsApp" },
@@ -284,8 +286,8 @@ export const SERVICOS = [
   { pt: ["Dreno Detox Turbo", "Potencializa a eliminação de toxinas, reduz medidas e promove leveza e bem-estar."], en: ["Detox Drainage Turbo", "Boosts toxin elimination, reduces measurements and brings lightness and wellness."], es: ["Drenaje Detox Turbo", "Potencia la eliminación de toxinas, reduce medidas y aporta ligereza y bienestar."], dur: { pt: "100 min", en: "100 min", es: "100 min" }, p: 100 },
   { pt: ["Drenagem linfática", "Massagem que estimula o sistema linfático, reduz inchaços e melhora a circulação."], en: ["Lymphatic drainage", "Massage that stimulates the lymphatic system, reduces swelling and improves circulation."], es: ["Drenaje linfático", "Masaje que estimula el sistema linfático, reduce hinchazones y mejora la circulación."], dur: { pt: "60 min", en: "60 min", es: "60 min" }, p: 60, destaque: true },
   { pt: ["Relaxante", "Massagem que alivia tensões, reduz o estresse e promove relaxamento profundo."], en: ["Relaxing massage", "Massage that relieves tension, reduces stress and brings deep relaxation."], es: ["Relajante", "Masaje que alivia tensiones, reduce el estrés y promueve relajación profunda."], dur: { pt: "70 min", en: "70 min", es: "70 min" }, p: 70 },
-  { pt: ["Masculina", "Massagem específica para o corpo masculino, ativa a circulação e reduz tensões."], en: ["Men's massage", "Massage designed for the male body, activates circulation and relieves tension."], es: ["Masculino", "Masaje específico para el cuerpo masculino, activa la circulación y reduce tensiones."], dur: { pt: "70 min", en: "70 min", es: "70 min" }, p: 70 },
-  { pt: ["Masculina com fortalecimento", "Técnicas avançadas que tonificam, fortalecem e modelam o corpo masculino."], en: ["Men's strengthening massage", "Advanced techniques that tone, strengthen and shape the male body."], es: ["Masculino con fortalecimiento", "Técnicas avanzadas que tonifican, fortalecen y moldean el cuerpo masculino."], dur: { pt: "60 min", en: "60 min", es: "60 min" }, p: 100 },
+  { pt: ["Masculina", "Massagem específica para o corpo masculino, ativa a circulação e reduz tensões."], en: ["Men’s massage", "Massage designed for the male body, activates circulation and relieves tension."], es: ["Masculino", "Masaje específico para el cuerpo masculino, activa la circulación y reduce tensiones."], dur: { pt: "70 min", en: "70 min", es: "70 min" }, p: 70 },
+  { pt: ["Masculina com fortalecimento", "Técnicas avançadas que tonificam, fortalecem e modelam o corpo masculino."], en: ["Men’s strengthening massage", "Advanced techniques that tone, strengthen and shape the male body."], es: ["Masculino con fortalecimiento", "Técnicas avanzadas que tonifican, fortalecen y moldean el cuerpo masculino."], dur: { pt: "60 min", en: "60 min", es: "60 min" }, p: 100 },
   { pt: ["Drenagem + EMShape Neo", "Drenagem linfática combinada com a tecnologia EMShape Neo para eliminar líquidos e tonificar."], en: ["Drainage + EMShape Neo", "Lymphatic drainage combined with EMShape Neo technology to reduce fluid and tone."], es: ["Drenaje + EMShape Neo", "Drenaje linfático combinado con la tecnología EMShape Neo para eliminar líquidos y tonificar."], dur: { pt: "60 min", en: "60 min", es: "60 min" }, p: 100, destaque: true },
   { pt: ["Tecnologias", "Sessão personalizada com tecnologias avançadas para tratar, modelar e potencializar resultados."], en: ["Technologies", "Personalized session with advanced technology to treat, shape and enhance results."], es: ["Tecnologías", "Sesión personalizada con tecnologías avanzadas para tratar, moldear y potenciar resultados."], dur: { pt: "60 min", en: "60 min", es: "60 min" }, p: 100 },
   { pt: ["Ultracavitação", "Tecnologia que quebra células de gordura localizada e reduz medidas."], en: ["Ultracavitation", "Technology that breaks down localized fat cells and reduces measurements."], es: ["Ultracavitación", "Tecnología que rompe células de grasa localizada y reduce medidas."], dur: { pt: "por área", en: "per area", es: "por zona" }, p: 50 },
@@ -382,6 +384,53 @@ export const AGENDA = {
   tabela: "andreia_pedidos_site",
 };
 
+// Aberturas da Emily. O site sorteia uma e manda por override. Frases FIXAS: a variacao
+// e na escolha, nao na invencao — ela nao improvisa o proprio cumprimento.
+// Espelhadas em emily-site/criar-agente.mjs (a primeira e o padrao do agente).
+export const ABERTURAS = [
+  "Oi! Eu sou a Emily, assistente virtual da Andréia, me conta: o que você está precisando hoje?",
+  "Oi, tudo bem? Aqui é a Emily, assistente virtual da Andréia. Como eu posso te ajudar?",
+  "Olá! Eu sou a Emily, assistente virtual da Andréia. Você já é cliente da casa ou está chegando agora?",
+  "Oi! Emily aqui, assistente virtual da Andréia. Me conta o que te trouxe: o que você quer melhorar?",
+  "Oi, que bom te ver por aqui! Sou a Emily, assistente virtual da Andréia. O que você está querendo cuidar?",
+  "Olá! Eu sou a Emily, assistente virtual da Andréia. Me diz uma coisa: o que você gostaria de mudar?",
+];
+
+export const AVALIACOES = {
+  // [PREENCHER] Place ID do Perfil da Empresa no Google. Sem ele o botao cai numa BUSCA
+  // pelo nome+endereco, que funciona mas da um passo a mais. Com o Place ID o link abre
+  // direto a caixa de avaliacao. Pegar em: business.google.com > o perfil dela.
+  googlePlaceId: null,
+  rot:      { pt: "Quem já passou por aqui", en: "From the people who came", es: "De quien ya pasó por aquí" },
+  h2:       { pt: "O que dizem", en: "What they say", es: "Lo que dicen" },
+  h2Script: { pt: "depois da sessão.", en: "after the session.", es: "después de la sesión." },
+  intro:    { pt: "Depoimentos de clientes reais. A Andréia lê e publica cada um antes de aparecer aqui.",
+              en: "From real clients. Andréia reads and approves each one before it appears here.",
+              es: "De clientas reales. Andréia lee y aprueba cada uno antes de que aparezca aquí." },
+  vazio:    { pt: "Os primeiros depoimentos aparecem assim que forem publicados.",
+              en: "The first reviews will show up once they’re published.",
+              es: "Los primeros testimonios aparecerán en cuanto se publiquen." },
+  ctaGoogle:{ pt: "Avaliar no Google", en: "Review on Google", es: "Reseñar en Google" },
+  ctaAqui:  { pt: "Deixar depoimento aqui", en: "Leave a review here", es: "Dejar testimonio aquí" },
+  fNome:    { pt: "Seu primeiro nome", en: "Your first name", es: "Tu primer nombre" },
+  fServico: { pt: "O que você fez (opcional)", en: "What you had done (optional)", es: "Qué te hiciste (opcional)" },
+  fNota:    { pt: "Sua nota", en: "Your rating", es: "Tu puntuación" },
+  fTexto:   { pt: "Como foi para você", en: "How it went for you", es: "Cómo te fue" },
+  fContato: { pt: "WhatsApp, só para a Andréia te agradecer (opcional)",
+              en: "WhatsApp, just so Andréia can thank you (optional)",
+              es: "WhatsApp, solo para que Andréia te agradezca (opcional)" },
+  enviar:   { pt: "Enviar depoimento", en: "Send review", es: "Enviar testimonio" },
+  ok:       { pt: "Obrigada! A Andréia vai ler e publicar. Seu contato não aparece no site.",
+              en: "Thank you! Andréia will read and publish it. Your contact never appears on the site.",
+              es: "¡Gracias! Andréia lo leerá y publicará. Tu contacto no aparece en el sitio." },
+  erro:     { pt: "Não consegui enviar agora. Tenta de novo em instantes.",
+              en: "Couldn’t send it right now. Please try again shortly.",
+              es: "No pude enviarlo ahora. Inténtalo de nuevo en un momento." },
+  aviso:    { pt: "Não escreva dados de saúde nem detalhe de procedimento médico. Isso fica público.",
+              en: "Please don’t include health details or medical specifics. This becomes public.",
+              es: "No escribas datos de salud ni detalles médicos. Esto se hace público." },
+};
+
 export const HANDOFF = {
   titulo:  { pt: "Pronto para mandar para a Andréia", en: "Ready to send to Andréia", es: "Listo para enviar a Andréia" },
   intro:   { pt: "A Emily resumiu sua conversa. Leia antes de enviar — você pode editar no WhatsApp.",
@@ -400,7 +449,7 @@ export const FORM = {
               es: "Toma 30 segundos. Andréia confirma el horario contigo por WhatsApp." },
   nome:     { pt: "Seu primeiro nome", en: "Your first name", es: "Tu primer nombre" },
   contato:  { pt: "WhatsApp com DDD", en: "WhatsApp number", es: "WhatsApp con código" },
-  servico:  { pt: "O que você quer fazer", en: "What you'd like to do", es: "Qué quieres hacer" },
+  servico:  { pt: "O que você quer fazer", en: "What you’d like to do", es: "Qué quieres hacer" },
   naoSei:   { pt: "Não sei ainda — quero uma avaliação", en: "Not sure yet — I want an assessment", es: "Todavía no sé — quiero una evaluación" },
   dia:      { pt: "Dia de preferência", en: "Preferred day", es: "Día preferido" },
   periodo:  { pt: "Período", en: "Time of day", es: "Franja" },
@@ -412,15 +461,15 @@ export const FORM = {
               en: "Request sent. Andréia will confirm the exact time with you on WhatsApp. You can also message her directly.",
               es: "Solicitud enviada. Andréia confirma el horario contigo por WhatsApp. Si prefieres, escríbele directo." },
   erro:     { pt: "Não consegui enviar agora. Chama a Andréia no WhatsApp que ela resolve na hora.",
-              en: "Couldn't send it right now. Message Andréia on WhatsApp and she'll sort it out.",
+              en: "Couldn’t send it right now. Message Andréia on WhatsApp and she’ll sort it out.",
               es: "No pude enviarlo ahora. Escríbele a Andréia por WhatsApp y lo resuelve." },
   // Aviso obrigatorio: o formulario nao e canal clinico. Sem isso, alguem descreve uma
   // cirurgia recente num campo de texto que nao foi feito para guardar isso.
   aviso:    { pt: "Não escreva dados de saúde, documento ou cartão. Isso é só um pedido de horário.",
-              en: "Please don't include health, ID or card details. This is only a time request.",
+              en: "Please don’t include health, ID or card details. This is only a time request.",
               es: "No escribas datos de salud, documento o tarjeta. Esto es solo una solicitud de horario." },
   emily:    { pt: "Prefere perguntar antes? Fale com a Emily, atendente da Andréia",
-              en: "Have questions first? Talk to Emily, Andréia's assistant",
+              en: "Have questions first? Talk to Emily, Andréia’s assistant",
               es: "¿Dudas primero? Habla con Emily, asistente de Andréia" },
 };
 
@@ -467,17 +516,17 @@ export const TECNOLOGIAS = [
     },
     como: {
       pt: "Um campo eletromagnético de alta intensidade provoca contrações musculares involuntárias — mais profundas do que as que você consegue sozinha, porque não dependem da sua vontade.",
-      en: "A high-intensity electromagnetic field triggers involuntary muscle contractions — deeper than the ones you can produce on your own, because they don't depend on your effort.",
+      en: "A high-intensity electromagnetic field triggers involuntary muscle contractions — deeper than the ones you can produce on your own, because they don’t depend on your effort.",
       es: "Un campo electromagnético de alta intensidad provoca contracciones musculares involuntarias — más profundas que las que logras por tu cuenta, porque no dependen de tu voluntad.",
     },
     paraque: {
       pt: "Tonificação e definição de abdômen e glúteos. Muito procurada por quem já treina e quer marcar o que construiu.",
-      en: "Toning and definition of abdomen and glutes. Popular with people who already train and want to show what they've built.",
+      en: "Toning and definition of abdomen and glutes. Popular with people who already train and want to show what they’ve built.",
       es: "Tonificación y definición de abdomen y glúteos. Muy buscada por quien ya entrena y quiere marcar lo que construyó.",
     },
     sensacao: {
       pt: "A contração é forte e estranha na primeira vez, mas não é dor. Você fica deitada e a intensidade sobe aos poucos — se incomodar em algum momento, você fala e eu baixo na hora.",
-      en: "The contraction feels strong and strange the first time, but it isn't pain. You lie down and the intensity rises gradually — if it bothers you, say so and I turn it down right away.",
+      en: "The contraction feels strong and strange the first time, but it isn’t pain. You lie down and the intensity rises gradually — if it bothers you, say so and I turn it down right away.",
       es: "La contracción se siente fuerte y extraña la primera vez, pero no es dolor. Te acuestas y la intensidad sube poco a poco — si te incomoda, me dices y la bajo al instante.",
     },
     estudo: {
@@ -512,7 +561,7 @@ export const TECNOLOGIAS = [
     },
     sensacao: {
       pt: "Você vai ouvir um apito agudo durante a aplicação. É normal e não é defeito do aparelho: é a própria frequência do ultrassom chegando ao ouvido pelo osso. Na pele, a sensação é de um aparelho morno deslizando.",
-      en: "You'll hear a high-pitched tone during the session. That's normal and not a fault: it's the ultrasound frequency reaching your ear through bone. On the skin it feels like a warm device gliding.",
+      en: "You’ll hear a high-pitched tone during the session. That’s normal and not a fault: it’s the ultrasound frequency reaching your ear through bone. On the skin it feels like a warm device gliding.",
       es: "Vas a escuchar un pitido agudo durante la aplicación. Es normal y no es una falla: es la propia frecuencia del ultrasonido llegando al oído por el hueso. En la piel se siente como un aparato tibio deslizando.",
     },
     estudo: {
@@ -542,7 +591,7 @@ export const TECNOLOGIAS = [
     },
     paraque: {
       pt: "Firmeza e textura da pele. É a tecnologia mais usada em combinação com as outras, e não sozinha.",
-      en: "Skin firmness and texture. It's the technology most often used in combination with the others, rather than alone.",
+      en: "Skin firmness and texture. It’s the technology most often used in combination with the others, rather than alone.",
       es: "Firmeza y textura de la piel. Es la tecnología más usada en combinación con las otras, y no sola.",
     },
     sensacao: {

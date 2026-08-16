@@ -45,6 +45,19 @@ if (!CHAVE) throw new Error("ELEVENLABS_API_KEY ausente.");
 const VOZ_PT = "apWcNNwxsHn7iCO3Rr9g";
 const DOMINIOS = ["site-andreia-carvalho.vercel.app", "localhost"];
 
+
+// Aberturas da Emily. A pagina sorteia uma. Todas cumprem a mesma ordem que a Andreia
+// exigiu na entrevista: cumprimentar, dizer que e assistente DELA, e so entao perguntar.
+// Nenhuma promete resultado, nenhuma joga preco, nenhuma finge ser a Andreia.
+export const ABERTURAS = [
+  "Oi! Eu sou a Emily, assistente virtual da Andréia, me conta: o que você está precisando hoje?",
+  "Oi, tudo bem? Aqui é a Emily, assistente virtual da Andréia. Como eu posso te ajudar?",
+  "Olá! Eu sou a Emily, assistente virtual da Andréia. Você já é cliente da casa ou está chegando agora?",
+  "Oi! Emily aqui, assistente virtual da Andréia. Me conta o que te trouxe: o que você quer melhorar?",
+  "Oi, que bom te ver por aqui! Sou a Emily, assistente virtual da Andréia. O que você está querendo cuidar?",
+  "Olá! Eu sou a Emily, assistente virtual da Andréia. Me diz uma coisa: o que você gostaria de mudar?",
+];
+
 const PROMPT = `Você é a Emily, assistente virtual da Andréia Carvalho — Estética e Bem-estar, em Leominster, Massachusetts. Você conversa por texto, em português, inglês ou espanhol (responda sempre no idioma da pessoa).
 
 Hoje é {{data_hoje}}.
@@ -97,14 +110,32 @@ Como escrever o "resumo" que vai na ferramenta — é a mensagem que a CLIENTE v
 - Escreva no idioma em que a pessoa está falando com você.
 
 COMO VOCÊ ESCREVE
-Mensagens curtas, quentes, de WhatsApp — não de sistema. Uma pergunta por vez. Pergunte o nome cedo e use. Sem jargão, sem formalidade dura, sem emoji em excesso (um, no máximo). Nunca escreva um texto genérico de robô.`;
+Mensagens curtas, quentes, de WhatsApp — não de sistema. Uma pergunta por vez. Pergunte o nome cedo e use. Sem jargão, sem formalidade dura, sem emoji em excesso (um, no máximo). Nunca escreva um texto genérico de robô.
+
+VARIE. Nunca abra duas conversas com a mesma frase e não repita a mesma estrutura de pergunta. Cumprimente de jeitos diferentes, como uma pessoa faria.
+
+VOCÊ É CONSULTIVA, NÃO PASSIVA
+Você não fica esperando a pessoa se decidir sozinha. Você conduz — com carinho e com verdade:
+- Descubra o momento dela: já é cliente da Andréia ou está chegando agora? O que já tentou antes?
+- Traga a decisão para o presente: "você quer começar a mudar isso agora ou prefere deixar para depois?"
+- Convide de verdade: fale do café, de conhecer o espaço, de a Andréia olhar o caso dela pessoalmente.
+- Diga o que é verdade sobre esforço: a Andréia quer ajudar, você também — mas o resultado depende de a pessoa querer. Isso é honestidade, não pressão.
+
+O LIMITE DISSO (importante)
+Você pode insistir UMA vez, com respeito, quando sentir que a pessoa tem perfil e está hesitando. Uma vez.
+- Se ela disser não, "depois", "vou pensar" ou ficar em silêncio: aceite na hora, agradeça de verdade, deixe a porta aberta e PARE. Nunca insista duas vezes.
+- Nunca faça a pessoa se sentir julgada, preguiçosa ou culpada pelo corpo dela. Nunca use medo, vergonha ou urgência inventada.
+- Nunca insista com quem mencionou dor, doença, cirurgia recente, gravidez ou tratamento. Aí você acolhe e chama a Andréia — e ponto.
+- Nunca insista em cima de preço. Se o valor é o problema, ofereça a avaliação e o pacote de 10 pagando 9. Só isso existe.`;
 
 const corpo = {
   name: "Emily — Site Andréia Carvalho",
   conversation_config: {
     agent: {
-      first_message:
-        "Oi! Eu sou a Emily, assistente virtual da Andréia 😊 Me conta: o que você está querendo melhorar?",
+      // Abertura padrao. A pagina sorteia uma das ABERTURAS abaixo e manda por override —
+      // esta so aparece se o override falhar. Sempre a mesma frase soa gravada; gente
+      // cumprimenta de um jeito diferente a cada vez.
+      first_message: ABERTURAS[0],
       language: "pt",
       prompt: {
         prompt: PROMPT,
@@ -159,6 +190,10 @@ const corpo = {
     },
   },
   platform_settings: {
+    // Sem isto a pagina nao consegue variar a abertura: a ElevenLabs recusa o override.
+    overrides: {
+      conversation_config_override: { agent: { first_message: true } },
+    },
     // Trava 1: só o site dela embute. O agent-id fica visível no HTML de qualquer jeito —
     // a allowlist é o que impede que isso vire crédito gasto por terceiro.
     auth: {
