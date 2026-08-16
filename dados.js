@@ -382,6 +382,17 @@ export const AGENDA = {
   tabela: "andreia_pedidos_site",
 };
 
+export const HANDOFF = {
+  titulo:  { pt: "Pronto para mandar para a Andréia", en: "Ready to send to Andréia", es: "Listo para enviar a Andréia" },
+  intro:   { pt: "A Emily resumiu sua conversa. Leia antes de enviar — você pode editar no WhatsApp.",
+             en: "Emily summarised your chat. Read it before sending — you can edit it in WhatsApp.",
+             es: "Emily resumió tu conversación. Léela antes de enviar — puedes editarla en WhatsApp." },
+  abrir:   { pt: "Abrir WhatsApp", en: "Open WhatsApp", es: "Abrir WhatsApp" },
+  copiar:  { pt: "Copiar texto", en: "Copy text", es: "Copiar texto" },
+  copiado: { pt: "Copiado", en: "Copied", es: "Copiado" },
+  fechar:  { pt: "Fechar", en: "Close", es: "Cerrar" },
+};
+
 export const FORM = {
   titulo:   { pt: "Pedir horário", en: "Request a time", es: "Pedir horario" },
   intro:    { pt: "Preencha em 30 segundos. A Andréia confirma o horário com você pelo WhatsApp.",

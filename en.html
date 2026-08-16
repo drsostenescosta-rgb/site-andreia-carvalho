@@ -169,6 +169,19 @@ h2{font-size:clamp(1.85rem,3.8vw,2.7rem);margin-bottom:15px}
 .eq-estudo p{margin:7px 0 0;font-size:.93rem;line-height:1.55}
 .eq-estudo cite{display:block;margin-top:9px;font-size:.78rem;font-style:normal;color:var(--suave)}
 .eq-aviso{margin-top:14px;font-size:.84rem;color:var(--suave);font-style:italic}
+.handoff{position:fixed;left:12px;right:12px;bottom:96px;z-index:60;display:flex;justify-content:flex-end}
+.handoff[hidden]{display:none}
+.handoff-cx{position:relative;max-width:380px;background:var(--papel);border:1px solid var(--dourado);
+  border-radius:var(--r-g);padding:18px 18px 16px;box-shadow:0 18px 44px rgba(30,20,12,.22)}
+.handoff-x{position:absolute;top:6px;right:10px;border:0;background:none;font-size:1.5rem;
+  line-height:1;color:var(--suave);cursor:pointer}
+.handoff-intro{margin:4px 0 10px;font-size:.86rem;color:var(--suave)}
+.handoff-txt{margin:0 0 14px;white-space:pre-wrap;font-size:.97rem;color:var(--marrom);
+  background:var(--creme);border-radius:var(--r-s);padding:12px}
+.handoff .acoes{gap:8px}
+.handoff .btn{padding:10px 16px;font-size:.9rem}
+@media (max-width:760px){ .handoff{bottom:88px} .handoff-cx{max-width:100%} }
+
 .pedido{max-width:660px;margin:26px auto 0;text-align:left;background:var(--papel);
   border:1px solid var(--linha);border-radius:var(--r-g);padding:26px}
 .pedido h3{font-family:var(--serif);font-size:1.5rem;margin:0 0 4px;color:var(--marrom)}
@@ -719,6 +732,21 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
   </div>
 </footer>
 
+<!-- Preenchido pela ferramenta encaminhar_whatsapp da Emily. Fica escondido até lá.
+     O texto aparece na tela ANTES de ir para a URL do WhatsApp: ninguém manda o que não leu. -->
+<div class="handoff" id="handoff" hidden>
+  <div class="handoff-cx">
+    <button class="handoff-x" type="button" aria-label="Close">&times;</button>
+    <div class="rotulo">Ready to send to Andréia</div>
+    <p class="handoff-intro">Emily summarised your chat. Read it before sending — you can edit it in WhatsApp.</p>
+    <p class="handoff-txt"></p>
+    <div class="acoes">
+      <a class="btn btn-cheio handoff-ir" href="#" target="_blank" rel="noopener">Open WhatsApp</a>
+      <button class="btn btn-vazio handoff-copiar" type="button">Copy text</button>
+    </div>
+  </div>
+</div>
+
 <!-- A Emily do site: agente próprio (não o da demo), preso ao domínio dela por allowlist,
      sem gravar voz e com o texto apagado em 30 dias. Ela tira dúvida; não confirma horário. -->
 <elevenlabs-convai agent-id="agent_4001m0654ycze7088jt0jz1x9ga5"></elevenlabs-convai>
@@ -730,7 +758,9 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
   var SB={url:"https://yaqphldowpshhrtvvfaq.supabase.co",chave:"sb_publishable_V64ejsDNKclPdFlqymghnQ_jUr5ivj1",
           tabela:"andreia_pedidos_site",idioma:"en"};
   var T={enviando:"Sending…",ok:"Request sent. Andréia will confirm the exact time with you on WhatsApp. You can also message her directly.",
-         erro:"Couldn't send it right now. Message Andréia on WhatsApp and she'll sort it out."};
+         erro:"Couldn't send it right now. Message Andréia on WhatsApp and she'll sort it out.",copiar:"Copy text",
+         copiado:"Copied"};
+  var ZAP="19786003658";
   var b=document.querySelector('.menu-btn'), n=document.getElementById('menu');
   b.addEventListener('click',function(){
     var a=n.classList.toggle('aberto');
@@ -740,6 +770,36 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
   // Pedido de horário: vai direto para o Supabase com a chave publicável. Ela só permite
   // INSERT nesta tabela — ler os pedidos exige login de operador. Se o envio falhar por
   // qualquer motivo, o caminho do WhatsApp continua ali do lado, então ninguém fica sem saída.
+
+  // A Emily chama a ferramenta encaminhar_whatsapp quando a pessoa quer agendar. O navegador bloqueia
+  // abrir aba nova fora de um clique, e mais importante: ninguém deve mandar mensagem que não
+  // leu. Então o resumo aparece num painel e o envio é um clique consciente dela.
+  var wid=document.querySelector('elevenlabs-convai');
+  var hf=document.getElementById('handoff');
+  if(wid&&hf){
+    var hTxt=hf.querySelector('.handoff-txt'), hIr=hf.querySelector('.handoff-ir'),
+        hCp=hf.querySelector('.handoff-copiar');
+    hf.querySelector('.handoff-x').onclick=function(){hf.hidden=true;};
+    hCp.onclick=function(){
+      navigator.clipboard.writeText(hTxt.textContent).then(function(){
+        hCp.textContent=T.copiado; setTimeout(function(){hCp.textContent=T.copiar;},1800);
+      });
+    };
+    wid.addEventListener('elevenlabs-convai:call',function(e){
+      e.detail.config.clientTools=Object.assign({},e.detail.config.clientTools,{
+        encaminhar_whatsapp:function(a){
+          var r=String((a&&a.resumo)||'').slice(0,900);
+          if(!r) return 'resumo vazio';
+          hTxt.textContent=r;
+          hIr.href='https://wa.me/'+ZAP+'?text='+encodeURIComponent(r);
+          hf.hidden=false;
+          hf.scrollIntoView({block:'nearest'});
+          return 'Botao de WhatsApp aberto na tela com o resumo.';
+        }
+      });
+    });
+  }
+
   var f=document.getElementById('pedido');
   if(f){
     var dia=f.querySelector('[name=dia_preferido]');

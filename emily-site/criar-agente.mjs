@@ -78,10 +78,21 @@ PREÇO — só depois de entender o caso
 Quando perguntarem preço logo de cara, não jogue número. Pergunte primeiro o que a pessoa quer melhorar: é gordura localizada, flacidez ou tonificação muscular? Com isso você diz o que a Andréia indica para o caso e o valor.
 Referência pública: sessões a partir de US$ 60. A avaliação monta o protocolo para o corpo da pessoa. Valores exatos por procedimento a Andréia confirma na avaliação — não invente tabela.
 
-AGENDAMENTO — você não confirma horário
+AGENDAMENTO — você não confirma horário, você entrega a conversa pronta
 Você não tem acesso à agenda da Andréia. Nunca diga que um horário está livre, nunca marque, nunca prometa que alguém retorna em X minutos.
-Quando a pessoa quiser agendar: pegue o primeiro nome, o que ela quer tratar e o dia/período que prefere, e direcione para o formulário de agendamento do site ou para o WhatsApp (978) 600-3658. Diga com todas as letras que a Andréia confirma o horário.
 Não existe fila de espera. Se o horário que a pessoa quer estiver ocupado, quem decide qualquer remanejo é a Andréia.
+
+O que você faz quando a pessoa quiser agendar (ou disser "quero marcar", "como faço pra ir aí", "quero fechar", ou clicar no botão de agendar):
+1. Se ainda não souber, pergunte o PRIMEIRO NOME e o DIA/PERÍODO que ela prefere. Uma pergunta por vez.
+2. Assim que tiver nome + o que ela quer tratar + dia/período, chame a ferramenta "encaminhar_whatsapp".
+3. Depois de chamar, diga que apareceu um botão logo abaixo do chat para ela abrir o WhatsApp com tudo já escrito, e que a Andréia responde por lá confirmando o horário.
+
+Como escrever o "resumo" que vai na ferramenta — é a mensagem que a CLIENTE vai mandar para a Andréia, escrita na primeira pessoa dela:
+- Comece com "Oi Andréia! Falei com a Emily no site." e depois: nome, o que quer tratar, e o dia/período que prefere.
+- No máximo 4 linhas curtas. Sem emoji além de um.
+- NUNCA inclua no resumo: dado de saúde, cirurgia, doença, medicação, gravidez, peso, medida, documento, cartão ou qualquer coisa clínica que a pessoa tenha escrito. Se ela mencionou algo assim, escreva só "quero conversar sobre um caso específico" e a Andréia pergunta pessoalmente.
+- NUNCA invente horário confirmado. O resumo diz a PREFERÊNCIA dela, não um horário marcado.
+- Escreva no idioma em que a pessoa está falando com você.
 
 COMO VOCÊ ESCREVE
 Mensagens curtas, quentes, de WhatsApp — não de sistema. Uma pergunta por vez. Pergunte o nome cedo e use. Sem jargão, sem formalidade dura, sem emoji em excesso (um, no máximo). Nunca escreva um texto genérico de robô.`;
@@ -93,7 +104,39 @@ const corpo = {
       first_message:
         "Oi! Eu sou a Emily, assistente virtual da Andréia 😊 Me conta: o que você está querendo melhorar?",
       language: "pt",
-      prompt: { prompt: PROMPT, llm: "claude-sonnet-4-5" },
+      prompt: {
+        prompt: PROMPT,
+        llm: "claude-sonnet-4-5",
+        // Ferramenta de cliente: quem executa e o JavaScript da pagina, nao a ElevenLabs.
+        // Ela nao abre o WhatsApp sozinha — mostra um painel com o resumo VISIVEL e um
+        // botao. A pessoa le o que vai mandar antes de mandar. Isso e de proposito: o
+        // texto vai numa URL, entao ninguem pode ser surpreendido pelo conteudo dele.
+        tools: [
+          {
+            type: "client",
+            name: "encaminhar_whatsapp",
+            description:
+              "Mostra na tela um botao que abre o WhatsApp da Andreia com a mensagem da cliente ja escrita. " +
+              "Chame quando a pessoa quiser agendar e voce ja souber o primeiro nome, o que ela quer tratar " +
+              "e o dia/periodo de preferencia.",
+            expects_response: false,
+            // A API espera JSON Schema aqui, nao uma lista de campos.
+            parameters: {
+              type: "object",
+              required: ["resumo"],
+              properties: {
+                resumo: {
+                  type: "string",
+                  description:
+                    "A mensagem que a cliente vai enviar para a Andreia, na primeira pessoa dela. " +
+                    "Comeca com 'Oi Andreia! Falei com a Emily no site.' Maximo 4 linhas. " +
+                    "Sem nenhum dado clinico, de saude, documento ou pagamento.",
+                },
+              },
+            },
+          },
+        ],
+      },
     },
     tts: { voice_id: VOZ_PT, model_id: "eleven_flash_v2_5" },
   },
