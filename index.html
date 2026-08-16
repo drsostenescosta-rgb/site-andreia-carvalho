@@ -169,6 +169,12 @@ h2{font-size:clamp(1.85rem,3.8vw,2.7rem);margin-bottom:15px}
 .eq-estudo p{margin:7px 0 0;font-size:.93rem;line-height:1.55}
 .eq-estudo cite{display:block;margin-top:9px;font-size:.78rem;font-style:normal;color:var(--suave)}
 .eq-aviso{margin-top:14px;font-size:.84rem;color:var(--suave);font-style:italic}
+.faixa-atendimento{margin:22px 0 0;position:relative;border-radius:16px;overflow:hidden;
+  aspect-ratio:21/9;background:var(--creme-2)}
+.faixa-atendimento img{width:100%;height:100%;object-fit:cover;object-position:50% 42%}
+.faixa-atendimento figcaption{position:absolute;left:0;right:0;bottom:0;padding:34px 26px 20px;
+  background:linear-gradient(transparent,rgba(30,20,12,.72));color:#fff;font-size:.95rem}
+@media (max-width:760px){ .faixa-atendimento{aspect-ratio:4/3} }
 .eq-foto{margin:0;background:var(--creme);border-radius:12px;overflow:hidden;aspect-ratio:1/1;
   display:grid;place-items:center}
 .eq-foto img{width:100%;height:100%;object-fit:contain;padding:10px}
@@ -514,6 +520,11 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
         </div>
       </article>
     </div>
+    <figure class="faixa-atendimento rev">
+      <img src="/img/andreia-atendimento-2.jpg" loading="lazy" width="933" height="1400"
+           alt="Andréia Carvalho durante um atendimento na clínica" />
+      <figcaption>Aparelho é ferramenta. O que decide o resultado é quem está com a mão em você.</figcaption>
+    </figure>
     <p class="eq-nota">Qual aparelho faz sentido para você, e se algum não faz, é o que a gente decide junto na avaliação. Isso depende do seu corpo e do seu histórico — não dá para responder por mensagem.</p>
     <p class="eq-aviso">Os estudos acima foram feitos com equipamentos específicos e em grupos de pessoas. Servem para você entender o que a tecnologia faz — não para prever o seu resultado, que depende do seu corpo, do seu histórico e da constância.</p>
   </div>
@@ -554,8 +565,8 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
         <p class="escopo">Procedimentos estéticos de bem-estar. Não substituem tratamento médico e os resultados variam de pessoa para pessoa.</p>
       </div>
       <figure class="benef-foto">
-        <img src="/img/andreia-benef.jpg" loading="lazy" width="733" height="1100"
-             alt="Andréia Carvalho" />
+        <img src="/img/andreia-atendimento.jpg" loading="lazy" width="733" height="1100"
+             alt="Andréia Carvalho durante um atendimento" />
       </figure>
     </div>
   </section>
@@ -593,8 +604,8 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
     <div class="gal">
       <figure class="gal-item"><img src="/img/andreia-arco.jpg" alt="Andréia Carvalho" loading="lazy"
         width="800" height="1200" style="object-position:50% 32%" /></figure>
-      <figure class="gal-item"><img src="/img/andreia-terno.jpg" alt="Andréia Carvalho" loading="lazy"
-        width="800" height="1200" style="object-position:50% 22%" /></figure>
+      <figure class="gal-item"><img src="/img/andreia-clinica.jpg" alt="Andréia Carvalho na clínica" loading="lazy"
+        width="733" height="1100" style="object-position:50% 26%" /></figure>
     </div>
   </div>
 </section>

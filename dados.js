@@ -149,6 +149,11 @@ export const TEXTOS = {
     en: "The earlier you reach out, the more we can build. Last minute works too — it just changes what's possible.",
     es: "Cuanto antes me escribas, más podemos armar. A última hora también se puede — solo cambia lo que es posible hacer.",
   },
+  legendaAtendimento: {
+    pt: "Aparelho é ferramenta. O que decide o resultado é quem está com a mão em você.",
+    en: "A device is a tool. What decides the result is whose hands are on you.",
+    es: "El aparato es una herramienta. Lo que decide el resultado es quién tiene las manos en ti.",
+  },
   rotBenef: { pt: "Drenagem linfática", en: "Lymphatic drainage", es: "Drenaje linfático" },
   h2Benef: { pt: "Cuidado que dá leveza.", en: "Care that brings lightness.", es: "Cuidado que da ligereza." },
   h2BenefScript: { pt: "Resultados que se veem.", en: "Results you can see.", es: "Resultados que se ven." },
@@ -352,7 +357,7 @@ export const FOTOS = [
   // quadro e envelheceria o site em janeiro. Estas duas sao atemporais — e a do arco conversa
   // com o bege e as curvas que o site ja usa, o que nao e coincidencia: e a mesma direcao de marca.
   { src: "/img/andreia-arco.jpg", pt: "Andréia Carvalho", en: "Andréia Carvalho", es: "Andréia Carvalho", pos: "50% 32%", w: 800, h: 1200 },
-  { src: "/img/andreia-terno.jpg", pt: "Andréia Carvalho", en: "Andréia Carvalho", es: "Andréia Carvalho", pos: "50% 22%", w: 800, h: 1200 },
+  { src: "/img/andreia-clinica.jpg", pt: "Andréia Carvalho na clínica", en: "Andréia Carvalho at the clinic", es: "Andréia Carvalho en la clínica", pos: "50% 26%", w: 733, h: 1100 },
 ];
 
 /**

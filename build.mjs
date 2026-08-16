@@ -278,6 +278,12 @@ h2{font-size:clamp(1.85rem,3.8vw,2.7rem);margin-bottom:15px}
 .eq-estudo p{margin:7px 0 0;font-size:.93rem;line-height:1.55}
 .eq-estudo cite{display:block;margin-top:9px;font-size:.78rem;font-style:normal;color:var(--suave)}
 .eq-aviso{margin-top:14px;font-size:.84rem;color:var(--suave);font-style:italic}
+.faixa-atendimento{margin:22px 0 0;position:relative;border-radius:16px;overflow:hidden;
+  aspect-ratio:21/9;background:var(--creme-2)}
+.faixa-atendimento img{width:100%;height:100%;object-fit:cover;object-position:50% 42%}
+.faixa-atendimento figcaption{position:absolute;left:0;right:0;bottom:0;padding:34px 26px 20px;
+  background:linear-gradient(transparent,rgba(30,20,12,.72));color:#fff;font-size:.95rem}
+@media (max-width:760px){ .faixa-atendimento{aspect-ratio:4/3} }
 .eq-foto{margin:0;background:var(--creme);border-radius:12px;overflow:hidden;aspect-ratio:1/1;
   display:grid;place-items:center}
 .eq-foto img{width:100%;height:100%;object-fit:contain;padding:10px}
@@ -523,6 +529,11 @@ ${linhas}
     <div class="eq-grade">
 ${equipamentos}
     </div>
+    <figure class="faixa-atendimento rev">
+      <img src="/img/andreia-atendimento-2.jpg" loading="lazy" width="933" height="1400"
+           alt="${({pt:"Andréia Carvalho durante um atendimento na clínica",en:"Andréia Carvalho during a session at the clinic",es:"Andréia Carvalho durante una sesión en la clínica"})[l]}" />
+      <figcaption>${esc(t(TEXTOS.legendaAtendimento, l))}</figcaption>
+    </figure>
     <p class="eq-nota">${esc(t(TEXTOS.notaEquip, l))}</p>
     <p class="eq-aviso">${esc(t(TEXTOS.avisoEstudos, l))}</p>
   </div>
@@ -555,8 +566,8 @@ ${benef}
         <p class="escopo">${esc(t(TEXTOS.escopo, l))}</p>
       </div>
       <figure class="benef-foto">
-        <img src="/img/andreia-benef.jpg" loading="lazy" width="733" height="1100"
-             alt="${esc(CLINICA.nome)}" />
+        <img src="/img/andreia-atendimento.jpg" loading="lazy" width="733" height="1100"
+             alt="${({pt:"Andréia Carvalho durante um atendimento",en:"Andréia Carvalho during a session",es:"Andréia Carvalho durante una sesión"})[l]}" />
       </figure>
     </div>
   </section>
