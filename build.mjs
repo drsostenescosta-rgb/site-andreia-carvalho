@@ -39,6 +39,7 @@ const IDIOMAS = [
 function pagina(l) {
   const eu = IDIOMAS.find((i) => i.cod === l);
   const zap = `https://wa.me/${CLINICA.whatsapp}?text=${encodeURIComponent(t(TEXTOS.msgZap, l))}`;
+  const zapDetox = `https://wa.me/${CLINICA.whatsapp}?text=${encodeURIComponent(t(TEXTOS.msgDetox, l))}`;
   const zapDuvida = `https://wa.me/${CLINICA.whatsapp}?text=${encodeURIComponent(t(TEXTOS.msgDuvida, l))}`;
   const nav = t(TEXTOS.nav, l);
 
@@ -54,20 +55,20 @@ function pagina(l) {
 
   const pilares = PILARES.map((p) => {
     const [tit, des] = t(p, l);
-    return `      <div class="pilar"><b>${esc(tit)}</b><span>${esc(des)}</span></div>`;
+    return `      <div class="pilar rev"><b>${esc(tit)}</b><span>${esc(des)}</span></div>`;
   }).join("\n");
 
   const benef = BENEFICIOS.map((b) => `          <li>${esc(t(b, l))}</li>`).join("\n");
 
   const resultados = RESULTADOS.map((r) =>
-    `      <div class="res-num"><b>${esc(r.num)}</b><span>${esc(t(r, l))}</span></div>`).join("\n");
+    `      <div class="res-num rev"><b>${esc(r.num)}</b><span>${esc(t(r, l))}</span></div>`).join("\n");
 
   const rotEq = {
     pt: ["O que é", "Como funciona", "Para que é usada", "O que você sente", "O que os estudos mostram"],
     en: ["What it is", "How it works", "What it's used for", "What you feel", "What studies show"],
     es: ["Qué es", "Cómo funciona", "Para qué se usa", "Qué se siente", "Qué muestran los estudios"],
   }[l];
-  const equipamentos = TECNOLOGIAS.map((e) => `      <article class="eq">
+  const equipamentos = TECNOLOGIAS.map((e) => `      <article class="eq rev">
         <div class="eq-topo"><h3>${esc(t(e.nome, l))}</h3><span class="eq-tipo">${esc(t(e.tec, l))}</span></div>
         <dl>
           <dt>${esc(rotEq[0])}</dt><dd>${esc(t(e.oque, l))}</dd>
@@ -226,6 +227,56 @@ h2{font-size:clamp(1.85rem,3.8vw,2.7rem);margin-bottom:15px}
 .eq-estudo p{margin:7px 0 0;font-size:.93rem;line-height:1.55}
 .eq-estudo cite{display:block;margin-top:9px;font-size:.78rem;font-style:normal;color:var(--suave)}
 .eq-aviso{margin-top:14px;font-size:.84rem;color:var(--suave);font-style:italic}
+#detox{padding:0 0 74px}
+.detox-caixa{background:linear-gradient(160deg,var(--creme-2) 0%,var(--papel) 68%);
+  border:1px solid var(--linha);border-radius:22px;padding:48px 44px;max-width:var(--max)}
+.ocasioes{list-style:none;padding:0;margin:26px 0 0;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:12px}
+.ocasioes li{background:var(--papel);border:1px solid var(--linha);border-radius:11px;
+  padding:14px 18px;font-size:.97rem;display:flex;align-items:center;gap:11px;
+  transition:transform .28s cubic-bezier(.22,.61,.36,1),border-color .28s}
+.ocasioes li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--dourado);flex:none}
+.ocasioes li:hover{transform:translateX(4px);border-color:var(--dourado)}
+.detox-pe{margin-top:30px;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.detox-pe p{margin:0;max-width:56ch;font-size:.97rem;color:var(--suave)}
+
+/* ---------------------------------------------------------------- movimento
+   Sem JavaScript nenhum. E nao e purismo — e uma correcao.
+
+   A primeira versao revelava os blocos com IntersectionObserver: CSS escondia tudo e o script
+   mostrava conforme a pessoa rolava. Testado no navegador, o observer NAO disparou, e os doze
+   blocos ficaram invisiveis para sempre. A pagina inteira em branco porque uma API nao rodou.
+
+   Aqui a revelacao usa animation-timeline: view(), que e do proprio CSS. A diferenca que importa
+   nao e performance: e que este desenho NAO CONSEGUE esconder conteudo. Navegador que nao suporta
+   simplesmente ignora o @supports e mostra tudo. Nao existe estado de falha invisivel. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .rev{animation:surge linear both;animation-timeline:view();animation-range:entry 4% cover 20%}
+  }
+}
+@keyframes surge{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+/* Inclinacao 3D sutil: 1.4 grau. O suficiente para o cartao parecer ter volume ao passar o dedo,
+   longe do exagero que faz um site de estetica parecer landing de curso. */
+.eq{transition:transform .4s cubic-bezier(.22,.61,.36,1),box-shadow .4s,border-color .4s;
+  transform-style:preserve-3d;will-change:transform}
+.eq:hover{transform:perspective(1000px) rotateX(1.4deg) rotateY(-1.4deg) translateY(-7px);
+  box-shadow:0 22px 48px -26px rgba(82,58,36,.34);border-color:var(--areia)}
+.pilar,.res-num{transition:transform .32s cubic-bezier(.22,.61,.36,1)}
+.pilar:hover,.res-num:hover{transform:translateY(-4px)}
+.btn{transition:transform .22s cubic-bezier(.22,.61,.36,1),box-shadow .22s,background .22s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px -14px rgba(82,58,36,.5)}
+.btn:active{transform:translateY(0)}
+.tab-linha{transition:background .25s}
+
+/* Quem pediu menos movimento no sistema recebe menos movimento. Nao e opcional: enjoo e
+   sensibilidade vestibular sao reais, e o publico dela e majoritariamente feminino adulto. */
+@media (prefers-reduced-motion: reduce){
+  .js .rev,.js .rev.vis{opacity:1;transform:none;transition:none}
+  .eq:hover,.pilar:hover,.res-num:hover,.btn:hover,.ocasioes li:hover{transform:none}
+  html{scroll-behavior:auto}
+}
 .duvida{margin-top:30px;padding:24px;border:1px solid var(--linha);border-radius:14px;background:var(--papel);
   display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap}
 .duvida p{margin:0;max-width:52ch;font-size:1.02rem;color:var(--texto)}
@@ -368,7 +419,7 @@ ${pilares}
 ${linhas}
     </div>
     <p class="nota-moeda">${esc(t(TEXTOS.moeda, l))}</p>
-    <div class="duvida">
+    <div class="duvida rev">
       <p>${esc(t(TEXTOS.duvidaAjuda, l))}</p>
       <a class="btn btn-1" href="${zapDuvida}" target="_blank" rel="noopener">${esc(t(TEXTOS.ctaDuvida, l))}</a>
     </div>
@@ -386,6 +437,21 @@ ${equipamentos}
     </div>
     <p class="eq-nota">${esc(t(TEXTOS.notaEquip, l))}</p>
     <p class="eq-aviso">${esc(t(TEXTOS.avisoEstudos, l))}</p>
+  </div>
+</section>
+
+<section id="detox">
+  <div class="env detox-caixa rev">
+    <div class="rotulo">${esc(t(TEXTOS.rotDetox, l))}</div>
+    <h2>${esc(t(TEXTOS.h2Detox, l))} <span class="script">${esc(t(TEXTOS.h2DetoxScript, l))}</span></h2>
+    <p class="intro">${esc(t(TEXTOS.introDetox, l))}</p>
+    <ul class="ocasioes">
+${t(TEXTOS.ocasioes, l).map((o) => `      <li>${esc(o)}</li>`).join("\n")}
+    </ul>
+    <div class="detox-pe">
+      <p>${esc(t(TEXTOS.notaDetox, l))}</p>
+      <a class="btn btn-1" href="${zapDetox}" target="_blank" rel="noopener">${esc(t(TEXTOS.ctaDetox, l))}</a>
+    </div>
   </div>
 </section>
 

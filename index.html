@@ -138,6 +138,56 @@ h2{font-size:clamp(1.85rem,3.8vw,2.7rem);margin-bottom:15px}
 .eq-estudo p{margin:7px 0 0;font-size:.93rem;line-height:1.55}
 .eq-estudo cite{display:block;margin-top:9px;font-size:.78rem;font-style:normal;color:var(--suave)}
 .eq-aviso{margin-top:14px;font-size:.84rem;color:var(--suave);font-style:italic}
+#detox{padding:0 0 74px}
+.detox-caixa{background:linear-gradient(160deg,var(--creme-2) 0%,var(--papel) 68%);
+  border:1px solid var(--linha);border-radius:22px;padding:48px 44px;max-width:var(--max)}
+.ocasioes{list-style:none;padding:0;margin:26px 0 0;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:12px}
+.ocasioes li{background:var(--papel);border:1px solid var(--linha);border-radius:11px;
+  padding:14px 18px;font-size:.97rem;display:flex;align-items:center;gap:11px;
+  transition:transform .28s cubic-bezier(.22,.61,.36,1),border-color .28s}
+.ocasioes li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--dourado);flex:none}
+.ocasioes li:hover{transform:translateX(4px);border-color:var(--dourado)}
+.detox-pe{margin-top:30px;display:flex;gap:22px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.detox-pe p{margin:0;max-width:56ch;font-size:.97rem;color:var(--suave)}
+
+/* ---------------------------------------------------------------- movimento
+   Sem JavaScript nenhum. E nao e purismo — e uma correcao.
+
+   A primeira versao revelava os blocos com IntersectionObserver: CSS escondia tudo e o script
+   mostrava conforme a pessoa rolava. Testado no navegador, o observer NAO disparou, e os doze
+   blocos ficaram invisiveis para sempre. A pagina inteira em branco porque uma API nao rodou.
+
+   Aqui a revelacao usa animation-timeline: view(), que e do proprio CSS. A diferenca que importa
+   nao e performance: e que este desenho NAO CONSEGUE esconder conteudo. Navegador que nao suporta
+   simplesmente ignora o @supports e mostra tudo. Nao existe estado de falha invisivel. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .rev{animation:surge linear both;animation-timeline:view();animation-range:entry 4% cover 20%}
+  }
+}
+@keyframes surge{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+/* Inclinacao 3D sutil: 1.4 grau. O suficiente para o cartao parecer ter volume ao passar o dedo,
+   longe do exagero que faz um site de estetica parecer landing de curso. */
+.eq{transition:transform .4s cubic-bezier(.22,.61,.36,1),box-shadow .4s,border-color .4s;
+  transform-style:preserve-3d;will-change:transform}
+.eq:hover{transform:perspective(1000px) rotateX(1.4deg) rotateY(-1.4deg) translateY(-7px);
+  box-shadow:0 22px 48px -26px rgba(82,58,36,.34);border-color:var(--areia)}
+.pilar,.res-num{transition:transform .32s cubic-bezier(.22,.61,.36,1)}
+.pilar:hover,.res-num:hover{transform:translateY(-4px)}
+.btn{transition:transform .22s cubic-bezier(.22,.61,.36,1),box-shadow .22s,background .22s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px -14px rgba(82,58,36,.5)}
+.btn:active{transform:translateY(0)}
+.tab-linha{transition:background .25s}
+
+/* Quem pediu menos movimento no sistema recebe menos movimento. Nao e opcional: enjoo e
+   sensibilidade vestibular sao reais, e o publico dela e majoritariamente feminino adulto. */
+@media (prefers-reduced-motion: reduce){
+  .js .rev,.js .rev.vis{opacity:1;transform:none;transition:none}
+  .eq:hover,.pilar:hover,.res-num:hover,.btn:hover,.ocasioes li:hover{transform:none}
+  html{scroll-behavior:auto}
+}
 .duvida{margin-top:30px;padding:24px;border:1px solid var(--linha);border-radius:14px;background:var(--papel);
   display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap}
 .duvida p{margin:0;max-width:52ch;font-size:1.02rem;color:var(--texto)}
@@ -261,10 +311,10 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
 
 <div class="pilares">
   <div class="env pilares-grade">
-      <div class="pilar"><b>Tecnologias avançadas</b><span>Equipamentos modernos e seguros.</span></div>
-      <div class="pilar"><b>Atendimento personalizado</b><span>Protocolos exclusivos para cada cliente.</span></div>
-      <div class="pilar"><b>Resultados visíveis</b><span>Mais autoestima, bem-estar e qualidade de vida.</span></div>
-      <div class="pilar"><b>Segurança e conforto</b><span>Procedimentos seguros e sem tempo de parada.</span></div>
+      <div class="pilar rev"><b>Tecnologias avançadas</b><span>Equipamentos modernos e seguros.</span></div>
+      <div class="pilar rev"><b>Atendimento personalizado</b><span>Protocolos exclusivos para cada cliente.</span></div>
+      <div class="pilar rev"><b>Resultados visíveis</b><span>Mais autoestima, bem-estar e qualidade de vida.</span></div>
+      <div class="pilar rev"><b>Segurança e conforto</b><span>Procedimentos seguros e sem tempo de parada.</span></div>
   </div>
 </div>
 
@@ -340,7 +390,7 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
         </div>
     </div>
     <p class="nota-moeda">Valores em dólar (US$). Atendimento em Leominster, Massachusetts.</p>
-    <div class="duvida">
+    <div class="duvida rev">
       <p>Não sabe por onde começar? Me conta o que você quer melhorar que eu te digo o que faz sentido.</p>
       <a class="btn btn-1" href="https://wa.me/19786003658?text=Oi%2C%20Andr%C3%A9ia!%20Vim%20pelo%20site%20e%20queria%20tirar%20uma%20d%C3%BAvida%20sobre%20os%20procedimentos." target="_blank" rel="noopener">Tirar uma dúvida</a>
     </div>
@@ -354,7 +404,7 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
     <h2>O que cada aparelho faz <span class="script">e o que você sente.</span></h2>
     <p class="intro">A pergunta que mais chega aqui é “dói?”. Em vez de responder que não, prefiro te contar exatamente o que acontece — e lembrar que, em qualquer momento, é só você falar que eu ajusto.</p>
     <div class="eq-grade">
-      <article class="eq">
+      <article class="eq rev">
         <div class="eq-topo"><h3>EMShape Neo</h3><span class="eq-tipo">Tecnologia HIFEM · contração muscular</span></div>
         <dl>
           <dt>O que é</dt><dd>Máquina de tonificação muscular que trabalha três áreas em uma sessão: abdômen, posterior e glúteos.</dd>
@@ -368,7 +418,7 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
           <cite>Kinney &amp; Lozanova, Lasers in Surgery and Medicine, 2019 — estudo feito com equipamento Emsculpt (BTL).</cite>
         </div>
       </article>
-      <article class="eq">
+      <article class="eq rev">
         <div class="eq-topo"><h3>Ultracavitação</h3><span class="eq-tipo">Tecnologia de ultrassom</span></div>
         <dl>
           <dt>O que é</dt><dd>Aplicada por área, com o aparelho em contato com a pele e um gel condutor.</dd>
@@ -382,7 +432,7 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
           <cite>Revisões sistemáticas de contorno corporal não invasivo. Os números variam bastante entre estudos e entre pessoas.</cite>
         </div>
       </article>
-      <article class="eq">
+      <article class="eq rev">
         <div class="eq-topo"><h3>Radiofrequência</h3><span class="eq-tipo">Tecnologia de aquecimento controlado</span></div>
         <dl>
           <dt>O que é</dt><dd>Aplicada por área, com o aparelho deslizando sobre a pele.</dd>
@@ -399,6 +449,25 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
     </div>
     <p class="eq-nota">Qual aparelho faz sentido para você, e se algum não faz, é o que a gente decide junto na avaliação. Isso depende do seu corpo e do seu histórico — não dá para responder por mensagem.</p>
     <p class="eq-aviso">Os estudos acima foram feitos com equipamentos específicos e em grupos de pessoas. Servem para você entender o que a tecnologia faz — não para prever o seu resultado, que depende do seu corpo, do seu histórico e da constância.</p>
+  </div>
+</section>
+
+<section id="detox">
+  <div class="env detox-caixa rev">
+    <div class="rotulo">Método Detox</div>
+    <h2>Quando existe <span class="script">uma data marcada.</span></h2>
+    <p class="intro">É o que mais me procuram quando o calendário aperta. A gente monta a série contando de trás para frente, a partir do seu dia.</p>
+    <ul class="ocasioes">
+      <li>Casamento — o seu ou o de alguém</li>
+      <li>Um evento no fim de semana</li>
+      <li>Ensaio fotográfico</li>
+      <li>Você treina e quer mostrar o que construiu</li>
+      <li>Viagem, praia, verão chegando</li>
+    </ul>
+    <div class="detox-pe">
+      <p>Quanto antes você me chamar, mais a gente consegue montar. Em cima da hora também dá — só muda o que é possível fazer.</p>
+      <a class="btn btn-1" href="https://wa.me/19786003658?text=Oi%2C%20Andr%C3%A9ia!%20Vim%20pelo%20site.%20Tenho%20uma%20data%20chegando%20e%20queria%20saber%20como%20funciona%20o%20Detox." target="_blank" rel="noopener">Tenho uma data</a>
+    </div>
   </div>
 </section>
 
@@ -431,9 +500,9 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
     <h2>O que muda <span class="script">de verdade.</span></h2>
     <p class="intro">Cada corpo responde de um jeito. O que se repete é a leveza, a medida que cede e a autoestima que volta — e é disso que as clientes mais falam.</p>
     <div class="res-grade">
-      <div class="res-num"><b>1.000+</b><span>atendimentos realizados</span></div>
-      <div class="res-num"><b>2</b><span>idiomas que eu falo: português e espanhol</span></div>
-      <div class="res-num"><b>0</b><span>tempo de parada nos protocolos</span></div>
+      <div class="res-num rev"><b>1.000+</b><span>atendimentos realizados</span></div>
+      <div class="res-num rev"><b>2</b><span>idiomas que eu falo: português e espanhol</span></div>
+      <div class="res-num rev"><b>0</b><span>tempo de parada nos protocolos</span></div>
     </div>
     <p class="fala">“Renovar a autoestima também está nos pequenos cuidados que temos com nós mesmas.”</p>
   </div>

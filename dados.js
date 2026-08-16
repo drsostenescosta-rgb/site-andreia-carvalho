@@ -107,6 +107,34 @@ export const TEXTOS = {
     en: "The studies above were run with specific devices and on groups of people. They help you understand what the technology does — they don't predict your result, which depends on your body, your history and consistency.",
     es: "Los estudios anteriores se hicieron con equipos específicos y en grupos de personas. Sirven para entender qué hace la tecnología — no para predecir tu resultado, que depende de tu cuerpo, tu historial y la constancia.",
   },
+  // DETOX — posicionado por OCASIÃO, não por mecanismo.
+  // "Esvaziamento de adipócito" e "secagem" são o que ela fala na sala; no site virariam alegação
+  // fisiológica que ninguém pode sustentar. Ocasião não é alegação: é quem procura e quando.
+  // E converte mais, porque dá motivo para marcar HOJE em vez de "um dia desses".
+  rotDetox: { pt: "Método Detox", en: "Detox Method", es: "Método Detox" },
+  h2Detox: { pt: "Quando existe", en: "When there's", es: "Cuando hay" },
+  h2DetoxScript: { pt: "uma data marcada.", en: "a date on the calendar.", es: "una fecha marcada." },
+  introDetox: {
+    pt: "É o que mais me procuram quando o calendário aperta. A gente monta a série contando de trás para frente, a partir do seu dia.",
+    en: "It's what people come to me for when the calendar gets tight. We build the series backwards, starting from your day.",
+    es: "Es lo que más me buscan cuando el calendario aprieta. Armamos la serie de atrás hacia adelante, desde tu día.",
+  },
+  ocasioes: {
+    pt: ["Casamento — o seu ou o de alguém", "Um evento no fim de semana", "Ensaio fotográfico", "Você treina e quer mostrar o que construiu", "Viagem, praia, verão chegando"],
+    en: ["A wedding — yours or someone else's", "An event this weekend", "A photo shoot", "You train and want to show what you built", "A trip, the beach, summer coming"],
+    es: ["Una boda — la tuya o la de alguien", "Un evento el fin de semana", "Una sesión de fotos", "Entrenas y quieres mostrar lo que construiste", "Un viaje, la playa, el verano"],
+  },
+  ctaDetox: { pt: "Tenho uma data", en: "I have a date", es: "Tengo una fecha" },
+  msgDetox: {
+    pt: "Oi, Andréia! Vim pelo site. Tenho uma data chegando e queria saber como funciona o Detox.",
+    en: "Hi Andréia! I came from your website. I have a date coming up and I'd like to know how the Detox works.",
+    es: "¡Hola, Andréia! Vengo desde tu sitio. Tengo una fecha próxima y quisiera saber cómo funciona el Detox.",
+  },
+  notaDetox: {
+    pt: "Quanto antes você me chamar, mais a gente consegue montar. Em cima da hora também dá — só muda o que é possível fazer.",
+    en: "The earlier you reach out, the more we can build. Last minute works too — it just changes what's possible.",
+    es: "Cuanto antes me escribas, más podemos armar. A última hora también se puede — solo cambia lo que es posible hacer.",
+  },
   rotBenef: { pt: "Drenagem linfática", en: "Lymphatic drainage", es: "Drenaje linfático" },
   h2Benef: { pt: "Cuidado que dá leveza.", en: "Care that brings lightness.", es: "Cuidado que da ligereza." },
   h2BenefScript: { pt: "Resultados que se veem.", en: "Results you can see.", es: "Resultados que se ven." },
