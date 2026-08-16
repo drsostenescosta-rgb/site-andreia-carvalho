@@ -23,8 +23,8 @@ Testado contra o agente publicado (`node emily-site/testar-agente.mjs`):
 
 ## Voz
 
-`GBeuBzIYdfbgVMKIX5zP` — *Emily — Nordestina (Site Andréia)*. Sotaque de Pernambuco,
-escolhido por Sostenes em 16/08 (tomada B-2 do desenho de voz).
+`apWcNNwxsHn7iCO3Rr9g` — *Emily — Nordestina B1*. Sotaque de Pernambuco, tomada **B-1**
+(a B-2 entrou primeiro e saiu no mesmo dia: Sostenes achou chata).
 
 Não veio da biblioteca: das 100 vozes femininas em português da ElevenLabs, nenhuma é
 nordestina (há gaúcha e carioca). Esta foi gerada por descrição e salva na conta.
@@ -33,6 +33,26 @@ nordestina (há gaúcha e carioca). Esta foi gerada por descrição e salva na c
 a lição da primeira troca: a clonada "Emily — Vendas" está descrita como feminina e soa
 feminina no `multilingual_v2`, mas no `flash` sai grave o bastante para soar masculina.
 Amostra no modelo errado não prova nada.
+
+## A fala dupla (resolvida em 16/08)
+
+Sostenes ouvia "duas vozes em conjunto", sempre em transição — ao confirmar ou mudar de
+assunto. Não era segunda voz: o agente tem **um** voice_id e nada mais.
+
+Diagnóstico na conversa real `conv_8601m06b6mcwfcr995akzhccertp`: **3 dos 12 turnos da
+Emily** vieram marcados `interrupted` + `corrected`, e em todos a versão original era mais
+longa que a final. Com `optimize_streaming_latency: 3` a ElevenLabs gera áudio bem à frente
+do texto; quando a cliente interrompe, o texto é corrigido mas o áudio já enviado continua
+tocando por cima do novo. Duas falas sobrepostas da mesma voz.
+
+Três mudanças:
+- `optimize_streaming_latency: 3 → 0` — menos áudio adiantado, menos colisão.
+- `turn_eagerness: normal → patient` — ela espera a cliente terminar em vez de cortar.
+- `use-rtc="true"` **no elemento HTML** (a API ignora o campo `use_rtc`): WebRTC dá ao
+  navegador cancelamento de eco e descarte real de buffer na interrupção.
+
+Se voltar a acontecer, o caminho é o mesmo: listar as conversas do agente e contar quantos
+turnos vêm `interrupted`. É medida, não impressão.
 
 ## Encaminhamento para o WhatsApp
 

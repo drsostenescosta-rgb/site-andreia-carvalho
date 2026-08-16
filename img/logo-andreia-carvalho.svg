@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Andréia Carvalho — Estética e Bem-estar</title>
+  <desc id="desc">Monograma AC dourado com ramo de folhas sobre fundo creme.</desc>
+  <rect width="1200" height="1200" rx="88" fill="#F7F1E8"/>
+  <circle cx="600" cy="600" r="510" fill="none" stroke="#D9C3A2" stroke-width="3"/>
+  <g fill="#A8732A">
+    <text x="553" y="650" text-anchor="middle" font-family="Cormorant Garamond, Didot, Baskerville, Georgia, serif" font-size="440" font-weight="400" letter-spacing="-42">AC</text>
+  </g>
+  <g transform="translate(790 300) rotate(12)" fill="none" stroke="#A8732A" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 245 C55 190 83 120 92 20" stroke-width="8"/>
+    <path d="M48 184 C10 164 -12 133 -16 92 C25 97 53 120 65 157" stroke-width="6"/>
+    <path d="M70 133 C107 119 134 91 146 52 C105 48 78 68 67 105" stroke-width="6"/>
+    <path d="M86 76 C57 54 46 24 54 -9 C87 3 103 28 101 58" stroke-width="6"/>
+    <path d="M93 31 C120 11 134 -17 129 -49 C98 -39 82 -17 80 12" stroke-width="6"/>
+  </g>
+  <path d="M285 735 H915" stroke="#A8732A" stroke-width="3"/>
+  <text x="600" y="826" text-anchor="middle" fill="#3A2B1E" font-family="Cormorant Garamond, Didot, Baskerville, Georgia, serif" font-size="86" font-weight="500" letter-spacing="8">ANDRÉIA CARVALHO</text>
+  <text x="600" y="890" text-anchor="middle" fill="#8A6230" font-family="Jost, Avenir, Helvetica, Arial, sans-serif" font-size="29" font-weight="500" letter-spacing="10">ESTÉTICA E BEM-ESTAR</text>
+</svg>

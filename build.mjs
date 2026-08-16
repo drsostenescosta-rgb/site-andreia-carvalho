@@ -729,7 +729,10 @@ ${["manha", "tarde", "noite", "qualquer"].map((v, i) => `            <option val
 
 <!-- A Emily do site: agente próprio (não o da demo), preso ao domínio dela por allowlist,
      sem gravar voz e com o texto apagado em 30 dias. Ela tira dúvida; não confirma horário. -->
-<elevenlabs-convai agent-id="${AGENDA.agenteEmily}"></elevenlabs-convai>
+<!-- use-rtc liga o transporte WebRTC: o navegador passa a fazer cancelamento de eco e a
+     descartar audio de verdade quando a cliente interrompe. A API do agente ignorou o
+     campo use_rtc, entao a ligacao e feita aqui, no elemento. -->
+<elevenlabs-convai agent-id="${AGENDA.agenteEmily}" use-rtc="true"></elevenlabs-convai>
 <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 
 <script>

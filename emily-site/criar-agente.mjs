@@ -38,11 +38,11 @@ if (!CHAVE) throw new Error("ELEVENLABS_API_KEY ausente.");
 // Voz do site: "Emily — Nordestina", desenhada em 16/08 a pedido de Sostenes.
 // Nao existe voz nordestina na biblioteca da ElevenLabs — varridas as 100 vozes femininas
 // em portugues: ha gaucha e carioca, nordestina nenhuma. Esta foi gerada por descricao
-// (text-to-voice design, tomada B-2) e salva na conta.
+// (text-to-voice design). B-2 foi trocada por B-1 em 16/08: Sostenes achou a B-2 chata.
 // Historico: a clonada "Emily — Vendas" (XxdD0tGSVKt2OkD2TyaN) saiu em 16/08 porque no
 // modelo flash, que e o do widget em tempo real, ela sai grave demais. Ana Lu
 // (VNaz9wbhLsh3lLuHzAVP) foi a ponte ate esta escolha.
-const VOZ_PT = "GBeuBzIYdfbgVMKIX5zP";
+const VOZ_PT = "apWcNNwxsHn7iCO3Rr9g";
 const DOMINIOS = ["site-andreia-carvalho.vercel.app", "localhost"];
 
 const PROMPT = `Você é a Emily, assistente virtual da Andréia Carvalho — Estética e Bem-estar, em Leominster, Massachusetts. Você conversa por texto, em português, inglês ou espanhol (responda sempre no idioma da pessoa).
@@ -140,7 +140,23 @@ const corpo = {
         ],
       },
     },
-    tts: { voice_id: VOZ_PT, model_id: "eleven_flash_v2_5" },
+    tts: {
+      voice_id: VOZ_PT,
+      model_id: "eleven_flash_v2_5",
+      // 3 era o padrao e e a causa da fala dupla. Com otimizacao agressiva a ElevenLabs
+      // gera audio muito a frente do texto; quando a cliente interrompe, o texto e
+      // corrigido mas o audio antigo JA foi enviado e continua tocando por cima do novo.
+      // Foi isso que Sostenes ouviu como "duas vozes em conjunto", sempre em transicao.
+      // Verificado na conversa conv_8601m06b6mcwfcr995akzhccertp: 3 de 12 turnos da Emily
+      // marcados interrupted+corrected, todos com a versao original mais longa que a final.
+      optimize_streaming_latency: 0,
+    },
+    turn: {
+      // A Emily nao precisa disputar a palavra. "patient" faz ela esperar a cliente
+      // terminar em vez de cortar — menos interrupcao, menos audio descartado.
+      turn_eagerness: "patient",
+      turn_timeout: 8.0,
+    },
   },
   platform_settings: {
     // Trava 1: só o site dela embute. O agent-id fica visível no HTML de qualquer jeito —
@@ -159,6 +175,7 @@ const corpo = {
     },
     widget: {
       variant: "full",
+      use_rtc: true,
       placement: "bottom-right",
       expandable: "never",
       text_input_enabled: true,
