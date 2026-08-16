@@ -63,6 +63,16 @@ o resumo num painel com botão de abrir o WhatsApp.
 Não abre sozinho: navegador bloqueia aba nova fora de clique, e o texto vai numa URL —
 a pessoa tem que ler antes. O prompt proíbe dado clínico, documento e pagamento no resumo.
 
+## Não tentar WebRTC com a allowlist ligada
+
+`use-rtc="true"` foi tentado em 16/08 para resolver a fala dupla e **quebrou a voz**:
+quatro conversas `failed` seguidas, motivo registrado pela ElevenLabs —
+`code 3000, "Client did not provide the origin header"`.
+
+O transporte WebRTC não envia cabeçalho de origem, e `auth.require_origin_header: true`
+recusa a conexão. As duas coisas são incompatíveis. Ou a trava de allowlist, ou WebRTC —
+e a trava é o que impede terceiro gastar crédito na conta. Revertido.
+
 ## Travas de plataforma
 
 - `auth.allowlist` — só `site-andreia-carvalho.vercel.app` e `localhost` embutem. O agent-id

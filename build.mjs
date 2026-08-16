@@ -692,6 +692,7 @@ ${["manha", "tarde", "noite", "qualquer"].map((v, i) => `            <option val
       <p class="pedido-msg" role="status" aria-live="polite"></p>
     </form>
     <div class="acoes" style="justify-content:center;margin-top:10px">
+      <button class="btn btn-vazio abrir-emily" type="button">${esc(t(FORM.emily, l))}</button>
       <a class="btn btn-vazio" href="${CLINICA.instagram}" target="_blank" rel="noopener">${esc(t(TEXTOS.ctaInsta, l))}</a>
     </div>
     <div class="contato">
@@ -729,10 +730,9 @@ ${["manha", "tarde", "noite", "qualquer"].map((v, i) => `            <option val
 
 <!-- A Emily do site: agente próprio (não o da demo), preso ao domínio dela por allowlist,
      sem gravar voz e com o texto apagado em 30 dias. Ela tira dúvida; não confirma horário. -->
-<!-- use-rtc liga o transporte WebRTC: o navegador passa a fazer cancelamento de eco e a
-     descartar audio de verdade quando a cliente interrompe. A API do agente ignorou o
-     campo use_rtc, entao a ligacao e feita aqui, no elemento. -->
-<elevenlabs-convai agent-id="${AGENDA.agenteEmily}" use-rtc="true"></elevenlabs-convai>
+<!-- use-rtc="true" foi tentado em 16/08 e REVERTIDO no mesmo dia: quebrou a voz.
+     O widget nao aceita esse atributo. Nao repetir sem antes verificar no ar. -->
+<elevenlabs-convai agent-id="${AGENDA.agenteEmily}"></elevenlabs-convai>
 <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 
 <script>
@@ -781,6 +781,25 @@ ${["manha", "tarde", "noite", "qualquer"].map((v, i) => `            <option val
         }
       });
     });
+  }
+
+
+  // "Fale com a Emily, atendente da Andreia": abre o widget do canto sem a pessoa precisar
+  // procurar. So aparece depois que o widget carrega — botao que nao faz nada e pior que
+  // botao nenhum.
+  var btEmily=document.querySelector('.abrir-emily');
+  if(btEmily){
+    btEmily.hidden=true;
+    var tentar=function(n){
+      var w=document.querySelector('elevenlabs-convai');
+      var alvo=w&&w.shadowRoot&&w.shadowRoot.querySelector('button');
+      if(alvo){ btEmily.hidden=false;
+        btEmily.onclick=function(){ alvo.click();
+          w.scrollIntoView({block:'nearest'}); };
+        return; }
+      if(n>0) setTimeout(function(){tentar(n-1);},700);
+    };
+    tentar(12);
   }
 
   var f=document.getElementById('pedido');

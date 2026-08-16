@@ -419,7 +419,9 @@ export const FORM = {
   aviso:    { pt: "Não escreva dados de saúde, documento ou cartão. Isso é só um pedido de horário.",
               en: "Please don't include health, ID or card details. This is only a time request.",
               es: "No escribas datos de salud, documento o tarjeta. Esto es solo una solicitud de horario." },
-  emily:    { pt: "Prefere perguntar antes? Fale com a Emily", en: "Have questions first? Talk to Emily", es: "¿Dudas primero? Habla con Emily" },
+  emily:    { pt: "Prefere perguntar antes? Fale com a Emily, atendente da Andréia",
+              en: "Have questions first? Talk to Emily, Andréia's assistant",
+              es: "¿Dudas primero? Habla con Emily, asistente de Andréia" },
 };
 
 export const FOTOS = [

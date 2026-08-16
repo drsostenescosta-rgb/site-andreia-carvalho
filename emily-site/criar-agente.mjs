@@ -175,14 +175,16 @@ const corpo = {
     },
     widget: {
       variant: "full",
-      use_rtc: true,
+      // use_rtc NAO: o transporte WebRTC nao envia cabecalho de origem e a allowlist
+      // recusa a conexao (erro 3000, "Client did not provide the origin header"). Tentado
+      // e revertido em 16/08 — quatro conversas falharam. Escolher: ou a trava, ou WebRTC.
       placement: "bottom-right",
       expandable: "never",
       text_input_enabled: true,
       supports_text_only: true,
       transcript_enabled: true,
-      action_text: "Dúvidas? Fale com a Emily",
-      start_call_text: "Falar com a Emily",
+      action_text: "Falar com a Emily, atendente da Andréia",
+      start_call_text: "Falar com a atendente da Andréia",
       // Aviso antes de abrir: a pessoa precisa saber que está falando com IA e que o texto
       // vai para um serviço externo, ANTES de escrever qualquer coisa sobre o corpo dela.
       terms_key: "andreia-privacidade-2026-08",
