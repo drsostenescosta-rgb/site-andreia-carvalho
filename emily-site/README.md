@@ -73,6 +73,21 @@ O transporte WebRTC não envia cabeçalho de origem, e `auth.require_origin_head
 recusa a conexão. As duas coisas são incompatíveis. Ou a trava de allowlist, ou WebRTC —
 e a trava é o que impede terceiro gastar crédito na conta. Revertido.
 
+## A CSP e o widget: o que ele precisa
+
+A CSP do `vercel.json` quebrou o widget DUAS vezes em 16/08. As duas quebras foram
+descobertas no console, não no papel. Se mexer na CSP, testar a voz de verdade — cabeçalho
+correto não prova nada.
+
+| O que faltava | Sintoma |
+|---|---|
+| `connect-src https://*.elevenlabs.io` | widget nem carregava (a ElevenLabs usa `api.us.elevenlabs.io`, subdomínio regional — fixar só o apex não basta) |
+| `script-src blob:` | "Failed to load the rawAudioProcessor worklet module" |
+
+O segundo é o menos óbvio: o AudioWorklet do widget vem de uma URL `blob:`, e o navegador
+valida worklet contra **`script-src`**, não `worker-src`. Ter `blob:` só no `worker-src`
+não resolve.
+
 ## Travas de plataforma
 
 - `auth.allowlist` — só `site-andreia-carvalho.vercel.app` e `localhost` embutem. O agent-id
