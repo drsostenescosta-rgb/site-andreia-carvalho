@@ -14,7 +14,7 @@
 // Uso: node build.mjs
 
 import { writeFileSync } from "node:fs";
-import { CLINICA, TEXTOS, PILARES, SERVICOS, BENEFICIOS, RESULTADOS, FALAS, FOTOS, EQUIPAMENTOS } from "./dados.js";
+import { CLINICA, TEXTOS, PILARES, SERVICOS, BENEFICIOS, RESULTADOS, FALAS, FOTOS, TECNOLOGIAS } from "./dados.js";
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const t = (o, l) => (o && typeof o === "object" && !Array.isArray(o) && o[l] !== undefined ? o[l] : o);
@@ -62,14 +62,24 @@ function pagina(l) {
   const resultados = RESULTADOS.map((r) =>
     `      <div class="res-num"><b>${esc(r.num)}</b><span>${esc(t(r, l))}</span></div>`).join("\n");
 
-  const rotEq = { pt: ["O que é", "Como funciona", "O que você sente"], en: ["What it is", "How it works", "What you feel"], es: ["Qué es", "Cómo funciona", "Qué se siente"] }[l];
-  const equipamentos = EQUIPAMENTOS.map((e) => `      <article class="eq">
-        <div class="eq-topo"><h3>${esc(t(e.nome, l))}</h3><span class="eq-tipo">${esc(t(e.tipo, l))}</span></div>
+  const rotEq = {
+    pt: ["O que é", "Como funciona", "Para que é usada", "O que você sente", "O que os estudos mostram"],
+    en: ["What it is", "How it works", "What it's used for", "What you feel", "What studies show"],
+    es: ["Qué es", "Cómo funciona", "Para qué se usa", "Qué se siente", "Qué muestran los estudios"],
+  }[l];
+  const equipamentos = TECNOLOGIAS.map((e) => `      <article class="eq">
+        <div class="eq-topo"><h3>${esc(t(e.nome, l))}</h3><span class="eq-tipo">${esc(t(e.tec, l))}</span></div>
         <dl>
           <dt>${esc(rotEq[0])}</dt><dd>${esc(t(e.oque, l))}</dd>
           <dt>${esc(rotEq[1])}</dt><dd>${esc(t(e.como, l))}</dd>
-          <dt>${esc(rotEq[2])}</dt><dd>${esc(t(e.sensacao, l))}</dd>
+          <dt>${esc(rotEq[2])}</dt><dd>${esc(t(e.paraque, l))}</dd>
+          <dt>${esc(rotEq[3])}</dt><dd>${esc(t(e.sensacao, l))}</dd>
         </dl>
+        <div class="eq-estudo">
+          <b>${esc(rotEq[4])}</b>
+          <p>${esc(t(e.estudo, l))}</p>
+          <cite>${t(e.fonte, l)}</cite>
+        </div>
       </article>`).join("\n");
 
   // Sem foto, a grade de duas colunas deixaria metade da seção vazia. Vira coluna única.
@@ -211,6 +221,11 @@ h2{font-size:clamp(1.85rem,3.8vw,2.7rem);margin-bottom:15px}
 .eq dt:first-of-type{margin-top:0}
 .eq dd{margin:5px 0 0;font-size:.97rem;line-height:1.6}
 .eq-nota{margin-top:26px;padding:18px 22px;background:var(--creme-2);border-radius:12px;font-size:.95rem}
+.eq-estudo{margin-top:20px;padding-top:16px;border-top:1px solid var(--linha)}
+.eq-estudo b{display:block;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dourado)}
+.eq-estudo p{margin:7px 0 0;font-size:.93rem;line-height:1.55}
+.eq-estudo cite{display:block;margin-top:9px;font-size:.78rem;font-style:normal;color:var(--suave)}
+.eq-aviso{margin-top:14px;font-size:.84rem;color:var(--suave);font-style:italic}
 .duvida{margin-top:30px;padding:24px;border:1px solid var(--linha);border-radius:14px;background:var(--papel);
   display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap}
 .duvida p{margin:0;max-width:52ch;font-size:1.02rem;color:var(--texto)}
@@ -370,6 +385,7 @@ ${linhas}
 ${equipamentos}
     </div>
     <p class="eq-nota">${esc(t(TEXTOS.notaEquip, l))}</p>
+    <p class="eq-aviso">${esc(t(TEXTOS.avisoEstudos, l))}</p>
   </div>
 </section>
 
