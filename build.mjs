@@ -133,7 +133,7 @@ ${IDIOMAS.map((i) => `<link rel="alternate" hreflang="${i.lang}" href="${i.href}
 :root{
   --creme:#f7f1e8; --creme-2:#efe5d6; --areia:#e6d7c3; --papel:#fffdfa;
   --marrom:#523a24; --marrom-claro:#7d5c3b; --dourado:#8a6230; --dourado-luz:#b8912f;
-  --texto:#3a2b1e; --suave:#6b573f; --linha:#e0d0b9;
+  --texto:#3a2b1e; --suave:#6b573f; --r-s:12px;--r-m:16px;--r-g:22px;--linha:#e0d0b9;
   --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
   --sans:'Jost',-apple-system,'Segoe UI',Roboto,sans-serif;
   /* Se o Google Fonts cair, Snell/Apple Chancery seguram melhor que "cursive" genérica. */
@@ -196,7 +196,7 @@ nav a:hover{color:var(--dourado)}
   padding-left:14px;border-left:2px solid var(--areia)}
 
 /* Valores: deixam de ser tabela aberta no meio da pagina e viram detalhe que a pessoa abre. */
-.valores{margin-top:30px;border:1px solid var(--linha);border-radius:14px;background:var(--papel);
+.valores{margin-top:30px;border:1px solid var(--linha);border-radius:var(--r-s);background:var(--papel);
   overflow:hidden}
 .valores summary{cursor:pointer;list-style:none;padding:18px 24px;font-size:.76rem;
   letter-spacing:.15em;text-transform:uppercase;color:var(--dourado);display:flex;
@@ -246,7 +246,7 @@ section{padding:88px 0;position:relative}
 h2{font-size:clamp(1.85rem,3.8vw,2.7rem);margin-bottom:15px}
 .intro{color:var(--suave);max-width:44em;font-size:1.01rem}
 
-.tabela{margin-top:42px;border:1px solid var(--linha);border-radius:10px;overflow:hidden;background:var(--papel)}
+.tabela{margin-top:42px;border:1px solid var(--linha);border-radius:var(--r-s);overflow:hidden;background:var(--papel)}
 .tab-cab,.tab-linha{display:grid;grid-template-columns:1.2fr 2fr .7fr .7fr;gap:18px;padding:15px 22px;align-items:center}
 .tab-cab{background:var(--marrom);color:#fff;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;font-weight:500}
 .tab-linha{border-top:1px solid var(--linha)}
@@ -263,7 +263,7 @@ h2{font-size:clamp(1.85rem,3.8vw,2.7rem);margin-bottom:15px}
   background:linear-gradient(150deg,var(--creme-2) 0%,var(--papel) 62%)}
 .eq-destaque .eq-topo h3{font-size:1.72rem}
 .eq-compacto dd{font-size:.93rem}
-.eq{background:var(--papel);border:1px solid var(--linha);border-radius:16px;padding:26px}
+.eq{background:var(--papel);border:1px solid var(--linha);border-radius:var(--r-m);padding:26px}
 .eq-topo{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:16px}
 .eq-topo h3{font-size:1.42rem}
 .eq-tipo{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dourado);
@@ -272,20 +272,20 @@ h2{font-size:clamp(1.85rem,3.8vw,2.7rem);margin-bottom:15px}
 .eq dt{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--suave);margin-top:16px}
 .eq dt:first-of-type{margin-top:0}
 .eq dd{margin:5px 0 0;font-size:.97rem;line-height:1.6}
-.eq-nota{margin-top:26px;padding:18px 22px;background:var(--creme-2);border-radius:12px;font-size:.95rem}
+.eq-nota{margin-top:26px;padding:18px 22px;background:var(--creme-2);border-radius:var(--r-s);font-size:.95rem}
 .eq-estudo{margin-top:20px;padding-top:16px;border-top:1px solid var(--linha)}
 .eq-estudo b{display:block;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dourado)}
 .eq-estudo p{margin:7px 0 0;font-size:.93rem;line-height:1.55}
 .eq-estudo cite{display:block;margin-top:9px;font-size:.78rem;font-style:normal;color:var(--suave)}
 .eq-aviso{margin-top:14px;font-size:.84rem;color:var(--suave);font-style:italic}
 .atendimento{margin:26px 0 0;display:grid;grid-template-columns:.82fr 1.18fr;gap:34px;
-  align-items:center;background:var(--papel);border:1px solid var(--linha);border-radius:18px;padding:26px}
-.atendimento figure{margin:0;border-radius:14px;overflow:hidden;background:var(--creme-2)}
+  align-items:center;background:var(--papel);border:1px solid var(--linha);border-radius:var(--r-m);padding:26px}
+.atendimento figure{margin:0;border-radius:var(--r-s);overflow:hidden;background:var(--creme-2)}
 /* Sem recorte: a foto entra inteira, na proporcao original. */
 .atendimento figure img{width:100%;height:auto;display:block}
 .atendimento-frase{font-family:var(--serif);font-size:1.46rem;line-height:1.3;color:var(--marrom);margin:10px 0 14px}
 .atendimento-txt p:last-child{margin:0;color:var(--suave);font-size:.99rem}
-.eq-foto{margin:0;background:var(--creme);border-radius:12px;overflow:hidden;aspect-ratio:1/1;
+.eq-foto{margin:0;background:var(--creme);border-radius:var(--r-s);overflow:hidden;aspect-ratio:1/1;
   display:grid;place-items:center}
 .eq-foto img{width:100%;height:100%;object-fit:contain;padding:10px}
 .fio{margin-top:18px;font-family:var(--serif);font-size:1.32rem;line-height:1.35;color:var(--marrom)}
@@ -300,10 +300,10 @@ h2{font-size:clamp(1.85rem,3.8vw,2.7rem);margin-bottom:15px}
   border-radius:0 12px 12px 0;font-size:.99rem}
 #detox{padding:0 0 74px}
 .detox-caixa{background:linear-gradient(160deg,var(--creme-2) 0%,var(--papel) 68%);
-  border:1px solid var(--linha);border-radius:22px;padding:48px 44px;max-width:var(--max)}
+  border:1px solid var(--linha);border-radius:var(--r-g);padding:48px 44px;max-width:var(--max)}
 .ocasioes{list-style:none;padding:0;margin:26px 0 0;display:grid;
   grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:12px}
-.ocasioes li{background:var(--papel);border:1px solid var(--linha);border-radius:11px;
+.ocasioes li{background:var(--papel);border:1px solid var(--linha);border-radius:var(--r-s);
   padding:14px 18px;font-size:.97rem;display:flex;align-items:center;gap:11px;
   transition:transform .28s cubic-bezier(.22,.61,.36,1),border-color .28s}
 .ocasioes li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--dourado);flex:none}
@@ -348,7 +348,7 @@ h2{font-size:clamp(1.85rem,3.8vw,2.7rem);margin-bottom:15px}
   .eq:hover,.pilar:hover,.res-num:hover,.btn:hover,.ocasioes li:hover{transform:none}
   html{scroll-behavior:auto}
 }
-.duvida{margin-top:30px;padding:24px;border:1px solid var(--linha);border-radius:14px;background:var(--papel);
+.duvida{margin-top:30px;padding:24px;border:1px solid var(--linha);border-radius:var(--r-s);background:var(--papel);
   display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap}
 .duvida p{margin:0;max-width:52ch;font-size:1.02rem;color:var(--texto)}
 .duvida .btn{flex:none}
@@ -364,11 +364,11 @@ h2{font-size:clamp(1.85rem,3.8vw,2.7rem);margin-bottom:15px}
   background-image:radial-gradient(circle at 50% 50%,var(--dourado) 0 3px,transparent 3px)}
 /* Flyer tem TEXTO: cortar ou esticar torna ilegível. Mostra inteiro. */
 .benef-foto{margin:0}
-.benef-foto img{width:100%;height:auto;object-fit:contain;border-radius:12px;
+.benef-foto img{width:100%;height:auto;object-fit:contain;border-radius:var(--r-s);
   box-shadow:0 26px 56px -30px rgba(82,58,36,.45)}
 
 .res-grade{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
-.res-num{text-align:center;padding:32px 20px;border:1px solid var(--linha);border-radius:10px;background:var(--papel)}
+.res-num{text-align:center;padding:32px 20px;border:1px solid var(--linha);border-radius:var(--r-s);background:var(--papel)}
 .res-num b{display:block;font-family:var(--serif);font-size:3rem;color:var(--dourado);line-height:1}
 .res-num span{display:block;font-size:.84rem;color:var(--suave);margin-top:8px}
 .fala{margin-top:34px;font-family:var(--serif);font-style:italic;font-size:1.32rem;color:var(--marrom);
@@ -376,8 +376,8 @@ h2{font-size:clamp(1.85rem,3.8vw,2.7rem);margin-bottom:15px}
 
 .historia-grade{display:grid;grid-template-columns:1.1fr .9fr;gap:52px;align-items:center}
 .gal{display:grid;gap:16px}
-.gal-item{margin:0;aspect-ratio:4/5;overflow:hidden;border-radius:10px;border:1px solid var(--linha);background:var(--papel)}
-.gal-item img{width:100%;height:100%;object-fit:cover}
+.gal-item{margin:0;overflow:hidden;border-radius:var(--r-s);border:1px solid var(--linha);background:var(--papel)}
+.gal-item img{width:100%;height:auto;display:block}
 blockquote{border-left:2px solid var(--dourado);padding-left:22px;margin:22px 0;font-family:var(--serif);
   font-style:italic;font-size:1.26rem;line-height:1.45;color:var(--marrom)}
 
@@ -455,7 +455,7 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
     <button class="menu-btn" aria-label="${({pt:"Abrir menu",en:"Open menu",es:"Abrir menú"})[l]}" aria-expanded="false" aria-controls="menu">☰</button>
     <nav id="menu">
       <a href="#servicos">${esc(nav[0])}</a>
-      <a href="#equipamentos">${esc(nav[1])}</a>
+      <a href="#tecnologias">${esc(nav[1])}</a>
       <a href="#beneficios">${esc(nav[2])}</a>
       <a href="#resultados">${esc(nav[3])}</a>
       <a href="#historia">${esc(nav[4])}</a>
@@ -523,7 +523,7 @@ ${linhas}
   </div>
 </section>
 
-<section id="equipamentos">
+<section id="tecnologias">
   <div class="env">
     <div class="rotulo">${esc(t(TEXTOS.rotEquip, l))}</div>
     <h2>${esc(t(TEXTOS.h2Equip, l))} <span class="script">${esc(t(TEXTOS.h2EquipScript, l))}</span></h2>
@@ -574,8 +574,8 @@ ${benef}
         <p class="escopo">${esc(t(TEXTOS.escopo, l))}</p>
       </div>
       <figure class="benef-foto">
-        <img src="/img/andreia-atendimento.jpg" loading="lazy" width="733" height="1100"
-             alt="${({pt:"Andréia Carvalho durante um atendimento",en:"Andréia Carvalho during a session",es:"Andréia Carvalho durante una sesión"})[l]}" />
+        <img src="/img/andreia-sala.jpg" loading="lazy" width="933" height="1400"
+             alt="${({pt:"Andréia Carvalho na sala de atendimento, ao lado da maca e do equipamento",en:"Andréia Carvalho in the treatment room, beside the bed and the equipment",es:"Andréia Carvalho en la sala de atención, junto a la camilla y el equipo"})[l]}" />
       </figure>
     </div>
   </section>

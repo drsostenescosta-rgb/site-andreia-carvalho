@@ -46,9 +46,9 @@ export const TEXTOS = {
     es: "Andréia Carvalho · Estética y Bienestar — Leominster, MA",
   },
   nav: {
-    pt: ["Procedimentos", "Equipamentos", "Benefícios", "Resultados", "Minha história", "Agendar"],
-    en: ["Treatments", "Equipment", "Benefits", "Results", "My story", "Book"],
-    es: ["Procedimientos", "Equipos", "Beneficios", "Resultados", "Mi historia", "Agendar"],
+    pt: ["Procedimentos", "Tecnologias", "Benefícios", "Resultados", "Minha história", "Agendar"],
+    en: ["Treatments", "Technology", "Benefits", "Results", "My story", "Book"],
+    es: ["Procedimientos", "Tecnología", "Beneficios", "Resultados", "Mi historia", "Agendar"],
   },
   // Formacao + licenca local, nesta ordem, nas tres linguas. "Enfermeira" sozinha faria a leitora
   // americana presumir licenca de Massachusetts; com "formada no Brasil" ao lado de "esteticista
@@ -103,8 +103,8 @@ export const TEXTOS = {
     en: "Prices in US dollars. Served in Leominster, Massachusetts.",
     es: "Precios en dólares (US$). Atención en Leominster, Massachusetts.",
   },
-  rotEquip: { pt: "Equipamentos", en: "Equipment", es: "Equipos" },
-  h2Equip: { pt: "O que cada aparelho faz", en: "What each device does", es: "Qué hace cada aparato" },
+  rotEquip: { pt: "Tecnologias", en: "Technology", es: "Tecnología" },
+  h2Equip: { pt: "O que cada tecnologia faz", en: "What each technology does", es: "Qué hace cada tecnología" },
   h2EquipScript: { pt: "e o que você sente.", en: "and what you feel.", es: "y qué se siente." },
   introEquip: {
     pt: "A pergunta que mais chega aqui é \u201Cdói?\u201D. Em vez de responder que não, prefiro te contar exatamente o que acontece — e lembrar que, em qualquer momento, é só você falar que eu ajusto.",
@@ -260,7 +260,7 @@ export const TEXTOS = {
 };
 
 export const PILARES = [
-  { pt: ["Tecnologias avançadas", "Equipamentos modernos e seguros."], en: ["Advanced technology", "Modern, safe equipment."], es: ["Tecnologías avanzadas", "Equipos modernos y seguros."] },
+  { pt: ["Tecnologias avançadas", "Tecnologia com estudo por trás, aplicada com segurança."], en: ["Advanced technology", "Technology backed by research, applied safely."], es: ["Tecnologías avanzadas", "Tecnología con estudios detrás, aplicada con seguridad."] },
   { pt: ["Atendimento personalizado", "Protocolos exclusivos para cada cliente."], en: ["Personalized care", "A protocol built for each client."], es: ["Atención personalizada", "Protocolos exclusivos para cada clienta."] },
   { pt: ["Resultados visíveis", "Mais autoestima, bem-estar e qualidade de vida."], en: ["Visible results", "More self-esteem, wellness and quality of life."], es: ["Resultados visibles", "Más autoestima, bienestar y calidad de vida."] },
   { pt: ["Segurança e conforto", "Procedimentos seguros e sem tempo de parada."], en: ["Safety and comfort", "Safe procedures with no downtime."], es: ["Seguridad y confort", "Procedimientos seguros y sin tiempo de reposo."] },
@@ -362,8 +362,8 @@ export const FOTOS = [
   // Escolhidas do conjunto BRANDING, nao do de dezembro: aquele tem arvore de Natal em todo
   // quadro e envelheceria o site em janeiro. Estas duas sao atemporais — e a do arco conversa
   // com o bege e as curvas que o site ja usa, o que nao e coincidencia: e a mesma direcao de marca.
-  { src: "/img/andreia-arco.jpg", pt: "Andréia Carvalho", en: "Andréia Carvalho", es: "Andréia Carvalho", pos: "50% 32%", w: 800, h: 1200 },
-  { src: "/img/andreia-clinica.jpg", pt: "Andréia Carvalho na clínica", en: "Andréia Carvalho at the clinic", es: "Andréia Carvalho en la clínica", pos: "50% 26%", w: 733, h: 1100 },
+  { src: "/img/andreia-estudio.jpg", pt: "Andréia Carvalho", en: "Andréia Carvalho", es: "Andréia Carvalho", pos: "50% 30%", w: 933, h: 1400 },
+  { src: "/img/andreia-clinica.jpg", pt: "Andréia Carvalho na clínica", en: "Andréia Carvalho at the clinic", es: "Andréia Carvalho en la clínica", pos: "50% 26%", w: 933, h: 1400 },
 ];
 
 /**
