@@ -62,6 +62,17 @@ export const TEXTOS = {
     en: "Lymphatic drainage, detox, EMShape Neo and body technologies — with a protocol built for your body. I speak Portuguese and Spanish, and English-speaking clients are welcome with translation support.",
     es: "Drenaje linfático, drenaje detox, EMShape Neo y tecnologías corporales — con un protocolo hecho para tu cuerpo. Te atiendo en español y en portugués, sin intermediarios.",
   },
+  // ANCORA DE PRECO em vez de tabela na cara. Decisao de Sostenes em 16/08: ela quer subir preco e
+  // valorizar o atendimento, e tabela grande no meio da pagina le como promocao.
+  // "A partir de" faz tres coisas que tabela nao faz: ancora o piso sem prender o teto, filtra
+  // quem nao tem orcamento antes de ocupar a agenda dela, e deixa espaco para ela reajustar sem
+  // reescrever o site. Esconder preco por completo seria pior — a pessoa pergunta e some.
+  ancoraPreco: {
+    pt: "Avaliação e protocolo montado para o seu corpo. Sessões a partir de US$ 60.",
+    en: "Assessment and a protocol built for your body. Sessions from US$ 60.",
+    es: "Evaluación y protocolo hecho para tu cuerpo. Sesiones desde US$ 60.",
+  },
+  verValores: { pt: "Ver todos os valores", en: "See all prices", es: "Ver todos los precios" },
   ctaAgendar: { pt: "Agendar avaliação", en: "Book an assessment", es: "Agendar evaluación" },
   // Porta de entrada para QUEM AINDA NAO SABE o que quer. "Agendar" so serve para quem ja decidiu;
   // a maioria chega com duvida, e mandar essa pessoa para "agendar" e pedir compromisso antes da
