@@ -14,7 +14,7 @@
 // Uso: node build.mjs
 
 import { writeFileSync } from "node:fs";
-import { CLINICA, TEXTOS, PILARES, SERVICOS, BENEFICIOS, RESULTADOS, FALAS, FOTOS, TECNOLOGIAS } from "./dados.js";
+import { CLINICA, TEXTOS, PILARES, SERVICOS, BENEFICIOS, RESULTADOS, FALAS, FOTOS, TECNOLOGIAS, AGENDA, FORM } from "./dados.js";
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const t = (o, l) => (o && typeof o === "object" && !Array.isArray(o) && o[l] !== undefined ? o[l] : o);
@@ -278,6 +278,31 @@ h2{font-size:clamp(1.85rem,3.8vw,2.7rem);margin-bottom:15px}
 .eq-estudo p{margin:7px 0 0;font-size:.93rem;line-height:1.55}
 .eq-estudo cite{display:block;margin-top:9px;font-size:.78rem;font-style:normal;color:var(--suave)}
 .eq-aviso{margin-top:14px;font-size:.84rem;color:var(--suave);font-style:italic}
+.pedido{max-width:660px;margin:26px auto 0;text-align:left;background:var(--papel);
+  border:1px solid var(--linha);border-radius:var(--r-g);padding:26px}
+.pedido h3{font-family:var(--serif);font-size:1.5rem;margin:0 0 4px;color:var(--marrom)}
+.pedido-intro{margin:0 0 18px;color:var(--suave);font-size:.96rem}
+.campos{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.campos label{display:flex;flex-direction:column;gap:6px;font-size:.85rem;
+  letter-spacing:.04em;text-transform:uppercase;color:var(--suave)}
+.campos label.largo{grid-column:1/-1}
+.campos input,.campos select,.campos textarea{font:inherit;font-size:1rem;text-transform:none;
+  letter-spacing:0;color:var(--marrom);background:var(--creme);border:1px solid var(--linha);
+  border-radius:var(--r-s);padding:11px 12px;width:100%}
+.campos input:focus,.campos select:focus,.campos textarea:focus{outline:2px solid var(--dourado);
+  outline-offset:1px;border-color:var(--dourado)}
+.campos textarea{resize:vertical;min-height:52px}
+.pedido-aviso{margin:14px 0 0;font-size:.82rem;color:var(--suave);border-left:2px solid var(--linha);padding-left:10px}
+.isca{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.pedido-msg{margin:12px 0 0;font-size:.95rem;min-height:1.2em;text-align:center}
+.pedido-msg.ok{color:#2f6b45}
+.pedido-msg.ruim{color:#a03a2a}
+.pedido[data-enviado="1"] .campos,.pedido[data-enviado="1"] .acoes button,
+.pedido[data-enviado="1"] .pedido-aviso{display:none}
+/* O widget da Emily flutua no canto; no celular ele briga com o rodape. */
+elevenlabs-convai{z-index:40}
+@media (max-width:760px){ .campos{grid-template-columns:1fr} .pedido{padding:20px} }
+
 .atendimento{margin:26px 0 0;display:grid;grid-template-columns:.82fr 1.18fr;gap:34px;
   align-items:center;background:var(--papel);border:1px solid var(--linha);border-radius:var(--r-m);padding:26px}
 .atendimento figure{margin:0;border-radius:var(--r-s);overflow:hidden;background:var(--creme-2)}
@@ -615,8 +640,45 @@ ${temFotos ? `    <div class="gal">\n${fotos}\n    </div>` : ""}
     <div class="rotulo">${esc(t(TEXTOS.rotAgendar, l))}</div>
     <h2>${t(TEXTOS.h2Agendar, l)}</h2>
     <p class="promessa">${esc(t(TEXTOS.promessa, l))}</p>
-    <div class="acoes" style="justify-content:center">
-      <a class="btn btn-cheio" href="${zap}">${esc(t(TEXTOS.ctaZap, l))}</a>
+    <form class="pedido" id="pedido" novalidate>
+      <h3>${esc(t(FORM.titulo, l))}</h3>
+      <p class="pedido-intro">${esc(t(FORM.intro, l))}</p>
+      <div class="campos">
+        <label>${esc(t(FORM.nome, l))}
+          <input name="primeiro_nome" required minlength="2" maxlength="40" autocomplete="given-name" />
+        </label>
+        <label>${esc(t(FORM.contato, l))}
+          <input name="contato" required minlength="7" maxlength="40" inputmode="tel" autocomplete="tel" />
+        </label>
+        <label class="largo">${esc(t(FORM.servico, l))}
+          <select name="servico" required>
+            <option value="${esc(t(FORM.naoSei, l))}">${esc(t(FORM.naoSei, l))}</option>
+${SERVICOS.map((sv) => `            <option>${esc(t(sv, l)[0])}</option>`).join("\n")}
+          </select>
+        </label>
+        <label>${esc(t(FORM.dia, l))}
+          <input name="dia_preferido" type="date" required />
+        </label>
+        <label>${esc(t(FORM.periodo, l))}
+          <select name="periodo" required>
+${["manha", "tarde", "noite", "qualquer"].map((v, i) => `            <option value="${v}">${esc(t(FORM.periodos, l)[i])}</option>`).join("\n")}
+          </select>
+        </label>
+        <label class="largo">${esc(t(FORM.obs, l))}
+          <textarea name="observacao" maxlength="280" rows="2"></textarea>
+        </label>
+      </div>
+      <p class="pedido-aviso">${esc(t(FORM.aviso, l))}</p>
+      <!-- Isca: campo invisível para humano, irresistível para robô de formulário.
+           Se vier preenchido, o envio é descartado sem tocar no banco. -->
+      <div class="isca" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off" /></label></div>
+      <div class="acoes" style="justify-content:center">
+        <button class="btn btn-cheio" type="submit">${esc(t(FORM.enviar, l))}</button>
+        <a class="btn btn-vazio" href="${zap}">${esc(t(TEXTOS.ctaZap, l))}</a>
+      </div>
+      <p class="pedido-msg" role="status" aria-live="polite"></p>
+    </form>
+    <div class="acoes" style="justify-content:center;margin-top:10px">
       <a class="btn btn-vazio" href="${CLINICA.instagram}" target="_blank" rel="noopener">${esc(t(TEXTOS.ctaInsta, l))}</a>
     </div>
     <div class="contato">
@@ -637,14 +699,56 @@ ${temFotos ? `    <div class="gal">\n${fotos}\n    </div>` : ""}
   </div>
 </footer>
 
+<!-- A Emily do site: agente próprio (não o da demo), preso ao domínio dela por allowlist,
+     sem gravar voz e com o texto apagado em 30 dias. Ela tira dúvida; não confirma horário. -->
+<elevenlabs-convai agent-id="${AGENDA.agenteEmily}"></elevenlabs-convai>
+<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+
 <script>
-// Único script da página: abrir e fechar o menu. Todo o conteúdo já está no HTML.
+// Menu, e o envio do pedido de horário. Todo o conteúdo já está no HTML.
 (function(){
+  var SB={url:${JSON.stringify(AGENDA.supabaseUrl)},chave:${JSON.stringify(AGENDA.supabaseChave)},
+          tabela:${JSON.stringify(AGENDA.tabela)},idioma:${JSON.stringify(l)}};
+  var T={enviando:${JSON.stringify(t(FORM.enviando, l))},ok:${JSON.stringify(t(FORM.ok, l))},
+         erro:${JSON.stringify(t(FORM.erro, l))}};
   var b=document.querySelector('.menu-btn'), n=document.getElementById('menu');
   b.addEventListener('click',function(){
     var a=n.classList.toggle('aberto');
     b.setAttribute('aria-expanded',String(a));
   });
+
+  // Pedido de horário: vai direto para o Supabase com a chave publicável. Ela só permite
+  // INSERT nesta tabela — ler os pedidos exige login de operador. Se o envio falhar por
+  // qualquer motivo, o caminho do WhatsApp continua ali do lado, então ninguém fica sem saída.
+  var f=document.getElementById('pedido');
+  if(f){
+    var dia=f.querySelector('[name=dia_preferido]');
+    var hoje=new Date(); hoje.setMinutes(hoje.getMinutes()-hoje.getTimezoneOffset());
+    dia.min=hoje.toISOString().slice(0,10);
+    var lim=new Date(hoje); lim.setDate(lim.getDate()+180); dia.max=lim.toISOString().slice(0,10);
+    var msg=f.querySelector('.pedido-msg');
+    f.addEventListener('submit',function(ev){
+      ev.preventDefault();
+      if(f.dataset.enviado==='1') return;
+      if(f.website.value){ f.dataset.enviado='1'; msg.textContent=T.ok; msg.className='pedido-msg ok'; return; }
+      if(!f.checkValidity()){ f.reportValidity(); return; }
+      var b=f.querySelector('button[type=submit]');
+      b.disabled=true; msg.className='pedido-msg'; msg.textContent=T.enviando;
+      fetch(SB.url+'/rest/v1/'+SB.tabela,{method:'POST',headers:{
+          'apikey':SB.chave,'authorization':'Bearer '+SB.chave,
+          'content-type':'application/json','prefer':'return=minimal'},
+        body:JSON.stringify({primeiro_nome:f.primeiro_nome.value.trim(),contato:f.contato.value.trim(),
+          servico:f.servico.value,dia_preferido:f.dia_preferido.value,periodo:f.periodo.value,
+          observacao:f.observacao.value.trim()||null,idioma:SB.idioma})
+      }).then(function(r){
+        if(!r.ok) throw new Error(r.status);
+        f.dataset.enviado='1'; msg.textContent=T.ok; msg.className='pedido-msg ok';
+      }).catch(function(){
+        b.disabled=false; msg.textContent=T.erro; msg.className='pedido-msg ruim';
+      });
+    });
+  }
+
   n.addEventListener('click',function(e){ if(e.target.tagName==='A') { n.classList.remove('aberto'); b.setAttribute('aria-expanded','false'); } });
 })();
 </script>

@@ -357,6 +357,60 @@ export const FALAS = [
  * não fica buraco no layout. Ao repor uma foto, informar `w` e `h` reais — sem eles a imagem
  * estica e distorce o rosto.
  */
+
+/**
+ * AGENDAMENTO PELO SITE.
+ *
+ * `mostrarGrade` esta FALSO de proposito. Uma grade de horarios livres exige uma fonte de
+ * verdade da agenda da Andreia — e ela nao existe: o horario de trabalho dela nunca foi
+ * informado e o espelho do Agendor esta desligado. Publicar uma grade agora seria inventar
+ * disponibilidade e, na primeira cliente que escolhesse um horario ocupado, quebrar a
+ * confianca logo no primeiro contato. Enquanto isso, o site pede dia + periodo, que e um
+ * pedido honesto: quem confirma a hora exata e a Andreia.
+ *
+ * Para ligar a grade: preencher `expediente` com o horario real dela e virar a chave.
+ */
+export const AGENDA = {
+  // Agente proprio do site (emily-site/criar-agente.mjs). NAO e o da demo.
+  agenteEmily: "agent_4001m0654ycze7088jt0jz1x9ga5",
+  mostrarGrade: false,
+  expediente: null, // [PREENCHER] ex.: { seg: ["09:00","18:00"], ... } — direto da Andreia
+  supabaseUrl: "https://yaqphldowpshhrtvvfaq.supabase.co",
+  // Chave publicavel (anon). E projetada para ficar no navegador: sozinha ela so consegue
+  // INSERT nesta tabela. Ler os pedidos exige login de operador (RLS andreia_pedidos_site).
+  supabaseChave: "sb_publishable_V64ejsDNKclPdFlqymghnQ_jUr5ivj1",
+  tabela: "andreia_pedidos_site",
+};
+
+export const FORM = {
+  titulo:   { pt: "Pedir horário", en: "Request a time", es: "Pedir horario" },
+  intro:    { pt: "Preencha em 30 segundos. A Andréia confirma o horário com você pelo WhatsApp.",
+              en: "Takes 30 seconds. Andréia confirms the exact time with you on WhatsApp.",
+              es: "Toma 30 segundos. Andréia confirma el horario contigo por WhatsApp." },
+  nome:     { pt: "Seu primeiro nome", en: "Your first name", es: "Tu primer nombre" },
+  contato:  { pt: "WhatsApp com DDD", en: "WhatsApp number", es: "WhatsApp con código" },
+  servico:  { pt: "O que você quer fazer", en: "What you'd like to do", es: "Qué quieres hacer" },
+  naoSei:   { pt: "Não sei ainda — quero uma avaliação", en: "Not sure yet — I want an assessment", es: "Todavía no sé — quiero una evaluación" },
+  dia:      { pt: "Dia de preferência", en: "Preferred day", es: "Día preferido" },
+  periodo:  { pt: "Período", en: "Time of day", es: "Franja" },
+  periodos: { pt: ["Manhã", "Tarde", "Noite", "Tanto faz"], en: ["Morning", "Afternoon", "Evening", "Any"], es: ["Mañana", "Tarde", "Noche", "Cualquiera"] },
+  obs:      { pt: "Algo que ela precise saber? (opcional)", en: "Anything she should know? (optional)", es: "¿Algo que deba saber? (opcional)" },
+  enviar:   { pt: "Enviar pedido", en: "Send request", es: "Enviar solicitud" },
+  enviando: { pt: "Enviando…", en: "Sending…", es: "Enviando…" },
+  ok:       { pt: "Pedido enviado. A Andréia vê e confirma o horário com você pelo WhatsApp. Se preferir adiantar, chama ela lá.",
+              en: "Request sent. Andréia will confirm the exact time with you on WhatsApp. You can also message her directly.",
+              es: "Solicitud enviada. Andréia confirma el horario contigo por WhatsApp. Si prefieres, escríbele directo." },
+  erro:     { pt: "Não consegui enviar agora. Chama a Andréia no WhatsApp que ela resolve na hora.",
+              en: "Couldn't send it right now. Message Andréia on WhatsApp and she'll sort it out.",
+              es: "No pude enviarlo ahora. Escríbele a Andréia por WhatsApp y lo resuelve." },
+  // Aviso obrigatorio: o formulario nao e canal clinico. Sem isso, alguem descreve uma
+  // cirurgia recente num campo de texto que nao foi feito para guardar isso.
+  aviso:    { pt: "Não escreva dados de saúde, documento ou cartão. Isso é só um pedido de horário.",
+              en: "Please don't include health, ID or card details. This is only a time request.",
+              es: "No escribas datos de salud, documento o tarjeta. Esto es solo una solicitud de horario." },
+  emily:    { pt: "Prefere perguntar antes? Fale com a Emily", en: "Have questions first? Talk to Emily", es: "¿Dudas primero? Habla con Emily" },
+};
+
 export const FOTOS = [
   // Ensaio de branding por Thais Araujo Photo, da galeria da propria Andreia (15/08/2026).
   // Escolhidas do conjunto BRANDING, nao do de dezembro: aquele tem arvore de Natal em todo
