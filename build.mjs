@@ -69,6 +69,7 @@ function pagina(l) {
     es: ["Qué es", "Cómo funciona", "Para qué se usa", "Qué se siente", "Qué muestran los estudios"],
   }[l];
   const equipamentos = TECNOLOGIAS.map((e) => `      <article class="eq rev">
+${e.foto ? `        <figure class="eq-foto"><img src="${e.foto}" alt="${esc(t(e.nome, l))}" loading="lazy" width="900" height="900" /></figure>` : ""}
         <div class="eq-topo"><h3>${esc(t(e.nome, l))}</h3><span class="eq-tipo">${esc(t(e.tec, l))}</span></div>
         <dl>
           <dt>${esc(rotEq[0])}</dt><dd>${esc(t(e.oque, l))}</dd>
@@ -227,6 +228,9 @@ h2{font-size:clamp(1.85rem,3.8vw,2.7rem);margin-bottom:15px}
 .eq-estudo p{margin:7px 0 0;font-size:.93rem;line-height:1.55}
 .eq-estudo cite{display:block;margin-top:9px;font-size:.78rem;font-style:normal;color:var(--suave)}
 .eq-aviso{margin-top:14px;font-size:.84rem;color:var(--suave);font-style:italic}
+.eq-foto{margin:0 0 18px;background:var(--creme);border-radius:12px;overflow:hidden;aspect-ratio:1/1;
+  display:grid;place-items:center}
+.eq-foto img{width:100%;height:100%;object-fit:contain;padding:10px}
 .fio{margin-top:18px;font-family:var(--serif);font-size:1.32rem;line-height:1.35;color:var(--marrom)}
 .trajeto{list-style:none;padding:0;margin:24px 0 0;counter-reset:tj}
 .trajeto li{counter-increment:tj;position:relative;padding:0 0 22px 34px;border-left:1px solid var(--linha)}

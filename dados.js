@@ -365,6 +365,9 @@ export const FOTOS = [
 export const TECNOLOGIAS = [
   {
     id: "hifem",
+    // Imagem oficial do fabricante (emshape.shop). Único aparelho nomeado no site — as outras
+    // duas tecnologias entram sem marca, sem modelo e sem foto, por decisão de Sostenes.
+    foto: "/img/emshape-neo.jpg",
     nome: { pt: "EMShape Neo", en: "EMShape Neo", es: "EMShape Neo" },
     tec: { pt: "Tecnologia HIFEM · contração muscular", en: "HIFEM technology · muscle contraction", es: "Tecnología HIFEM · contracción muscular" },
     oque: {
