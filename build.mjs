@@ -39,6 +39,7 @@ const IDIOMAS = [
 function pagina(l) {
   const eu = IDIOMAS.find((i) => i.cod === l);
   const zap = `https://wa.me/${CLINICA.whatsapp}?text=${encodeURIComponent(t(TEXTOS.msgZap, l))}`;
+  const zapDuvida = `https://wa.me/${CLINICA.whatsapp}?text=${encodeURIComponent(t(TEXTOS.msgDuvida, l))}`;
   const nav = t(TEXTOS.nav, l);
 
   const linhas = SERVICOS.map((s) => {
@@ -188,6 +189,10 @@ h2{font-size:clamp(1.85rem,3.8vw,2.7rem);margin-bottom:15px}
 .tab-dur{font-size:.82rem;color:var(--suave);white-space:nowrap}
 .tab-preco{font-family:var(--serif);font-size:1.42rem;color:var(--dourado);text-align:right;white-space:nowrap}
 .nota-moeda{margin-top:13px;font-size:.8rem;color:var(--suave);font-style:italic}
+.duvida{margin-top:30px;padding:24px;border:1px solid var(--linha);border-radius:14px;background:var(--papel);
+  display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.duvida p{margin:0;max-width:52ch;font-size:1.02rem;color:var(--texto)}
+.duvida .btn{flex:none}
 /* O aviso de escopo fica JUNTO das frases, não a 3.000px de distância no rodapé. */
 .escopo{margin-top:16px;font-size:.78rem;color:var(--suave);border-left:2px solid var(--areia);padding-left:14px}
 
@@ -325,6 +330,10 @@ ${pilares}
 ${linhas}
     </div>
     <p class="nota-moeda">${esc(t(TEXTOS.moeda, l))}</p>
+    <div class="duvida">
+      <p>${esc(t(TEXTOS.duvidaAjuda, l))}</p>
+      <a class="btn btn-1" href="${zapDuvida}" target="_blank" rel="noopener">${esc(t(TEXTOS.ctaDuvida, l))}</a>
+    </div>
     <p class="escopo">${esc(t(TEXTOS.escopo, l))}</p>
   </div>
 </section>

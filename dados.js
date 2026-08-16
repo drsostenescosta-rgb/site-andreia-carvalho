@@ -60,6 +60,20 @@ export const TEXTOS = {
     es: "Drenaje linfático, drenaje detox, EMSzero y tecnologías corporales — con un protocolo hecho para tu cuerpo. Te atiendo en español y en portugués, sin intermediarios.",
   },
   ctaAgendar: { pt: "Agendar avaliação", en: "Book an assessment", es: "Agendar evaluación" },
+  // Porta de entrada para QUEM AINDA NAO SABE o que quer. "Agendar" so serve para quem ja decidiu;
+  // a maioria chega com duvida, e mandar essa pessoa para "agendar" e pedir compromisso antes da
+  // conversa. Esta e a mesma regra de venda que o motor da Emily segue: descobrir antes de fechar.
+  ctaDuvida: { pt: "Tirar uma dúvida", en: "Ask a question", es: "Hacer una pregunta" },
+  msgDuvida: {
+    pt: "Oi, Andréia! Vim pelo site e queria tirar uma dúvida sobre os procedimentos.",
+    en: "Hi Andréia! I came from your website and I have a question about the treatments.",
+    es: "¡Hola, Andréia! Vengo desde tu sitio y quisiera hacer una pregunta sobre los procedimientos.",
+  },
+  duvidaAjuda: {
+    pt: "Não sabe por onde começar? Me conta o que você quer melhorar que eu te digo o que faz sentido.",
+    en: "Not sure where to start? Tell me what you'd like to improve and I'll tell you what makes sense.",
+    es: "¿No sabes por dónde empezar? Cuéntame qué quieres mejorar y te digo qué tiene sentido.",
+  },
   ctaVer: { pt: "Ver procedimentos", en: "See treatments", es: "Ver procedimientos" },
   rotServicos: { pt: "Procedimentos", en: "Treatments", es: "Procedimientos" },
   h2Servicos: { pt: "Cada corpo pede", en: "Every body asks for", es: "Cada cuerpo pide" },
