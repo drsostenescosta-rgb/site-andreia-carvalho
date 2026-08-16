@@ -190,9 +190,19 @@ const corpo = {
     },
   },
   platform_settings: {
-    // Sem isto a pagina nao consegue variar a abertura: a ElevenLabs recusa o override.
+    // O widget manda o bloco `agent` INTEIRO no override — first_message, language e um
+    // prompt todo nulo. Se QUALQUER campo com valor real nao estiver liberado, a ElevenLabs
+    // recusa a conversa e o navegador desconecta na hora (0s, "Client disconnected: 1000").
+    // Foi o que derrubou a voz em 16/08: eu liberei so first_message e o `language: "pt"`
+    // que vinha junto fez a conexao ser recusada seis vezes seguidas.
+    //
+    // `prompt` fica FALSO e nao muda: liberar prompt e deixar qualquer pessoa abrir o
+    // devtools e reescrever as regras da Emily — apagar "nunca prometa resultado", apagar
+    // "nunca cite calorias" — num site que atende cliente de verdade.
     overrides: {
-      conversation_config_override: { agent: { first_message: true } },
+      conversation_config_override: {
+        agent: { first_message: true, language: true, prompt: { prompt: false } },
+      },
     },
     // Trava 1: só o site dela embute. O agent-id fica visível no HTML de qualquer jeito —
     // a allowlist é o que impede que isso vire crédito gasto por terceiro.

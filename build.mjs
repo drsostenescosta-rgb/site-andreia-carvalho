@@ -14,7 +14,7 @@
 // Uso: node build.mjs
 
 import { writeFileSync } from "node:fs";
-import { CLINICA, TEXTOS, PILARES, SERVICOS, BENEFICIOS, RESULTADOS, FALAS, FOTOS, TECNOLOGIAS, AGENDA, FORM, HANDOFF, AVALIACOES, SITE_URL, ABERTURAS } from "./dados.js";
+import { CLINICA, TEXTOS, PILARES, SERVICOS, BENEFICIOS, RESULTADOS, FALAS, FOTOS, TECNOLOGIAS, AGENDA, FORM, HANDOFF, AVALIACOES, SITE_URL } from "./dados.js";
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const t = (o, l) => (o && typeof o === "object" && !Array.isArray(o) && o[l] !== undefined ? o[l] : o);
@@ -844,7 +844,6 @@ ${["manha", "tarde", "noite", "qualquer"].map((v, i) => `            <option val
          erro:${JSON.stringify(t(FORM.erro, l))},copiar:${JSON.stringify(t(HANDOFF.copiar, l))},
          copiado:${JSON.stringify(t(HANDOFF.copiado, l))}};
   var ZAP=${JSON.stringify(CLINICA.whatsapp)};
-  var ABERTURAS=${JSON.stringify(ABERTURAS)};
   var b=document.querySelector('.menu-btn'), n=document.getElementById('menu');
   b.addEventListener('click',function(){
     var a=n.classList.toggle('aberto');
@@ -856,17 +855,21 @@ ${["manha", "tarde", "noite", "qualquer"].map((v, i) => `            <option val
   // qualquer motivo, o caminho do WhatsApp continua ali do lado, então ninguém fica sem saída.
 
 
-  // A abertura varia. Sempre a mesma frase soa gravada — gente cumprimenta diferente a
-  // cada vez. As frases sao FIXAS (definidas por nos), so a escolha e sorteada: a Emily
-  // nao inventa o proprio cumprimento.
-  var wConv=document.querySelector('elevenlabs-convai');
-  if(wConv){
-    wConv.addEventListener('elevenlabs-convai:call',function(e){
-      var f=ABERTURAS[Math.floor(Math.random()*ABERTURAS.length)];
-      e.detail.config.overrides=Object.assign({},e.detail.config.overrides,
-        {agent:Object.assign({},(e.detail.config.overrides||{}).agent,{firstMessage:f})});
-    });
-  }
+  // A ABERTURA SORTEADA FOI REMOVIDA em 16/08. Nao repetir sem ler isto.
+  //
+  // Sortear a abertura exige mandar conversation_config_override. O widget nao manda so o
+  // campo que a gente mexe: ele manda o bloco agent INTEIRO — first_message, language e
+  // um prompt todo nulo. Se qualquer campo com valor real nao estiver liberado no agente,
+  // a ElevenLabs recusa a conversa e o navegador fecha em 0 segundo.
+  //
+  // Medido no registro da ElevenLabs: 3 conversas SEM override duraram 20s, 198s e 266s;
+  // 6 conversas COM override duraram 0s. Correlacao de 9 em 9. Custou tres rodadas de
+  // teste do Sostenes no celular.
+  //
+  // O campo agent.language ja foi liberado no agente, o que provavelmente resolve. Mas "provavelmente"
+  // nao volta para um site que atende cliente. Para religar: liberar tambem o que o widget
+  // mandar, testar a VOZ num aparelho com microfone, e so entao publicar.
+  // A variacao continua existindo a partir da segunda fala: o prompt manda a Emily variar.
 
   // A Emily chama a ferramenta encaminhar_whatsapp quando a pessoa quer agendar. O navegador bloqueia
   // abrir aba nova fora de um clique, e mais importante: ninguém deve mandar mensagem que não
