@@ -149,6 +149,12 @@ export const TEXTOS = {
     en: "The earlier you reach out, the more we can build. Last minute works too — it just changes what's possible.",
     es: "Cuanto antes me escribas, más podemos armar. A última hora también se puede — solo cambia lo que es posible hacer.",
   },
+  rotAtendimento: { pt: "Quem faz", en: "Who does it", es: "Quién lo hace" },
+  atendimentoApoio: {
+    pt: "Cada sessão é conduzida por mim, do começo ao fim. Não tem revezamento, não tem estagiária — é a mesma pessoa que te avaliou que está com a mão em você.",
+    en: "Every session is run by me, start to finish. No rotation, no assistants — the same person who assessed you is the one working on you.",
+    es: "Cada sesión la conduzco yo, de principio a fin. Sin turnos, sin practicantes — la misma persona que te evaluó es la que tiene las manos en ti.",
+  },
   legendaAtendimento: {
     pt: "Aparelho é ferramenta. O que decide o resultado é quem está com a mão em você.",
     en: "A device is a tool. What decides the result is whose hands are on you.",
