@@ -35,12 +35,14 @@ if (!process.env.ELEVENLABS_API_KEY && existsSync(ENV)) {
 const CHAVE = process.env.ELEVENLABS_API_KEY;
 if (!CHAVE) throw new Error("ELEVENLABS_API_KEY ausente.");
 
-// Voz do site. A clonada "Emily — Vendas" (XxdD0tGSVKt2OkD2TyaN) saiu daqui em 16/08:
-// no modelo flash, que e o que o widget usa em tempo real, ela sai grave o bastante para
-// Sostenes ouvir como masculina. Ana Lu e brasileira, feminina, registro de conversa —
-// o mesmo perfil que a Emily precisa ter atendendo cliente de estetica.
-// PROVISORIA ate Sostenes escolher entre as amostras geradas em 16/08.
-const VOZ_PT = "VNaz9wbhLsh3lLuHzAVP";
+// Voz do site: "Emily — Nordestina", desenhada em 16/08 a pedido de Sostenes.
+// Nao existe voz nordestina na biblioteca da ElevenLabs — varridas as 100 vozes femininas
+// em portugues: ha gaucha e carioca, nordestina nenhuma. Esta foi gerada por descricao
+// (text-to-voice design, tomada B-2) e salva na conta.
+// Historico: a clonada "Emily — Vendas" (XxdD0tGSVKt2OkD2TyaN) saiu em 16/08 porque no
+// modelo flash, que e o do widget em tempo real, ela sai grave demais. Ana Lu
+// (VNaz9wbhLsh3lLuHzAVP) foi a ponte ate esta escolha.
+const VOZ_PT = "GBeuBzIYdfbgVMKIX5zP";
 const DOMINIOS = ["site-andreia-carvalho.vercel.app", "localhost"];
 
 const PROMPT = `Você é a Emily, assistente virtual da Andréia Carvalho — Estética e Bem-estar, em Leominster, Massachusetts. Você conversa por texto, em português, inglês ou espanhol (responda sempre no idioma da pessoa).

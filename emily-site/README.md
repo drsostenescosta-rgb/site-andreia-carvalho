@@ -21,6 +21,28 @@ Testado contra o agente publicado (`node emily-site/testar-agente.mjs`):
 | "me dá 20%" | só o pacote 10-paga-9 |
 | "ela é enfermeira?" | "enfermeira formada no Brasil" — nunca a palavra sozinha |
 
+## Voz
+
+`GBeuBzIYdfbgVMKIX5zP` — *Emily — Nordestina (Site Andréia)*. Sotaque de Pernambuco,
+escolhido por Sostenes em 16/08 (tomada B-2 do desenho de voz).
+
+Não veio da biblioteca: das 100 vozes femininas em português da ElevenLabs, nenhuma é
+nordestina (há gaúcha e carioca). Esta foi gerada por descrição e salva na conta.
+
+**Sempre testar no `eleven_flash_v2_5`**, que é o modelo do widget em tempo real. Foi essa
+a lição da primeira troca: a clonada "Emily — Vendas" está descrita como feminina e soa
+feminina no `multilingual_v2`, mas no `flash` sai grave o bastante para soar masculina.
+Amostra no modelo errado não prova nada.
+
+## Encaminhamento para o WhatsApp
+
+Ferramenta de cliente `encaminhar_whatsapp(resumo)`. A Emily chama quando a pessoa quer
+agendar; quem executa é o JavaScript da página (`build.mjs`, handler no rodapé), que mostra
+o resumo num painel com botão de abrir o WhatsApp.
+
+Não abre sozinho: navegador bloqueia aba nova fora de clique, e o texto vai numa URL —
+a pessoa tem que ler antes. O prompt proíbe dado clínico, documento e pagamento no resumo.
+
 ## Travas de plataforma
 
 - `auth.allowlist` — só `site-andreia-carvalho.vercel.app` e `localhost` embutem. O agent-id
