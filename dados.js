@@ -46,18 +46,18 @@ export const TEXTOS = {
     es: "Andréia Carvalho · Estética y Bienestar — Leominster, MA",
   },
   nav: {
-    pt: ["Procedimentos", "Benefícios", "Resultados", "Minha história", "Agendar"],
-    en: ["Treatments", "Benefits", "Results", "My story", "Book"],
-    es: ["Procedimientos", "Beneficios", "Resultados", "Mi historia", "Agendar"],
+    pt: ["Procedimentos", "Equipamentos", "Benefícios", "Resultados", "Minha história", "Agendar"],
+    en: ["Treatments", "Equipment", "Benefits", "Results", "My story", "Book"],
+    es: ["Procedimientos", "Equipos", "Beneficios", "Resultados", "Mi historia", "Agendar"],
   },
   selo: { pt: "Esteticista licenciada · Leominster, MA", en: "Licensed esthetician · Leominster, MA", es: "Esteticista licenciada · Leominster, MA" },
   // Tagline dela, do material dela.
   h1: { pt: "Tecnologia, ciência e cuidado", en: "Technology, science and care", es: "Tecnología, ciencia y cuidado" },
   h1s: { pt: "para resultados que você vê e sente.", en: "for results you see and feel.", es: "para resultados que se ven y se sienten." },
   sub: {
-    pt: "Drenagem linfática, dreno detox, EMSzero e tecnologias corporais — com protocolo montado para o seu corpo. Atendo em português e espanhol, e recebo também quem fala inglês, com apoio de tradução.",
-    en: "Lymphatic drainage, detox, EMSzero and body technologies — with a protocol built for your body. I speak Portuguese and Spanish, and English-speaking clients are welcome with translation support.",
-    es: "Drenaje linfático, drenaje detox, EMSzero y tecnologías corporales — con un protocolo hecho para tu cuerpo. Te atiendo en español y en portugués, sin intermediarios.",
+    pt: "Drenagem linfática, dreno detox, EMShape Neo e tecnologias corporais — com protocolo montado para o seu corpo. Atendo em português e espanhol, e recebo também quem fala inglês, com apoio de tradução.",
+    en: "Lymphatic drainage, detox, EMShape Neo and body technologies — with a protocol built for your body. I speak Portuguese and Spanish, and English-speaking clients are welcome with translation support.",
+    es: "Drenaje linfático, drenaje detox, EMShape Neo y tecnologías corporales — con un protocolo hecho para tu cuerpo. Te atiendo en español y en portugués, sin intermediarios.",
   },
   ctaAgendar: { pt: "Agendar avaliação", en: "Book an assessment", es: "Agendar evaluación" },
   // Porta de entrada para QUEM AINDA NAO SABE o que quer. "Agendar" so serve para quem ja decidiu;
@@ -88,6 +88,19 @@ export const TEXTOS = {
     pt: "Valores em dólar (US$). Atendimento em Leominster, Massachusetts.",
     en: "Prices in US dollars. Served in Leominster, Massachusetts.",
     es: "Precios en dólares (US$). Atención en Leominster, Massachusetts.",
+  },
+  rotEquip: { pt: "Equipamentos", en: "Equipment", es: "Equipos" },
+  h2Equip: { pt: "O que cada aparelho faz", en: "What each device does", es: "Qué hace cada aparato" },
+  h2EquipScript: { pt: "e o que você sente.", en: "and what you feel.", es: "y qué se siente." },
+  introEquip: {
+    pt: "A pergunta que mais chega aqui é \u201Cdói?\u201D. Em vez de responder que não, prefiro te contar exatamente o que acontece — e lembrar que, em qualquer momento, é só você falar que eu ajusto.",
+    en: "The question I get the most is \u201Cdoes it hurt?\u201D. Instead of just saying no, I'd rather tell you exactly what happens — and remind you that at any moment you can say so and I'll adjust.",
+    es: "La pregunta que más me hacen es \u201C¿duele?\u201D. En vez de responder que no, prefiero contarte exactamente qué pasa — y recordarte que en cualquier momento me dices y lo ajusto.",
+  },
+  notaEquip: {
+    pt: "Qual aparelho faz sentido para você, e se algum não faz, é o que a gente decide junto na avaliação. Isso depende do seu corpo e do seu histórico — não dá para responder por mensagem.",
+    en: "Which device makes sense for you — and which doesn't — is what we decide together at the assessment. It depends on your body and your history, and that can't be answered over a message.",
+    es: "Qué aparato tiene sentido para ti, y cuál no, es lo que decidimos juntas en la evaluación. Depende de tu cuerpo y de tu historial, y eso no se responde por mensaje.",
   },
   rotBenef: { pt: "Drenagem linfática", en: "Lymphatic drainage", es: "Drenaje linfático" },
   h2Benef: { pt: "Cuidado que dá leveza.", en: "Care that brings lightness.", es: "Cuidado que da ligereza." },
@@ -176,7 +189,7 @@ export const SERVICOS = [
   { pt: ["Relaxante", "Massagem que alivia tensões, reduz o estresse e promove relaxamento profundo."], en: ["Relaxing massage", "Massage that relieves tension, reduces stress and brings deep relaxation."], es: ["Relajante", "Masaje que alivia tensiones, reduce el estrés y promueve relajación profunda."], dur: { pt: "70 min", en: "70 min", es: "70 min" }, p: 70 },
   { pt: ["Masculina", "Massagem específica para o corpo masculino, ativa a circulação e reduz tensões."], en: ["Men's massage", "Massage designed for the male body, activates circulation and relieves tension."], es: ["Masculino", "Masaje específico para el cuerpo masculino, activa la circulación y reduce tensiones."], dur: { pt: "70 min", en: "70 min", es: "70 min" }, p: 70 },
   { pt: ["Masculina com fortalecimento", "Técnicas avançadas que tonificam, fortalecem e modelam o corpo masculino."], en: ["Men's strengthening massage", "Advanced techniques that tone, strengthen and shape the male body."], es: ["Masculino con fortalecimiento", "Técnicas avanzadas que tonifican, fortalecen y moldean el cuerpo masculino."], dur: { pt: "60 min", en: "60 min", es: "60 min" }, p: 100 },
-  { pt: ["Drenagem + EMSzero", "Drenagem linfática combinada com a tecnologia EMSzero para eliminar líquidos e tonificar."], en: ["Drainage + EMSzero", "Lymphatic drainage combined with EMSzero technology to reduce fluid and tone."], es: ["Drenaje + EMSzero", "Drenaje linfático combinado con la tecnología EMSzero para eliminar líquidos y tonificar."], dur: { pt: "60 min", en: "60 min", es: "60 min" }, p: 100, destaque: true },
+  { pt: ["Drenagem + EMShape Neo", "Drenagem linfática combinada com a tecnologia EMShape Neo para eliminar líquidos e tonificar."], en: ["Drainage + EMShape Neo", "Lymphatic drainage combined with EMShape Neo technology to reduce fluid and tone."], es: ["Drenaje + EMShape Neo", "Drenaje linfático combinado con la tecnología EMShape Neo para eliminar líquidos y tonificar."], dur: { pt: "60 min", en: "60 min", es: "60 min" }, p: 100, destaque: true },
   { pt: ["Tecnologias", "Sessão personalizada com tecnologias avançadas para tratar, modelar e potencializar resultados."], en: ["Technologies", "Personalized session with advanced technology to treat, shape and enhance results."], es: ["Tecnologías", "Sesión personalizada con tecnologías avanzadas para tratar, moldear y potenciar resultados."], dur: { pt: "60 min", en: "60 min", es: "60 min" }, p: 100 },
   { pt: ["Ultracavitação", "Tecnologia que quebra células de gordura localizada e reduz medidas."], en: ["Ultracavitation", "Technology that breaks down localized fat cells and reduces measurements."], es: ["Ultracavitación", "Tecnología que rompe células de grasa localizada y reduce medidas."], dur: { pt: "por área", en: "per area", es: "por zona" }, p: 50 },
   { pt: ["Radiofrequência", "Estimula o colágeno, melhora a firmeza da pele e reduz flacidez."], en: ["Radiofrequency", "Stimulates collagen, improves skin firmness and reduces sagging."], es: ["Radiofrecuencia", "Estimula el colágeno, mejora la firmeza de la piel y reduce la flacidez."], dur: { pt: "por área", en: "per area", es: "por zona" }, p: 50 },
@@ -254,4 +267,87 @@ export const FOTOS = [
   // com o bege e as curvas que o site ja usa, o que nao e coincidencia: e a mesma direcao de marca.
   { src: "/img/andreia-arco.jpg", pt: "Andréia Carvalho", en: "Andréia Carvalho", es: "Andréia Carvalho", pos: "50% 32%", w: 800, h: 1200 },
   { src: "/img/andreia-terno.jpg", pt: "Andréia Carvalho", en: "Andréia Carvalho", es: "Andréia Carvalho", pos: "50% 22%", w: 800, h: 1200 },
+];
+
+/**
+ * Equipamentos — o que a tecnologia FAZ e o que a cliente SENTE. Nada além disso.
+ *
+ * Duas coisas que NÃO entram aqui, e o motivo de cada uma:
+ *
+ * 1. ALEGAÇÃO DE FDA. Em 16/08 consultei o banco 510(k) pela API da openFDA: "EMShape" não
+ *    retorna nada, nem por aparelho nem por fabricante. A API responde (BTL volta com K233849,
+ *    K213344), então não é falha de busca. Isso NÃO prova que não existe — a Emsculpt é
+ *    registrada como BTL-899A, e não pelo nome comercial. Mas escrever "liberado pela FDA" com
+ *    base no site de quem vende o aparelho é alegação regulatória sem fonte, no site de uma
+ *    esteticista licenciada em Massachusetts. Entra quando o fornecedor der o número K e eu
+ *    confirmar: aí vira "FDA 510(k) K_____", que é mais forte do que qualquer adjetivo.
+ *
+ * 2. PROMESSA DE RESULTADO. "Sente" é fato do aparelho; "vai ficar" é promessa. A regra é a
+ *    mesma que a Emily segue no WhatsApp desde o primeiro dia.
+ *
+ * O campo `sensacao` é o que mais importa comercialmente: a pergunta nº 1 das clientes é "dói?",
+ * e a resposta honesta não é "não dói" — é descrever o que se sente e dizer que ela manda parar.
+ */
+export const EQUIPAMENTOS = [
+  {
+    id: "emshape",
+    nome: { pt: "EMShape Neo", en: "EMShape Neo", es: "EMShape Neo" },
+    tipo: { pt: "Contração muscular", en: "Muscle contraction", es: "Contracción muscular" },
+    // Palavras da própria Andréia, resposta 3.5 do questionário. Não reescrever.
+    oque: {
+      pt: "Máquina de tonificação muscular que trabalha três áreas em uma sessão: abdômen, posterior e glúteos.",
+      en: "A muscle toning machine that works three areas in one session: abdomen, back and glutes.",
+      es: "Máquina de tonificación muscular que trabaja tres áreas en una sesión: abdomen, posterior y glúteos.",
+    },
+    como: {
+      pt: "Um campo eletromagnético provoca contrações musculares involuntárias — mais profundas do que as que você consegue sozinha, porque não dependem da sua vontade.",
+      en: "An electromagnetic field triggers involuntary muscle contractions — deeper than the ones you can produce on your own, because they don't depend on your effort.",
+      es: "Un campo electromagnético provoca contracciones musculares involuntarias — más profundas que las que logras por tu cuenta, porque no dependen de tu voluntad.",
+    },
+    sensacao: {
+      pt: "A contração é forte e estranha na primeira vez, mas não é dor. Você fica deitada e a intensidade sobe aos poucos — se incomodar em algum momento, você fala e a Andréia baixa na hora.",
+      en: "The contraction feels strong and strange the first time, but it isn't pain. You lie down and the intensity rises gradually — if it bothers you at any point, you say so and Andréia turns it down right away.",
+      es: "La contracción se siente fuerte y extraña la primera vez, pero no es dolor. Te acuestas y la intensidad sube poco a poco — si te incomoda en algún momento, se lo dices y Andréia la baja al instante.",
+    },
+  },
+  {
+    id: "radiofrequencia",
+    nome: { pt: "Radiofrequência", en: "Radiofrequency", es: "Radiofrecuencia" },
+    tipo: { pt: "Aquecimento controlado", en: "Controlled heating", es: "Calentamiento controlado" },
+    oque: {
+      pt: "Aplicada por área, com o aparelho deslizando sobre a pele.",
+      en: "Applied by area, with the device gliding over the skin.",
+      es: "Aplicada por área, con el aparato deslizando sobre la piel.",
+    },
+    como: {
+      pt: "Ondas de radiofrequência aquecem as camadas mais profundas da pele de forma controlada, sem cortar nem furar nada.",
+      en: "Radiofrequency waves heat the deeper layers of the skin in a controlled way, with no cutting and no needles.",
+      es: "Ondas de radiofrecuencia calientan las capas más profundas de la piel de forma controlada, sin cortar ni pinchar.",
+    },
+    sensacao: {
+      pt: "Um calor morno que vai subindo, parecido com uma pedra quente que anda. A Andréia acompanha a temperatura o tempo todo — se esquentar demais para você, é só falar.",
+      en: "A gentle warmth that builds up, like a warm stone moving over you. Andréia tracks the temperature the whole time — if it gets too warm for you, just say so.",
+      es: "Un calor tibio que va subiendo, parecido a una piedra caliente que se mueve. Andréia controla la temperatura todo el tiempo — si te resulta demasiado, solo dilo.",
+    },
+  },
+  {
+    id: "ultracavitacao",
+    nome: { pt: "Ultracavitação", en: "Ultrasound cavitation", es: "Ultracavitación" },
+    tipo: { pt: "Ultrassom", en: "Ultrasound", es: "Ultrasonido" },
+    oque: {
+      pt: "Aplicada por área, com o aparelho em contato com a pele e um gel condutor.",
+      en: "Applied by area, with the device in contact with the skin and a conductive gel.",
+      es: "Aplicada por área, con el aparato en contacto con la piel y un gel conductor.",
+    },
+    como: {
+      pt: "Ondas ultrassônicas de baixa frequência aplicadas na região tratada.",
+      en: "Low-frequency ultrasound waves applied to the treated area.",
+      es: "Ondas ultrasónicas de baja frecuencia aplicadas en la zona tratada.",
+    },
+    sensacao: {
+      pt: "Você vai ouvir um apito agudo durante a aplicação. É normal e não é defeito do aparelho: é a própria frequência do ultrassom chegando ao ouvido pelo osso. Na pele, a sensação é de um aparelho morno deslizando.",
+      en: "You'll hear a high-pitched tone during the session. That's normal and not a fault: it's the ultrasound frequency reaching your ear through bone. On the skin it feels like a warm device gliding.",
+      es: "Vas a escuchar un pitido agudo durante la aplicación. Es normal y no es una falla: es la propia frecuencia del ultrasonido llegando al oído por el hueso. En la piel se siente como un aparato tibio deslizando.",
+    },
+  },
 ];

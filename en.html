@@ -4,9 +4,9 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Andréia Carvalho · Esthetics &amp; Wellness — Leominster, MA</title>
-<meta name="description" content="Lymphatic drainage, detox, EMSzero and body technologies — with a protocol built for your body. I speak Portuguese and Spanish, and English-speaking clients are welcome with translation support." />
+<meta name="description" content="Lymphatic drainage, detox, EMShape Neo and body technologies — with a protocol built for your body. I speak Portuguese and Spanish, and English-speaking clients are welcome with translation support." />
 <meta property="og:title" content="Andréia Carvalho · Esthetics &amp; Wellness Specialist" />
-<meta property="og:description" content="Lymphatic drainage, detox, EMSzero and body technologies — with a protocol built for your body. I speak Portuguese and Spanish, and English-speaking clients are welcome with translation support." />
+<meta property="og:description" content="Lymphatic drainage, detox, EMShape Neo and body technologies — with a protocol built for your body. I speak Portuguese and Spanish, and English-speaking clients are welcome with translation support." />
 <meta property="og:image" content="/img/andreia-retrato.jpg" />
 <meta property="og:type" content="website" />
 <meta name="theme-color" content="#f7f1e8" />
@@ -121,6 +121,18 @@ h2{font-size:clamp(1.85rem,3.8vw,2.7rem);margin-bottom:15px}
 .tab-dur{font-size:.82rem;color:var(--suave);white-space:nowrap}
 .tab-preco{font-family:var(--serif);font-size:1.42rem;color:var(--dourado);text-align:right;white-space:nowrap}
 .nota-moeda{margin-top:13px;font-size:.8rem;color:var(--suave);font-style:italic}
+#equipamentos{padding:74px 0}
+.eq-grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:34px}
+.eq{background:var(--papel);border:1px solid var(--linha);border-radius:16px;padding:26px}
+.eq-topo{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.eq-topo h3{font-size:1.42rem}
+.eq-tipo{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dourado);
+  border:1px solid var(--linha);border-radius:999px;padding:4px 11px}
+.eq dl{margin:0}
+.eq dt{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--suave);margin-top:16px}
+.eq dt:first-of-type{margin-top:0}
+.eq dd{margin:5px 0 0;font-size:.97rem;line-height:1.6}
+.eq-nota{margin-top:26px;padding:18px 22px;background:var(--creme-2);border-radius:12px;font-size:.95rem}
 .duvida{margin-top:30px;padding:24px;border:1px solid var(--linha);border-radius:14px;background:var(--papel);
   display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap}
 .duvida p{margin:0;max-width:52ch;font-size:1.02rem;color:var(--texto)}
@@ -211,6 +223,7 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
     <button class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="menu">☰</button>
     <nav id="menu">
       <a href="#servicos">Treatments</a>
+      <a href="#equipamentos">Equipment</a>
       <a href="#beneficios">Benefits</a>
       <a href="#resultados">Results</a>
       <a href="#historia">My story</a>
@@ -227,7 +240,7 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
       <span class="selo">Licensed esthetician · Leominster, MA</span>
       <h1>Technology, science and care</h1>
       <span class="h1-script">for results you see and feel.</span>
-      <p class="chamada">Lymphatic drainage, detox, EMSzero and body technologies — with a protocol built for your body. I speak Portuguese and Spanish, and English-speaking clients are welcome with translation support.</p>
+      <p class="chamada">Lymphatic drainage, detox, EMShape Neo and body technologies — with a protocol built for your body. I speak Portuguese and Spanish, and English-speaking clients are welcome with translation support.</p>
       <div class="acoes">
         <a class="btn btn-cheio" href="https://wa.me/19786003658?text=Hi%20Andr%C3%A9ia!%20I%20came%20from%20your%20website%20and%20I'd%20like%20to%20book%20an%20assessment.">Book an assessment</a>
         <a class="btn btn-vazio" href="#servicos">See treatments</a>
@@ -297,8 +310,8 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
           <div class="tab-preco">US$ 100</div>
         </div>
         <div class="tab-linha">
-          <div class="tab-nome">Drainage + EMSzero<span class="estrela" aria-hidden="true">✦</span></div>
-          <div class="tab-desc">Lymphatic drainage combined with EMSzero technology to reduce fluid and tone.</div>
+          <div class="tab-nome">Drainage + EMShape Neo<span class="estrela" aria-hidden="true">✦</span></div>
+          <div class="tab-desc">Lymphatic drainage combined with EMShape Neo technology to reduce fluid and tone.</div>
           <div class="tab-dur">60 min</div>
           <div class="tab-preco">US$ 100</div>
         </div>
@@ -327,6 +340,41 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
       <a class="btn btn-1" href="https://wa.me/19786003658?text=Hi%20Andr%C3%A9ia!%20I%20came%20from%20your%20website%20and%20I%20have%20a%20question%20about%20the%20treatments." target="_blank" rel="noopener">Ask a question</a>
     </div>
     <p class="escopo">Aesthetic wellness procedures. They do not replace medical treatment and results vary from person to person.</p>
+  </div>
+</section>
+
+<section id="equipamentos">
+  <div class="env">
+    <div class="rotulo">Equipment</div>
+    <h2>What each device does <span class="script">and what you feel.</span></h2>
+    <p class="intro">The question I get the most is “does it hurt?”. Instead of just saying no, I'd rather tell you exactly what happens — and remind you that at any moment you can say so and I'll adjust.</p>
+    <div class="eq-grade">
+      <article class="eq">
+        <div class="eq-topo"><h3>EMShape Neo</h3><span class="eq-tipo">Muscle contraction</span></div>
+        <dl>
+          <dt>What it is</dt><dd>A muscle toning machine that works three areas in one session: abdomen, back and glutes.</dd>
+          <dt>How it works</dt><dd>An electromagnetic field triggers involuntary muscle contractions — deeper than the ones you can produce on your own, because they don't depend on your effort.</dd>
+          <dt>What you feel</dt><dd>The contraction feels strong and strange the first time, but it isn't pain. You lie down and the intensity rises gradually — if it bothers you at any point, you say so and Andréia turns it down right away.</dd>
+        </dl>
+      </article>
+      <article class="eq">
+        <div class="eq-topo"><h3>Radiofrequency</h3><span class="eq-tipo">Controlled heating</span></div>
+        <dl>
+          <dt>What it is</dt><dd>Applied by area, with the device gliding over the skin.</dd>
+          <dt>How it works</dt><dd>Radiofrequency waves heat the deeper layers of the skin in a controlled way, with no cutting and no needles.</dd>
+          <dt>What you feel</dt><dd>A gentle warmth that builds up, like a warm stone moving over you. Andréia tracks the temperature the whole time — if it gets too warm for you, just say so.</dd>
+        </dl>
+      </article>
+      <article class="eq">
+        <div class="eq-topo"><h3>Ultrasound cavitation</h3><span class="eq-tipo">Ultrasound</span></div>
+        <dl>
+          <dt>What it is</dt><dd>Applied by area, with the device in contact with the skin and a conductive gel.</dd>
+          <dt>How it works</dt><dd>Low-frequency ultrasound waves applied to the treated area.</dd>
+          <dt>What you feel</dt><dd>You'll hear a high-pitched tone during the session. That's normal and not a fault: it's the ultrasound frequency reaching your ear through bone. On the skin it feels like a warm device gliding.</dd>
+        </dl>
+      </article>
+    </div>
+    <p class="eq-nota">Which device makes sense for you — and which doesn't — is what we decide together at the assessment. It depends on your body and your history, and that can't be answered over a message.</p>
   </div>
 </section>
 

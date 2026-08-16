@@ -14,7 +14,7 @@
 // Uso: node build.mjs
 
 import { writeFileSync } from "node:fs";
-import { CLINICA, TEXTOS, PILARES, SERVICOS, BENEFICIOS, RESULTADOS, FALAS, FOTOS } from "./dados.js";
+import { CLINICA, TEXTOS, PILARES, SERVICOS, BENEFICIOS, RESULTADOS, FALAS, FOTOS, EQUIPAMENTOS } from "./dados.js";
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const t = (o, l) => (o && typeof o === "object" && !Array.isArray(o) && o[l] !== undefined ? o[l] : o);
@@ -61,6 +61,16 @@ function pagina(l) {
 
   const resultados = RESULTADOS.map((r) =>
     `      <div class="res-num"><b>${esc(r.num)}</b><span>${esc(t(r, l))}</span></div>`).join("\n");
+
+  const rotEq = { pt: ["O que é", "Como funciona", "O que você sente"], en: ["What it is", "How it works", "What you feel"], es: ["Qué es", "Cómo funciona", "Qué se siente"] }[l];
+  const equipamentos = EQUIPAMENTOS.map((e) => `      <article class="eq">
+        <div class="eq-topo"><h3>${esc(t(e.nome, l))}</h3><span class="eq-tipo">${esc(t(e.tipo, l))}</span></div>
+        <dl>
+          <dt>${esc(rotEq[0])}</dt><dd>${esc(t(e.oque, l))}</dd>
+          <dt>${esc(rotEq[1])}</dt><dd>${esc(t(e.como, l))}</dd>
+          <dt>${esc(rotEq[2])}</dt><dd>${esc(t(e.sensacao, l))}</dd>
+        </dl>
+      </article>`).join("\n");
 
   // Sem foto, a grade de duas colunas deixaria metade da seção vazia. Vira coluna única.
   const temFotos = FOTOS.length > 0;
@@ -189,6 +199,18 @@ h2{font-size:clamp(1.85rem,3.8vw,2.7rem);margin-bottom:15px}
 .tab-dur{font-size:.82rem;color:var(--suave);white-space:nowrap}
 .tab-preco{font-family:var(--serif);font-size:1.42rem;color:var(--dourado);text-align:right;white-space:nowrap}
 .nota-moeda{margin-top:13px;font-size:.8rem;color:var(--suave);font-style:italic}
+#equipamentos{padding:74px 0}
+.eq-grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:34px}
+.eq{background:var(--papel);border:1px solid var(--linha);border-radius:16px;padding:26px}
+.eq-topo{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.eq-topo h3{font-size:1.42rem}
+.eq-tipo{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dourado);
+  border:1px solid var(--linha);border-radius:999px;padding:4px 11px}
+.eq dl{margin:0}
+.eq dt{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--suave);margin-top:16px}
+.eq dt:first-of-type{margin-top:0}
+.eq dd{margin:5px 0 0;font-size:.97rem;line-height:1.6}
+.eq-nota{margin-top:26px;padding:18px 22px;background:var(--creme-2);border-radius:12px;font-size:.95rem}
 .duvida{margin-top:30px;padding:24px;border:1px solid var(--linha);border-radius:14px;background:var(--papel);
   display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap}
 .duvida p{margin:0;max-width:52ch;font-size:1.02rem;color:var(--texto)}
@@ -281,10 +303,11 @@ footer{padding:42px 0;text-align:center;color:var(--suave);font-size:.78rem;back
     <button class="menu-btn" aria-label="${({pt:"Abrir menu",en:"Open menu",es:"Abrir menú"})[l]}" aria-expanded="false" aria-controls="menu">☰</button>
     <nav id="menu">
       <a href="#servicos">${esc(nav[0])}</a>
-      <a href="#beneficios">${esc(nav[1])}</a>
-      <a href="#resultados">${esc(nav[2])}</a>
-      <a href="#historia">${esc(nav[3])}</a>
-      <a href="#agendar">${esc(nav[4])}</a>
+      <a href="#equipamentos">${esc(nav[1])}</a>
+      <a href="#beneficios">${esc(nav[2])}</a>
+      <a href="#resultados">${esc(nav[3])}</a>
+      <a href="#historia">${esc(nav[4])}</a>
+      <a href="#agendar">${esc(nav[5])}</a>
     </nav>
   </div>
 </header>
@@ -335,6 +358,18 @@ ${linhas}
       <a class="btn btn-1" href="${zapDuvida}" target="_blank" rel="noopener">${esc(t(TEXTOS.ctaDuvida, l))}</a>
     </div>
     <p class="escopo">${esc(t(TEXTOS.escopo, l))}</p>
+  </div>
+</section>
+
+<section id="equipamentos">
+  <div class="env">
+    <div class="rotulo">${esc(t(TEXTOS.rotEquip, l))}</div>
+    <h2>${esc(t(TEXTOS.h2Equip, l))} <span class="script">${esc(t(TEXTOS.h2EquipScript, l))}</span></h2>
+    <p class="intro">${esc(t(TEXTOS.introEquip, l))}</p>
+    <div class="eq-grade">
+${equipamentos}
+    </div>
+    <p class="eq-nota">${esc(t(TEXTOS.notaEquip, l))}</p>
   </div>
 </section>
 
