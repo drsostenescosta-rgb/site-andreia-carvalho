@@ -806,6 +806,7 @@ ${["manha", "tarde", "noite", "qualquer"].map((v, i) => `            <option val
     <div class="assin">${esc(CLINICA.nome)}</div>
     <div>${esc(t(CLINICA.papel, l))} · ${esc(CLINICA.cidade)}</div>
     <div class="aviso">${esc(t(TEXTOS.rodape, l))}</div>
+    <div class="aviso"><a href="/privacidade" style="color:inherit">${({pt:"Política de Privacidade",en:"Privacy Policy",es:"Política de Privacidad"})[l]}</a></div>
   </div>
 </footer>
 
@@ -1025,6 +1026,7 @@ writeFileSync("sitemap.xml",
       + `\n  </url>`).join("\n")
   + `\n</urlset>\n`);
 
+// A politica entra no sitemap: o App Review da Meta confere se o link e alcancavel.
 writeFileSync("robots.txt", `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`);
 
 console.log(`Gerado: ${gerados.join(", ")}, sitemap.xml, robots.txt — ${SERVICOS.length} procedimentos, ${FOTOS.length} foto(s).`);
