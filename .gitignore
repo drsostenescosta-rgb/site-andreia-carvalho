@@ -1,2 +1,7 @@
 .vercel
 .DS_Store
+
+# segredos — nunca versionar
+.env
+.env.*
+!.env.example
